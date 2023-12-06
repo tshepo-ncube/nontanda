@@ -2,7 +2,7 @@ import React from 'react';
 
 const Home = () => {
   return (
-    <div className="bg-gray-100 min-h-screen">
+    <div className="bg-white-100 min-h-screen">
       {/* Hero Section */}
       <div className="bg-blue-500 text-white py-20">
         <div className="container mx-auto text-center">
