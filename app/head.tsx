@@ -27,7 +27,7 @@ export default function Head() {
           }}
           /> */}
 
-        <script
+{/*         <script
           async
           src={`https://www.googletagmanager.com/gtag/js?id=G-YE94Z3VF7X`}
         />
@@ -39,7 +39,7 @@ export default function Head() {
             gtag('js', new Date());
             gtag('config', 'G-HT4ZFGC34E');
           `,
-          }}
+          }} */}
         />
     </Head>
   );
