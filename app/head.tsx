@@ -1,12 +1,12 @@
 export default function Head() {
   return (
-    <>
+    <Head>
       <title>Mindful Manifesters</title>
       <meta content="width=device-width, initial-scale=1" name="viewport" />
       <link rel="icon" href="/favicon.ico" />
 
       <!-- Google tag (gtag.js) -->
-      <script async src="https://www.googletagmanager.com/gtag/js?id=G-YE94Z3VF7X"></script>
+{/*       <script async src="https://www.googletagmanager.com/gtag/js?id=G-YE94Z3VF7X"></script> */}
 {/*       <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
@@ -15,7 +15,7 @@ export default function Head() {
         gtag('config', 'G-YE94Z3VF7X');
       </script> */}
 
-        <script 
+{/*         <script 
           dangerouslySetInnerHTML = {{
             __html: `
             window.dataLayer = window.dataLayer || [];
@@ -25,7 +25,22 @@ export default function Head() {
         gtag('config', 'G-YE94Z3VF7X');
         `,
           }}
-          />
-    </>
+          /> */}
+
+        <script
+          async
+          src={`https://www.googletagmanager.com/gtag/js?id=G-YE94Z3VF7X`}
+        />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-HT4ZFGC34E');
+          `,
+          }}
+        />
+    </Head>
   );
 }
