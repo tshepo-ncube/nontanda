@@ -7,13 +7,25 @@ export default function Head() {
 
       <!-- Google tag (gtag.js) -->
       <script async src="https://www.googletagmanager.com/gtag/js?id=G-YE94Z3VF7X"></script>
-      <script>
+{/*       <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
       
         gtag('config', 'G-YE94Z3VF7X');
-      </script>
+      </script> */}
+
+        <script 
+          dangerouslySetInnerHTML = {{
+            __html: `
+            window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+      
+        gtag('config', 'G-YE94Z3VF7X');
+        `,
+          }}
+          />
     </>
   );
 }
