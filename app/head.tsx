@@ -1,5 +1,5 @@
 
-export default function CustomHead() {
+export default function Head() {
   return (
     <>
       <title>Mindful Manifesters</title>
