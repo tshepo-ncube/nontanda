@@ -5,7 +5,7 @@ export default function Head() {
       <meta content="width=device-width, initial-scale=1" name="viewport" />
       <link rel="icon" href="/favicon.ico" />
 
-      <script src="https://www.googletagmanager.com/gtag/js?id=G-YE94Z3VF7X" />
+{/*       <script src="https://www.googletagmanager.com/gtag/js?id=G-YE94Z3VF7X" />
       <script id="google-analytics">
         {`
           window.dataLayer = window.dataLayer || [];
@@ -14,7 +14,7 @@ export default function Head() {
  
           gtag('config', 'G-YE94Z3VF7X');
         `}
-      </script>
+      </script> */}
     </>
   );
 }
