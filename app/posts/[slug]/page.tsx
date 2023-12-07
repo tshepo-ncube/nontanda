@@ -29,8 +29,8 @@ const PostPage = (props: any) => {
         <p className="text-slate-400 mt-2">{post.data.date}</p>
       </div>
      
-        <div className="my-12 text-center">
-             <article className="prose text-center">
+        <div className="my-12 text-center" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+             <article className="prose text-center" style={{ textAlign: 'center' }}>
                 <Markdown>{post.content}</Markdown>
             </article>
         </div>
