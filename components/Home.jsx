@@ -2,7 +2,7 @@ import React from 'react';
 
 const Home = () => {
   return (
-    <div className="bg-white-100 min-h-screen">
+    <div className="bg-black-100 min-h-screen" style={{backgroundImage="url('https://images.unsplash.com/photo-1682685797527-63b4e495938f?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')"}}>
       {/* Hero Section */}
       <div className="bg-blue-500 text-white py-20">
         <div className="container mx-auto text-center">
