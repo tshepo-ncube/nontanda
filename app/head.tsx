@@ -1,3 +1,4 @@
+import Script from "next/script";
 export default function Head() {
   return (
     <>
@@ -5,8 +6,8 @@ export default function Head() {
       <meta content="width=device-width, initial-scale=1" name="viewport" />
       <link rel="icon" href="/favicon.ico" />
 
-{/*       <script src="https://www.googletagmanager.com/gtag/js?id=G-YE94Z3VF7X" />
-      <script id="google-analytics">
+      <Script src="https://www.googletagmanager.com/gtag/js?id=G-YE94Z3VF7X" />
+      <Script id="google-analytics">
         {`
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
@@ -14,7 +15,7 @@ export default function Head() {
  
           gtag('config', 'G-YE94Z3VF7X');
         `}
-      </script> */}
+      </Script>
     </>
   );
 }
