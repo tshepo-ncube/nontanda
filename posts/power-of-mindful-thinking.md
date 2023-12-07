@@ -1,7 +1,7 @@
 ---
-title: "Power of Positive Thinking"
-subtitle: "Create an AWS account and set up CLI/SDK access."
-date: "2020-12-28"
+title: "Power of Mindful Thinking"
+subtitle: "The power of mindfulness lies in its ability to bring us back to the present moment"
+date: "2023-12-07"
 ---
 
 Mindfulness is a practice focused on cultivating present-moment awareness, encouraging individuals to fully engage with their thoughts, feelings, and surroundings without judgment. It involves purposeful attention to the present, fostering a deep connection with one's experiences.
