@@ -4,7 +4,7 @@ const Home = () => {
   return (
     <div className="bg-black-500 min-h-screen">
       {/* Hero Section */}
-      <div className="bg-black/70 text-white py-20" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1506126613408-eca07ce68773?q=80&w=1999&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')" }}>
+      <div className="bg-black/70 text-white py-20" style={{ backgroundColor: "rgba(0, 0, 0, 0.7)",  backgroundImage: "url('https://images.unsplash.com/photo-1506126613408-eca07ce68773?q=80&w=1999&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')" }}>
         <div className="container mx-auto text-center">
           <h1 className="text-4xl font-bold mb-4">Welcome to Mindful Manifesters</h1>
           <p className="text-lg">
