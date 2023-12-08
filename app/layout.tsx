@@ -3,6 +3,7 @@ import Link from "next/link";
 import "../styles/globals.css";
 import About from '../components/About'
 import Navbar from '../components/Navbar'
+import Foot from '../components/Foot'
 export default function RootLayout({
   children,
 }: {
@@ -50,6 +51,7 @@ export default function RootLayout({
           <br/>
             {children}
           {/* {footer} */}
+          <Foot/>
         </div>
       </body>
     </html>
