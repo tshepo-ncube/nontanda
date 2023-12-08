@@ -4,6 +4,15 @@ import "../styles/globals.css";
 import About from '../components/About'
 import Navbar from '../components/Navbar'
 import Foot from '../components/Foot'
+
+import React, { useEffect } from 'react';
+import { useRouter } from 'next/router';
+
+import * as ga from '../utils/analytics'; // Assuming you have your analytics setup in utils/analytics.js
+import { Url } from "url";
+import Script from 'next/script'
+ 
+ 
 export default function RootLayout({
   children,
 }: {
@@ -19,6 +28,7 @@ export default function RootLayout({
           className="mx-auto"
           alt={"logo"}
         />
+    
         <Link href="/">
           <h1 className="text-2xl text-white font-bold mt-4">Jack's Blog</h1>
         </Link>
@@ -26,6 +36,27 @@ export default function RootLayout({
       </div>
     </header>
   );
+
+  const router = useRouter();
+
+  useEffect(() => {
+    // Initialize Google Analytics
+    ga.initGA();
+    // Track initial pageview
+    ga.logPageView();
+
+    // Set up a listener to track page changes
+    const handleRouteChange = (url:string) => {
+      ga.logPageView();
+    };
+
+    router.events.on('routeChangeComplete', handleRouteChange);
+
+    // Clean up on component unmount
+    return () => {
+      router.events.off('routeChangeComplete', handleRouteChange);
+    };
+  }, []);
 
   const footer = (
     <footer>
@@ -40,7 +71,21 @@ export default function RootLayout({
 
   return (
     <html>
-      <head />
+      <head>
+         {/* Add Google Analytics script to the head */}
+        
+
+        <Script src="https://www.googletagmanager.com/gtag/js?id=G-YE94Z3VF7X" />
+      <Script id="google-analytics">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+ 
+          gtag('config', 'G-YE94Z3VF7X');
+        `}
+      </Script>
+      </head>
       <body>
         <div className="mx-auto  max-w px-8">
           {/* {header} */}
@@ -55,6 +100,9 @@ export default function RootLayout({
           {/* {footer} */}
           <Foot/>
         </div>
+
+         
+        
       </body>
     </html>
   );
