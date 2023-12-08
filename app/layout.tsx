@@ -4,6 +4,12 @@ import "../styles/globals.css";
 import About from '../components/About'
 import Navbar from '../components/Navbar'
 import Foot from '../components/Foot'
+
+import { useEffect } from 'react';
+import { useRouter } from 'next/router';
+import * as ga from '../utils/analytics';
+
+
 export default function RootLayout({
   children,
 }: {
@@ -35,6 +41,27 @@ export default function RootLayout({
       <About/>
     </footer>
   );
+
+  const router = useRouter();
+
+  useEffect(() => {
+    // Initialize Google Analytics
+    ga.initGA();
+    // Track initial pageview
+    ga.logPageView();
+
+    // Set up a listener to track page changes
+    const handleRouteChange = (url:string) => {
+      ga.logPageView();
+    };
+
+    router.events.on('routeChangeComplete', handleRouteChange);
+
+    // Clean up on component unmount
+    return () => {
+      router.events.off('routeChangeComplete', handleRouteChange);
+    };
+  }, []);
 
   return (
     <html>
