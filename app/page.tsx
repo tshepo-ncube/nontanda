@@ -1,3 +1,4 @@
+'use client'
 import React from 'react'
 import getPostMetadata from "../components/getPostMetadata";
 import PostPreview from "../components/PostPreview";
