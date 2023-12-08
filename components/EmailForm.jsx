@@ -128,14 +128,14 @@ const EmailForm = () => {
         {/* Success Snackbar */}
         <Snackbar open={successSnackbarOpen} autoHideDuration={6000} onClose={handleSuccessSnackbarClose}>
           <MuiAlert onClose={handleSuccessSnackbarClose} severity="success" sx={{ width: '100%' }}>
-            Data successfully saved!
+            Email List Join Successfully!
           </MuiAlert>
         </Snackbar>
 
         {/* Error Snackbar */}
         <Snackbar open={errorSnackbarOpen} autoHideDuration={6000} onClose={handleErrorSnackbarClose}>
           <MuiAlert onClose={handleErrorSnackbarClose} severity="error" sx={{ width: '100%' }}>
-            Error saving data. Please try again.
+            Error Joining Email List. Please Try Again.
           </MuiAlert>
         </Snackbar>
       </div>
