@@ -5,10 +5,10 @@ const Home = () => {
     <div className="bg-black-500 min-h-screen">
       {/* Hero Section */}
       <div className="bg-black/70 text-white py-20" style={{ backgroundColor: "rgba(0, 0, 0, 0.7)",  backgroundImage: "url('https://images.unsplash.com/photo-1682685797527-63b4e495938f?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')" }}>
-        <div className="container mx-auto text-center">
+        <div className="container mx-auto text-center p-4">
           <h1 className="text-4xl font-bold mb-4">Welcome to Mindful Manifesters</h1>
           <p className="text-lg">
-            Empowering our community through mindfulness, one product at a time.
+            Empowering our community through mindfulness.
           </p>
         </div>
       </div>
