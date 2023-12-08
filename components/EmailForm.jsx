@@ -1,83 +1,44 @@
 'use client'
-import React, { useState } from 'react';
+
+// pages/index.js
+import React from 'react';
 
 const EmailForm = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: '',
-  });
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({ ...prevData, [name]: value }));
-  };
-
   const handleSubmit = (e) => {
     e.preventDefault();
     // Add your form submission logic here
-    console.log('Form submitted:', formData);
-    // You can send the form data to your server or perform any other action
   };
 
   return (
-    <div className="max-w-md mx-auto mt-8">
-      <form onSubmit={handleSubmit} className="bg-white p-6 shadow-md rounded-md">
-        <h2 className="text-2xl font-bold mb-4">Contact Us</h2>
+   <center>
+     <div className="bg-white p-8 rounded  max-w-md w-full">
+        <h2 className="text-2xl font-semibold mb-6 text-gray-800">Join Our Email list</h2>
+        <p className="font mb-6 text-gray-800">Be the first to hear about our latest free content, courses, and exclusive offerings. We respect your time and pledge not to flood your inbox with daily emails – that's our commitment to you.</p>
+        {/* Email Input Form */}
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <div>
+            <label htmlFor="email" className="block text-sm font-medium text-gray-600">
+              Email Address
+            </label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Enter your email"
+              className="mt-1 p-2 w-full border rounded-md focus:outline-none focus:border-blue-500"
+              required
+            />
+          </div>
 
-        {/* <div className="mb-4">
-          <label htmlFor="name" className="block text-gray-700 text-sm font-bold mb-2">
-            Name
-          </label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500"
-            required
-          />
-        </div> */}
-
-        <div className="mb-4">
-          <label htmlFor="email" className="block text-gray-700 text-sm font-bold mb-2">
-            Email
-          </label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500"
-            required
-          />
-        </div>
-
-        {/* <div className="mb-4">
-          <label htmlFor="message" className="block text-gray-700 text-sm font-bold mb-2">
-            Message
-          </label>
-          <textarea
-            id="message"
-            name="message"
-            value={formData.message}
-            onChange={handleChange}
-            rows="4"
-            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500"
-            required
-          ></textarea>
-        </div> */}
-
-        <button
-          type="submit"
-          className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-700 focus:outline-none"
-        >
-          Submit
-        </button>
-      </form>
-    </div>
+          {/* Submit Button */}
+          <div>
+            <button type="submit" className="w-full bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600 focus:outline-none">
+              Subscribe
+            </button>
+          </div>
+        </form>
+      </div>
+   </center>
   );
 };
 
