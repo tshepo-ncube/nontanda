@@ -2,7 +2,7 @@ import React from 'react'
 
 function page() {
   return (
-    <div>Chat</div>
+    <div>Chatbot coming very soon, Its still in development  ;)</div>
   )
 }
 
