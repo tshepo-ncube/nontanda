@@ -35,12 +35,7 @@ const PostPage = (props: any) => {
             </article>
         </div>
      
-
-     
-      <About/>
-      <br/>
-      <br/>
-      <br/>
+      
     </div>
   );
 };
