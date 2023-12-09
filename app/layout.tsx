@@ -5,7 +5,7 @@ import About from '../components/About'
 import Navbar from '../components/Navbar'
 import Foot from '../components/Foot'
 
-import React, { useEffect } from 'react';
+import React from 'react';
  
 import Script from 'next/script'
  

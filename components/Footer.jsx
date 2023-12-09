@@ -1,6 +1,6 @@
 // components/Footer.js
 import React from 'react';
-import { FaInstagram, FaPinterest, FaTiktok } from 'react-icons/fa';
+import { FaInstagram, FaPinterest, FaTiktok , FaYoutube} from 'react-icons/fa';
 
 const Footer = () => {
   return (
@@ -16,6 +16,14 @@ const Footer = () => {
           </a>
           <a href="https://www.tiktok.com/@mindful.manifeste" target="_blank" rel="noopener noreferrer">
             <FaTiktok size={24} className="cursor-pointer" />
+          </a>
+
+          <a href="https://www.tiktok.com/@mindful.manifeste" target="_blank" rel="noopener noreferrer">
+            <FaTiktok size={24} className="cursor-pointer" />
+          </a>
+
+          <a href="https://www.youtube.com/channel/UCm57A4zeMQqhA_LQYjFEG9A" target="_blank" rel="noopener noreferrer">
+            <FaYoutube size={24} className="cursor-pointer" />
           </a>
         </div>
       </div>
