@@ -1,6 +1,6 @@
 // components/Footer.js
 import React from 'react';
-import { FaInstagram, FaPinterest, FaTiktok } from 'react-icons/fa';
+import { FaInstagram, FaPinterest, FaTiktok, FaYoutube } from 'react-icons/fa';
 import {
     FiGithub,
     FiTwitter,
@@ -24,6 +24,11 @@ import {
       id: 3,
       icon: <FaTiktok />,
       url: "https://www.tiktok.com/@mindful.manifeste",
+    },
+    {
+      id: 4,
+      icon: <FaYoutube />,
+      url: "https://www.youtube.com/channel/UCm57A4zeMQqhA_LQYjFEG9A",
     }
      
   ];
