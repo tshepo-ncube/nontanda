@@ -2,7 +2,7 @@ import Script from "next/script";
 export default function Head() {
   return (
     <>
-      <title>Mindfulness Manifester</title>
+      <title>Mindfulness Manifester Tshepo</title>
       <meta content="width=device-width, initial-scale=1" name="viewport" />
       <link rel="icon" href="/favicon.ico" />
 
@@ -27,9 +27,6 @@ export default function Head() {
           gtag('config', 'G-1G8NESR5QL');
         `}
       </Script>
-
-
-      
     </>
   );
 }

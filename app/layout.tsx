@@ -1,15 +1,14 @@
 import Image from "next/image";
 import Link from "next/link";
 import "../styles/globals.css";
-import About from '../components/About'
-import Navbar from '../components/Navbar'
-import Foot from '../components/Foot'
+import About from "../components/About";
+import Navbar from "../components/Navbar";
+import Foot from "../components/Foot";
 
-import React from 'react';
- 
-import Script from 'next/script'
- 
- 
+import React from "react";
+
+import Script from "next/script";
+
 export default function RootLayout({
   children,
 }: {
@@ -25,63 +24,72 @@ export default function RootLayout({
           className="mx-auto"
           alt={"logo"}
         />
-    
+
         <Link href="/">
           <h1 className="text-2xl text-white font-bold mt-4">Jack's Blog</h1>
         </Link>
-        <p className="text-slate-300">🤟 Welcome to the MindfulManifesters blog. 💻</p>
+        <p className="text-slate-300">
+          🤟 Welcome to the MindfulManifesters blog. 💻
+        </p>
       </div>
     </header>
   );
-
-  
- 
 
   const footer = (
     <footer>
       <div className="border-t border-slate-400 mt-12 py-6 text-center text-slate-400">
         <h3>Designed by Pixegami</h3>
       </div>
-      <About/>
+      <About />
     </footer>
   );
 
-  
-
   return (
-    <html>
+    <html lang="en">
       <head>
-         {/* Add Google Analytics script to the head */}
-        
+        {/* Add Google Analytics script to the head */}
+        <title>Mindfulness Manifester </title>
+        <meta content="width=device-width, initial-scale=1" name="viewport" />
+        <link rel="icon" href="/favicon.ico" />
+
+        <meta
+          name="description"
+          content="Explore the world of mindfulness with Mindfulness Manifester. Discover tips, practices, and resources for cultivating mindfulness in your daily life."
+        />
+        <meta property="og:title" content="Mindful Manifesters" />
+        <meta
+          property="og:description"
+          content="Explore the world of mindfulness with Mindfulness Manifester. Discover tips, practices, and resources for cultivating mindfulness in your daily life."
+        />
+        {/* <meta property="og:image" content="/path/to/your/og-image.jpg" /> */}
+        {/* <meta content="width=device-width, initial-scale=1" name="viewport" /> */}
+        {/* <link rel="icon" href="/favicon.ico" /> */}
 
         <Script src="https://www.googletagmanager.com/gtag/js?id=G-YE94Z3VF7X" />
-      <Script id="google-analytics">
-        {`
+        <Script id="google-analytics">
+          {`
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
  
           gtag('config', 'G-YE94Z3VF7X');
         `}
-      </Script>
+        </Script>
       </head>
       <body>
         <div className="mx-auto  max-w px-8">
           {/* {header} */}
           {/* {children} */}
-          <Navbar/>
-          <br/>
-          <br/>
-          
-          <br/>
-          <br/>
-            {children}
-          {/* {footer} */}
-          <Foot/>
-        </div>
+          <Navbar />
+          <br />
+          <br />
 
-         
-        
+          <br />
+          <br />
+          {children}
+          {/* {footer} */}
+          <Foot />
+        </div>
       </body>
     </html>
   );
