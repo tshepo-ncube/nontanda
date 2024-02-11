@@ -77,7 +77,7 @@ export default function RootLayout({
         </Script>
       </head>
       <body>
-        <div className="mx-auto  max-w px-8">
+        <div className="mx-auto  max-w px-0">
           {/* {header} */}
           {/* {children} */}
           <Navbar />
