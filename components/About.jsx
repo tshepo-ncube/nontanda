@@ -1,12 +1,10 @@
-'use client'
-import React, { Component } from 'react'
+"use client";
+import React, { Component } from "react";
 
 export class About extends Component {
   render() {
-    return (
-      <div>About</div>
-    )
+    return <div>About Us</div>;
   }
 }
 
-export default About
+export default About;
