@@ -16,7 +16,7 @@ const Home = () => {
       >
         <div
           className="container mx-auto text-center p-0"
-          style={{ marginTop: -20 }}
+          style={{ marginTop: -25 }}
         >
           <h1 className="text-4xl font-bold mb-1">Welcome to Mindful</h1>
           <p className="text-lg">
