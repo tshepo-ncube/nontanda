@@ -15,9 +15,7 @@ const Home = () => {
         }}
       >
         <div className="container mx-auto text-center p-4">
-          <h1 className="text-4xl font-bold mb-4">
-            Welcome to Mindful Manifesters
-          </h1>
+          <h1 className="text-4xl font-bold mb-4">Welcome to Mindful</h1>
           <p className="text-lg">
             Empowering our community through mindfulness.
           </p>
