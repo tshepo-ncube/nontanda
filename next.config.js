@@ -4,12 +4,11 @@ const nextConfig = {
   swcMinify: true,
   experimental: {
     appDir: true,
+    api: true,
   },
-   images: {
-    domains: [
-      'images.unsplash.com',
-    ]
-  }
+  images: {
+    domains: ["images.unsplash.com"],
+  },
 };
 
 module.exports = nextConfig;
