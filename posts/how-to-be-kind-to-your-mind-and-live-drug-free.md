@@ -1,8 +1,8 @@
 ---
 title: "How to be kind to your mind & live drug free"
-subtitle: "8-bit games are a great way to learn and expand your portfolio."
-date: "2020-12-19"
-cr: ["https://www.artstation.com/shizuorin"]
+subtitle: "How to be kind to your mind & live drug free"
+date: "2024-02-14"
+cr: ["https://www.mindfulmanifesters.com/ourblog"]
 ---
 
 In a world that often feels chaotic and fast-paced, taking care of our mental health is paramount. With increasing awareness about the [importance of mental wellness](https://healthlibrary.telus.com/en/individuals-families/10-reasons-why-mental-health-is-important), the phrase "be kind to your mind" has gained significant traction.
