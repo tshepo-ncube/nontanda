@@ -1,12 +1,13 @@
 import React from "react";
-
-import fs from "fs";
-import HomePage from "../page";
+import Head from "next/head";
 import BlogComponent from "../../components/BlogComponent";
 function ourblog() {
   return (
-    <div className="px-8">
-      <BlogComponent />
+    <div>
+      <div className="px-8">
+        <BlogComponent />
+      </div>
+      {/* Your page content */}
     </div>
   );
 }
