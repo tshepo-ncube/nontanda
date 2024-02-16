@@ -35,13 +35,13 @@ Being kind to your mind involves practicing self-care, mindfulness, and compassi
 - Engaging in regular physical activity to boost mood and alleviate anxiety.
 - Prioritizing quality sleep to recharge your mind and body.
 - Cultivating healthy relationships that provide support and encouragement.
-- Setting boundaries to protect your mental and emotional well-being.
+- <a href="https://psychcentral.com/lib/10-way-to-build-and-preserve-better-boundaries" style="text-decoration: none;" target="_blank" >Setting boundaries</a> to protect your mental and emotional well-being.
 
 ## Living Drug-Free
 
 ![drug free image](https://media.tenor.com/pSzreKi-GbkAAAAi/i-am-not-high-george-w-bush.gif)
 
-Living drug-free means making conscious choices to abstain from substance abuse and dependency. While some substances may provide temporary relief or escape, they often exacerbate mental health issues in the long run.
+Living drug-free means making conscious choices to abstain from <a href="https://pacifichealthsystems.com/blog/what-is-the-difference-between-substance-abuse-and-substance-dependence/" style="text-decoration: none;" target="_blank" > substance abuse and dependency.</a> While some substances may provide temporary relief or escape, they often exacerbate mental health issues in the long run.
 
 By choosing to live drug-free, you're committing to a lifestyle that prioritizes your mental clarity, emotional stability, and overall health. This can involve:
 
