@@ -47,10 +47,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        {/* Add Google Analytics script to the head */}
         <title>Mindful</title>
         <meta content="width=device-width, initial-scale=1" name="viewport" />
-        {/* <link rel="icon" href="/favicon.ico" /> */}
+
         <link rel="icon" href="/mind16.png" />
         <meta
           name="description"
@@ -61,9 +60,6 @@ export default function RootLayout({
           property="og:description"
           content="Explore the world of mindfulness with Mindfulness Manifester. Discover tips, practices, and resources for cultivating mindfulness in your daily life."
         />
-        {/* <meta property="og:image" content="/path/to/your/og-image.jpg" /> */}
-        {/* <meta content="width=device-width, initial-scale=1" name="viewport" /> */}
-        {/* <link rel="icon" href="/favicon.ico" /> */}
 
         <Script src="https://www.googletagmanager.com/gtag/js?id=G-YE94Z3VF7X" />
         <Script id="google-analytics">
