@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
 function page() {
-  return (
-    <div>Chatbot coming very soon, Its still in development  ;)</div>
-  )
+  return <div>Abbout</div>;
 }
 
-export default page
+export default page;
