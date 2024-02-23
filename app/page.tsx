@@ -6,6 +6,9 @@ import EmailForm from "../components/EmailForm";
 import Home from "../components/Home";
 import Navbar from "../components/Navbar";
 import Script from "next/script";
+
+import Journal from "../components/Journal";
+
 const HomePage = () => {
   const postMetadata = getPostMetadata();
   const postPreviews = postMetadata.map((post) => (
@@ -67,9 +70,8 @@ const HomePage = () => {
           <br />
           <br />
           {/* {children} */}
-          <>
-            <p>The free journal will go in here</p>
-          </>
+
+          <Journal />
           {/* {footer} */}
           {/* <Foot /> */}
         </div>

@@ -1,7 +1,8 @@
 import React from "react";
 import Home from "../../components/Home";
 import Script from "next/script";
-import Navbar from "../components/Navbar";
+import Navbar from "../../components/Navbar";
+import Foot from "../../components/Foot";
 function page() {
   return (
     // <div>
@@ -40,17 +41,26 @@ function page() {
       </head>
       <body>
         <div className="mx-auto  max-w px-8">
+          <Navbar />
           {/* {header} */}
           {/* {children} */}
-          <Navbar />
+          {/* 
           <br />
           <br />
 
           <br />
           <br />
-          {/* {children} */}
+   
+          
+      
+          <Foot /> */}
+          <br />
+          <br />
+
+          <br />
+          <br />
+
           <Home />
-          {/* {footer} */}
           <Foot />
         </div>
       </body>
