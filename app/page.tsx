@@ -8,7 +8,7 @@ import Navbar from "../components/Navbar";
 import Script from "next/script";
 
 import Journal from "../components/Journal";
-
+import Foot from "../components/Foot";
 const HomePage = () => {
   const postMetadata = getPostMetadata();
   const postPreviews = postMetadata.map((post) => (
@@ -73,7 +73,7 @@ const HomePage = () => {
 
           <Journal />
           {/* {footer} */}
-          {/* <Foot /> */}
+          <Foot />
         </div>
       </body>
     </>
