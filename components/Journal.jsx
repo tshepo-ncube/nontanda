@@ -84,9 +84,7 @@ const Journal = () => {
           {insights ? (
             <>
               <div className="max-w-md mx-auto mt-8 p-4 border rounded shadow-lg">
-                <h2 className="text-xl font-bold mb-4">
-                  Reflect on an experience.
-                </h2>
+                <h2 className="text-xl font-bold mb-4">Reflect on an today.</h2>
                 <div className="relative">
                   <textarea
                     className="w-full h-80 p-2 border rounded resize-none focus:outline-none focus:ring focus:border-green-300"
