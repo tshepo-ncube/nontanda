@@ -11,7 +11,7 @@ function page() {
     <>
       <head>
         {/* Add Google Analytics script to the head */}
-        <title>About | Mindfulness Manifester </title>
+        <title>About | Mindful</title>
         <meta content="width=device-width, initial-scale=1" name="viewport" />
         <link rel="icon" href="/favicon.ico" />
 
