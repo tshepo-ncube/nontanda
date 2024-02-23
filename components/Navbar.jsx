@@ -53,6 +53,7 @@ const Navbar = () => {
         });
       } else {
         setSignedIn(false);
+        setUser(null);
         // No user is signed in.
         console.log("No user is logged in");
       }
