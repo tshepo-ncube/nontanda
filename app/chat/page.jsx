@@ -4,6 +4,7 @@ import Script from "next/script";
 import Navbar from "../../components/Navbar";
 import Foot from "../../components/Foot";
 import HeaderComponent from "../../components/HeaderComponent";
+import MyGoals from "../../components/Goals";
 
 function page() {
   return (
@@ -33,8 +34,9 @@ function page() {
 
           <br />
           <br />
+          <MyGoals />
 
-          <Foot />
+          {/* <Foot /> */}
         </div>
       </body>
     </>
