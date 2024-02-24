@@ -83,7 +83,7 @@ const Card = ({ recipientName, senderName, toggleModal }) => {
       onClick={() => {
         toggleModal("GoalView");
       }}
-      className="block max-w-md mx-auto rounded overflow-hidden shadow-lg bg-white cursor-pointer"
+      className="block max-w-md mx-100 rounded overflow-hidden shadow-lg bg-blue-100 cursor-pointer"
     >
       {/* <img
         className="w-full"
@@ -92,7 +92,8 @@ const Card = ({ recipientName, senderName, toggleModal }) => {
       /> */}
       <div className="px-6 py-4">
         <div className="font-bold text-xl mb-2">{recipientName}</div>
-        <p className="text-gray-700 text-base">date</p>
+
+        {/* <p className="text-gray-700 text-base">date</p> */}
         {/* <p className="text-gray-700 text-base">
           Descr No matter where life takes us, please know that you are
           cherished and valued beyond measure. Your strength, resilience, and
@@ -102,7 +103,7 @@ const Card = ({ recipientName, senderName, toggleModal }) => {
         {/* <div className="font-bold text-xl mb-2 mt-4">
           With love and appreciation,
         </div> */}
-        <div className="font-semibold text-lg">{senderName}</div>
+        {/* <div className="font-semibold text-lg">{senderName}</div> */}
       </div>
     </div>
   );
