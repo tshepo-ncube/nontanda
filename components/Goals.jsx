@@ -1,12 +1,15 @@
 "use client";
 import React, { useState } from "react";
 import GoalForm from "./GoalForm";
+import GoalView from "./GoalView";
 const MyGoals = () => {
   const [goals, setGoals] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
+  const [modalType, setModalType] = useState("New Goal");
 
-  const toggleModal = () => {
+  const toggleModal = (modalType) => {
     setIsOpen(!isOpen);
+    setModalType("New Goal");
   };
   const handleAddGoal = (newGoal) => {
     setGoals((prevGoals) => [...prevGoals, newGoal]);
@@ -15,26 +18,14 @@ const MyGoals = () => {
   return (
     <div className="container mx-auto p-4">
       <h1 className="text-3xl font-bold mb-4">Goal Tracker</h1>
-      {/* <div className="bg-white p-6 rounded-md shadow-md">
-        <GoalForm onAddGoal={handleAddGoal} />
-      </div>
-      <div className="mt-4">
-        <h2 className="text-xl font-semibold mb-2">Goals:</h2>
-        <ul className="list-disc pl-4">
-          {goals.map((goal, index) => (
-            <li key={index} className="mb-2">
-              <span className="font-bold">{goal.text}</span> - {goal.timeline} -{" "}
-              {goal.description}
-            </li>
-          ))}
-        </ul>
-      </div> */}
 
-      <List />
+      <List toggleModal={toggleModal} />
 
       <button
-        onClick={toggleModal}
-        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full shadow-md fixed bottom-12 right-7"
+        onClick={() => {
+          toggleModal("New Goal");
+        }}
+        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full shadow-md fixed bottom-12 right-7"
       >
         +
       </button>
@@ -43,7 +34,15 @@ const MyGoals = () => {
         <div className="fixed z-10 inset-0 overflow-y-auto flex justify-center items-center">
           <div className="fixed inset-0 bg-white ">
             <div style={{ padding: 70 }}>
-              <GoalForm />
+              {modalType === "New Goal" ? (
+                <>
+                  <GoalForm />
+                </>
+              ) : (
+                <>
+                  <GoalView />
+                </>
+              )}
             </div>
           </div>
 
@@ -78,18 +77,21 @@ export default MyGoals;
 
 //import React from "react";
 
-const Card = ({ recipientName, senderName }) => {
+const Card = ({ recipientName, senderName, toggleModal }) => {
   return (
-    <div className="max-w-md mx-auto rounded overflow-hidden shadow-lg bg-white">
+    <div
+      onClick={() => {
+        toggleModal("GoalView");
+      }}
+      className="block max-w-md mx-auto rounded overflow-hidden shadow-lg bg-white cursor-pointer"
+    >
       {/* <img
         className="w-full"
         src="landscape-image.jpg"
         alt="Serene Landscape"
       /> */}
       <div className="px-6 py-4">
-        <div className="font-bold text-xl mb-2">
-          Goal Name: {recipientName},
-        </div>
+        <div className="font-bold text-xl mb-2">{recipientName}</div>
         <p className="text-gray-700 text-base">date</p>
         {/* <p className="text-gray-700 text-base">
           Descr No matter where life takes us, please know that you are
@@ -108,12 +110,16 @@ const Card = ({ recipientName, senderName }) => {
 
 //export default Card;
 
-const List = () => {
+const List = ({ toggleModal }) => {
   // Sample data for demonstration
   const cardData = [
-    { id: 1, recipientName: "Alice", senderName: "Bob" },
-    { id: 2, recipientName: "Charlie", senderName: "Dave" },
-    { id: 3, recipientName: "Eve", senderName: "Frank" },
+    { id: 1, recipientName: "I want to learn mandarin", senderName: "Bob" },
+    {
+      id: 2,
+      recipientName: "I want to have a consistent routine",
+      senderName: "Dave",
+    },
+    // { id: 3, recipientName: "Eve", senderName: "Frank" },
   ];
 
   return (
@@ -124,6 +130,7 @@ const List = () => {
             key={card.id}
             recipientName={card.recipientName}
             senderName={card.senderName}
+            toggleModal={toggleModal}
           />
         ))}
       </div>

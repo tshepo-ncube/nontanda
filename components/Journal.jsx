@@ -61,10 +61,7 @@ const Journal = () => {
             profound insights into their thoughts, emotions, and actions.
             Through reflection, individuals can engage in a deliberate and
             introspective process of examining past experiences, contemplating
-            their significance, and discerning valuable lessons learned. It
-            provides a platform for self-awareness, enabling individuals to
-            identify their strengths, weaknesses, values, and beliefs with
-            clarity.
+            their significance, and discerning valuable lessons learned.
           </p>
           {/* <p className="text-gray-600 leading-loose">
             Moreover, reflection facilitates effective problem-solving and

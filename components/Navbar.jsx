@@ -140,9 +140,6 @@ const Navbar = () => {
           <li className="p-4">
             <Link href="/">Home</Link>
           </li>
-          <li className="p-4">
-            <Link href="/ourblog">Blog</Link>
-          </li>
 
           {user ? (
             <>
@@ -155,7 +152,14 @@ const Navbar = () => {
           )}
 
           <li className="p-4">
+            <Link href="/ourblog">Blog</Link>
+          </li>
+
+          <li className="p-4">
             <Link href="/about">About</Link>
+          </li>
+          <li className="p-4">
+            <Link href="/pricing">Pricing</Link>
           </li>
           <li className="p-4">
             {signedIn ? (
@@ -204,12 +208,6 @@ const Navbar = () => {
             >
               <Link href="/">Home</Link>
             </li>
-            <li
-              onClick={handleNav}
-              className="p-4 text-4xl hover:text-gray-500"
-            >
-              <Link href="/ourblog">Blog</Link>
-            </li>
 
             {user ? (
               <>
@@ -221,8 +219,21 @@ const Navbar = () => {
               <></>
             )}
 
+            <li
+              onClick={handleNav}
+              className="p-4 text-4xl hover:text-gray-500"
+            >
+              <Link href="/ourblog">Blog</Link>
+            </li>
             <li className="p-4 text-4xl hover:text-gray-500">
               <Link href="/about">About</Link>
+            </li>
+
+            <li
+              onClick={handleNav}
+              className="p-4 text-4xl hover:text-gray-500"
+            >
+              <Link href="/pricing">Pricing</Link>
             </li>
             <li className="p-4 text-4xl hover:text-gray-500">
               {signedIn ? (
