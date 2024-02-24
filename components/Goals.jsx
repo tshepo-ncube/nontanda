@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import GoalForm from "./GoalForm";
+import Fab from "@mui/material/Fab";
 import GoalView from "./GoalView";
 const MyGoals = () => {
   const [goals, setGoals] = useState([]);
@@ -21,14 +22,17 @@ const MyGoals = () => {
 
       <List toggleModal={toggleModal} />
 
-      <button
-        onClick={() => {
-          toggleModal("New Goal");
-        }}
-        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full shadow-md fixed bottom-12 right-7"
-      >
-        +
-      </button>
+      <div className="bg-blue-700 hover:bg-blue-500  rounded-full shadow-md fixed bottom-12 right-7">
+        <Fab
+          color="primary"
+          variant="extended"
+          onClick={() => {
+            toggleModal("New Goal");
+          }}
+        >
+          new goal
+        </Fab>
+      </div>
 
       {isOpen && (
         <div className="fixed z-10 inset-0 overflow-y-auto flex justify-center items-center">
