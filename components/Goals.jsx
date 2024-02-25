@@ -10,7 +10,7 @@ const MyGoals = () => {
 
   const toggleModal = (modalType) => {
     setIsOpen(!isOpen);
-    setModalType("New Goal");
+    setModalType(modalType);
   };
   const handleAddGoal = (newGoal) => {
     setGoals((prevGoals) => [...prevGoals, newGoal]);

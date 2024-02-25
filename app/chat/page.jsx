@@ -12,7 +12,7 @@ function page() {
     //   <Home />
     // </div>
     <>
-      <HeaderComponent title={"Chat(Goals) | Mindful"} />
+      <HeaderComponent title={"My Goals | Mindful"} />
 
       <body>
         <div className="mx-auto  max-w px-8">
