@@ -3,6 +3,9 @@ import React, { useState } from "react";
 import GoalForm from "./GoalForm";
 import Fab from "@mui/material/Fab";
 import GoalView from "./GoalView";
+//import React from "react";
+import Rating from "@mui/material/Rating";
+
 const MyGoals = () => {
   const [goals, setGoals] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
@@ -79,8 +82,6 @@ const MyGoals = () => {
 
 export default MyGoals;
 
-//import React from "react";
-
 const Card = ({ recipientName, senderName, toggleModal }) => {
   return (
     <div
@@ -96,7 +97,7 @@ const Card = ({ recipientName, senderName, toggleModal }) => {
       /> */}
       <div className="px-6 py-4">
         <div className="font-bold text-xl mb-2">{recipientName}</div>
-
+        <Rating name="read-only" value={2} readOnly />
         {/* <p className="text-gray-700 text-base">date</p> */}
         {/* <p className="text-gray-700 text-base">
           Descr No matter where life takes us, please know that you are

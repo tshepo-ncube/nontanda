@@ -18,15 +18,17 @@ const GoalView = () => {
       </center>
 
       {/* Text with green background */}
-      <div className="bg-green-100 w-full p-4 rounded-lg mb-4">
+      <div className="bg-green-300 w-full p-4 rounded-lg mb-4">
         <p className="text-black">
           I want to be consistent in my routine. This includes, sleeping on
           time. Eating on time, working from 8am to 6pm
         </p>
       </div>
 
-      <div className="bg-green-100 w-full p-2 rounded-lg mb-4">
-        <Typography component="legend">Did you wake up early today?</Typography>
+      <div className="bg-green-100 w-full p-4 rounded-lg mb-4">
+        <Typography component="legend" variant="h6">
+          Did you wake up early today?
+        </Typography>
         <Rating
           name="simple-controlled"
           value={value}
