@@ -144,7 +144,7 @@ const Navbar = () => {
           {user ? (
             <>
               <li className="p-4">
-                <Link href="/chat">My Goals</Link>
+                <Link href="/my-goals">My Goals</Link>
               </li>
             </>
           ) : (
@@ -212,7 +212,7 @@ const Navbar = () => {
             {user ? (
               <>
                 <li className="p-4 text-4xl hover:text-gray-500">
-                  <Link href="/chat">My Goals</Link>
+                  <Link href="/my-goals">My Goals</Link>
                 </li>
               </>
             ) : (
