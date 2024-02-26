@@ -144,19 +144,19 @@ const Navbar = () => {
           {user ? (
             <>
               <li className="p-4">
-                <Link href="/my-goals">My Goals</Link>
+                <Link href="/goals">My Goals</Link>
               </li>
             </>
           ) : (
             <>
               <li className="p-4">
-                <Link href="/my-goals">My Goals</Link>
+                <Link href="/goals">My Goals</Link>
               </li>
             </>
           )}
 
           <li className="p-4">
-            <Link href="/ourblog">Blog</Link>
+            <Link href="/blog">Blog</Link>
           </li>
 
           <li className="p-4">
@@ -216,13 +216,13 @@ const Navbar = () => {
             {user ? (
               <>
                 <li className="p-4 text-4xl hover:text-gray-500">
-                  <Link href="/my-goals">My Goals</Link>
+                  <Link href="/goals">My Goals</Link>
                 </li>
               </>
             ) : (
               <>
                 <li className="p-4 text-4xl hover:text-gray-500">
-                  <Link href="/my-goals">My Goals</Link>
+                  <Link href="/goals">My Goals</Link>
                 </li>
               </>
             )}
@@ -231,7 +231,7 @@ const Navbar = () => {
               onClick={handleNav}
               className="p-4 text-4xl hover:text-gray-500"
             >
-              <Link href="/ourblog">Blog</Link>
+              <Link href="/blog">Blog</Link>
             </li>
             <li className="p-4 text-4xl hover:text-gray-500">
               <Link href="/about">About</Link>
