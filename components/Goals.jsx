@@ -127,11 +127,6 @@ const List = ({ toggleModal }) => {
     },
     {
       id: 3,
-      recipientName: "I want to achieve a chiseled look",
-      senderName: "Dave",
-    },
-    {
-      id: 3,
       recipientName: "I want to achieve a 90% for my research proposal",
       senderName: "Dave",
     },

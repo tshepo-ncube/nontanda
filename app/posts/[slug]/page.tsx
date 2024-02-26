@@ -3,6 +3,7 @@ import Markdown from "markdown-to-jsx";
 import matter from "gray-matter";
 import getPostMetadata from "../../../components/getPostMetadata";
 import About from "../../../components/About";
+import HeaderComponent from "../../../components/HeaderComponent";
 
 const getPostContent = (slug: string) => {
   const folder = "posts/";
@@ -23,25 +24,31 @@ const PostPage = (props: any) => {
   const slug = props.params.slug;
   const post = getPostContent(slug);
   return (
-    <div className="p-4">
-      <div className="my-12 text-center ">
-        <h1 className="text-2xl text-slate-600 ">{post.data.title}</h1>
-        <p className="text-slate-400 mt-2">{post.data.date}</p>
-      </div>
+    <>
+      <HeaderComponent title={post.data.title} />
+      <div className="p-4">
+        <div className="my-12 text-center ">
+          <h1 className="text-2xl text-slate-600 ">{post.data.title}</h1>
+          <p className="text-slate-400 mt-2">{post.data.date}</p>
+        </div>
 
-      <div
-        className="my-12 text-center"
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <article className="prose text-center" style={{ textAlign: "center" }}>
-          <Markdown>{post.content}</Markdown>
-        </article>
+        <div
+          className="my-12 text-center"
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <article
+            className="prose text-center"
+            style={{ textAlign: "center" }}
+          >
+            <Markdown>{post.content}</Markdown>
+          </article>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
