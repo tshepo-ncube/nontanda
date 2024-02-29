@@ -143,7 +143,7 @@ const Journal = () => {
                       New Reflection
                     </Button>
                     <Button variant="text" style={{ backgroundColor: "white" }}>
-                      Reflection On A Goal
+                      Reflection On A New Goal
                     </Button>
                   </center>
                 </div>

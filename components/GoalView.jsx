@@ -1,5 +1,5 @@
 // Import necessary dependencies
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Box from "@mui/material/Box";
 import Rating from "@mui/material/Rating";
 import Button from "@mui/material/Button";
@@ -18,11 +18,36 @@ const GoalView = () => {
     const rows = Math.min(5, newLines + 1); // Limit to 5 rows
     return rows;
   };
+  const [timeLeft, setTimeLeft] = useState(12345674323);
+
+  useEffect(() => {
+    if (timeLeft > 0) {
+      const timerId = setInterval(() => {
+        setTimeLeft((prevTime) => prevTime - 1);
+      }, 1000);
+
+      return () => clearInterval(timerId);
+    }
+  }, [timeLeft]);
+
+  // Format seconds into DD:HH:MM:SS
+  const formatTime = (time) => {
+    const days = Math.floor(time / (3600 * 24));
+    const hours = Math.floor((time % (3600 * 24)) / 3600);
+    const minutes = Math.floor((time % 3600) / 60);
+    const seconds = time % 60;
+
+    const pad = (value) => (value < 10 ? `0${value}` : value);
+
+    return `${pad(days)}:${pad(hours)}:${pad(minutes)}:${pad(seconds)}`;
+  };
   return (
     <div className="flex flex-col items-center h-auto w-85 max-w-screen-lg mx-auto overflow-y-auto">
       {/* Medium Text */}
       <Navbar2 title={" I want to have a consistent routine"} />
-
+      {/* <div>
+        <p>Time Remaining: {formatTime(timeLeft)}</p>
+      </div> */}
       <div style={{ marginTop: 20 }}>
         <div className="bg-blue-200 w-full p-4 rounded-lg mb-4">
           <p className="text-black">
@@ -81,9 +106,18 @@ const GoalView = () => {
             </div>
           </div>
 
-          <Button variant="text" style={{ backgroundColor: "white" }}>
-            New Reflection
-          </Button>
+          <center>
+            <Button
+              color="success"
+              variant="text"
+              style={{ backgroundColor: "white" }}
+            >
+              New Reflection
+            </Button>
+            <Button variant="text" style={{ backgroundColor: "white" }}>
+              Reflection On A New Goal
+            </Button>
+          </center>
         </div>
       </div>
     </div>
