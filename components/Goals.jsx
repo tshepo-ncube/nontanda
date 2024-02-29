@@ -13,6 +13,7 @@ import { styled } from "@mui/material/styles";
 import LinearProgress, {
   linearProgressClasses,
 } from "@mui/material/LinearProgress";
+import AddIcon from "@mui/icons-material/Add";
 
 import SendIcon from "@mui/icons-material/Send";
 
@@ -48,7 +49,7 @@ const MyGoals = () => {
 
       <List toggleModal={toggleModal} />
 
-      <div className="bg-blue-700 hover:bg-blue-500  rounded-full shadow-md fixed bottom-12 right-7">
+      <div className="bg-green-700 hover:bg-green-500  rounded-full shadow-md fixed bottom-12 right-7">
         <Fab
           color="primary"
           variant="extended"
@@ -56,6 +57,7 @@ const MyGoals = () => {
             toggleModal("New Goal");
           }}
         >
+          <AddIcon />
           new goal
         </Fab>
       </div>
