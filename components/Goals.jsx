@@ -5,6 +5,29 @@ import Fab from "@mui/material/Fab";
 import GoalView from "./GoalView";
 //import React from "react";
 import Rating from "@mui/material/Rating";
+import Box from "@mui/material/Box";
+import CircularProgress, {
+  circularProgressClasses,
+} from "@mui/material/CircularProgress";
+import { styled } from "@mui/material/styles";
+import LinearProgress, {
+  linearProgressClasses,
+} from "@mui/material/LinearProgress";
+
+import SendIcon from "@mui/icons-material/Send";
+
+const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
+  height: 10,
+  borderRadius: 5,
+  [`&.${linearProgressClasses.colorPrimary}`]: {
+    backgroundColor:
+      theme.palette.grey[theme.palette.mode === "light" ? 200 : 800],
+  },
+  [`& .${linearProgressClasses.bar}`]: {
+    borderRadius: 5,
+    backgroundColor: theme.palette.mode === "light" ? "#1a90ff" : "#308fe8",
+  },
+}));
 
 const MyGoals = () => {
   const [goals, setGoals] = useState([]);
@@ -90,27 +113,22 @@ const Card = ({ recipientName, senderName, toggleModal }) => {
       onClick={() => {
         toggleModal("GoalView");
       }}
-      className="block max-w-md mx-100 rounded overflow-hidden shadow-lg bg-blue-100 cursor-pointer"
+      className="block max-w-md mx-100 rounded overflow-hidden shadow-lg border bg-white-100 cursor-pointer"
     >
       {/* <img
         className="w-full"
         src="landscape-image.jpg"
         alt="Serene Landscape"
       /> */}
-      <div className="px-6 py-4">
-        <div className="font-bold text-xl mb-2">{recipientName}</div>
-        <Rating name="read-only" value={2} readOnly />
-        {/* <p className="text-gray-700 text-base">date</p> */}
-        {/* <p className="text-gray-700 text-base">
-          Descr No matter where life takes us, please know that you are
-          cherished and valued beyond measure. Your strength, resilience, and
-          compassion inspire me every day, and I am grateful to have you in my
-          life.
-        </p> */}
-        {/* <div className="font-bold text-xl mb-2 mt-4">
-          With love and appreciation,
-        </div> */}
-        {/* <div className="font-semibold text-lg">{senderName}</div> */}
+
+      <div className="flex flex-col justify-between px-6 py-4 h-full">
+        <div className="flex flex-col">
+          <div className="font-bold text-xl mb-2">{recipientName}</div>
+          {/* Other content goes here */}
+        </div>
+        <div className="mt-auto">
+          <BorderLinearProgress variant="determinate" value={50} />
+        </div>
       </div>
     </div>
   );

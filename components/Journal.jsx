@@ -1,7 +1,32 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import Grid from "@mui/material/Grid";
+import { Fab, Button } from "@mui/material";
 import ReflectionComponent from "./Explaination";
+import Box from "@mui/material/Box";
+import CircularProgress, {
+  circularProgressClasses,
+} from "@mui/material/CircularProgress";
+import { styled } from "@mui/material/styles";
+import LinearProgress, {
+  linearProgressClasses,
+} from "@mui/material/LinearProgress";
+
+import SendIcon from "@mui/icons-material/Send";
+
+const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
+  height: 10,
+  borderRadius: 5,
+  [`&.${linearProgressClasses.colorPrimary}`]: {
+    backgroundColor:
+      theme.palette.grey[theme.palette.mode === "light" ? 200 : 800],
+  },
+  [`& .${linearProgressClasses.bar}`]: {
+    borderRadius: 5,
+    backgroundColor: theme.palette.mode === "light" ? "#1a90ff" : "#308fe8",
+  },
+}));
+
 const Journal = () => {
   const [entry, setEntry] = useState("");
   const [insights, setInsights] = useState(true);
@@ -17,6 +42,16 @@ const Journal = () => {
     "The future feels uncertain and daunting, and I'm struggling to find a sense of direction or purpose in my life...",
     "No matter how hard I try to stay positive, negative thoughts and self-doubt keep creeping in, making it difficult to see a way out of this rut...",
   ];
+
+  const [value, setValue] = React.useState(2);
+  const [newMessage, setNewMessage] = useState("");
+
+  // Calculate the number of rows based on the length of the text
+  const calculateRows = (text) => {
+    const newLines = (text.match(/\n/g) || []).length + 1;
+    const rows = Math.min(5, newLines + 1); // Limit to 5 rows
+    return rows;
+  };
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -81,8 +116,38 @@ const Journal = () => {
           {insights ? (
             <>
               <div className="max-w-md mx-auto mt-8 p-4 border rounded shadow-lg">
-                <h2 className="text-xl font-bold mb-4">Reflect on an today.</h2>
-                <div className="relative">
+                <h2 className="text-xl font-bold mb-4">What's on your mind?</h2>
+                <div className="bg-white-200 w-full p-2 pt-4 rounded-lg mb-4 ">
+                  <div className="flex items-center p-4 w-full">
+                    <textarea
+                      className="flex-1 h-40 p-2 mr-2 resize-none rounded border "
+                      placeholder={placeholderText}
+                      value={newMessage}
+                      rows={calculateRows(newMessage)}
+                      onChange={(e) => setNewMessage(e.target.value)}
+                    />
+
+                    <div className="bg-green-700 hover:bg-green-500  rounded-full shadow-md">
+                      <Fab color="success" size="medium">
+                        <SendIcon />
+                      </Fab>
+                    </div>
+                  </div>
+
+                  <center>
+                    <Button
+                      color="success"
+                      variant="text"
+                      style={{ backgroundColor: "white" }}
+                    >
+                      New Reflection
+                    </Button>
+                    <Button variant="text" style={{ backgroundColor: "white" }}>
+                      Reflection On A Goal
+                    </Button>
+                  </center>
+                </div>
+                {/* <div className="relative">
                   <textarea
                     className="w-full h-80 p-2 border rounded resize-none focus:outline-none focus:ring focus:border-green-300"
                     value={entry}
@@ -95,7 +160,7 @@ const Journal = () => {
                   onClick={handleInsights}
                 >
                   Insights
-                </button>
+                </button> */}
               </div>
             </>
           ) : (

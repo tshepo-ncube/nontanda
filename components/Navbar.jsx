@@ -31,7 +31,7 @@ const app = initializeApp(firebaseConfig);
 // Initialize the FirebaseUI Widget using Firebase.
 const Navbar = () => {
   const [nav, setNav] = useState(false);
-  const [color, setColor] = useState("black");
+  const [color, setColor] = useState("#0096FF");
   const [textColor, setTextColor] = useState("white");
   const [signedIn, setSignedIn] = useState(null);
   const [user, setUser] = useState(null);
@@ -201,8 +201,8 @@ const Navbar = () => {
         <div
           className={
             nav
-              ? "sm:hidden absolute top-0 left-0 right-0 bottom-0 flex justify-center items-center w-full h-screen bg-black text-center ease-in duration-300"
-              : "sm:hidden absolute top-0 left-[-100%] right-0 bottom-0 flex justify-center items-center w-full h-screen bg-black text-center ease-in duration-300"
+              ? "sm:hidden absolute top-0 left-0 right-0 bottom-0 flex justify-center items-center w-full h-screen bg-blue-500 text-center ease-in duration-300"
+              : "sm:hidden absolute top-0 left-[-100%] right-0 bottom-0 flex justify-center items-center w-full h-screen bg-blue-500 text-center ease-in duration-300"
           }
         >
           <ul>

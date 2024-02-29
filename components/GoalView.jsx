@@ -24,7 +24,7 @@ const GoalView = () => {
       <Navbar2 title={" I want to have a consistent routine"} />
 
       <div style={{ marginTop: 20 }}>
-        <div className="bg-green-300 w-full p-4 rounded-lg mb-4">
+        <div className="bg-blue-200 w-full p-4 rounded-lg mb-4">
           <p className="text-black">
             I want to be consistent in my routine. This includes, sleeping on
             time. Eating on time, working from 8am to 6pm
@@ -45,7 +45,7 @@ const GoalView = () => {
           />
         </div> */}
 
-        <div className="bg-blue-200 w-full p-2 pt-4 rounded-lg mb-4 border">
+        <div className="bg-white-200 w-full p-2 pt-4 rounded-lg mb-4 border">
           {/* <Typography component="legend" variant="h6">
           Did you wake up early today?
         </Typography> */}
@@ -64,17 +64,10 @@ const GoalView = () => {
           >
             What challenges did you face in keeping a consitent routine?
           </div>
-          {/* <Rating
-          name="simple-controlled"
-          value={value}
-          onChange={(event, newValue) => {
-            setValue(newValue);
-          }}
-        /> */}
 
           <div className="flex items-center p-4 w-full">
             <textarea
-              className="flex-1 p-2 mr-2  rounded border border-black"
+              className="flex-1 p-2 mr-2  rounded border "
               placeholder="What's on your mind..."
               value={newMessage}
               rows={calculateRows(newMessage)}
