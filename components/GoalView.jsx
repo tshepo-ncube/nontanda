@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import Box from "@mui/material/Box";
 import Rating from "@mui/material/Rating";
+import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Fab from "@mui/material/Fab";
 import SendIcon from "@mui/icons-material/Send";
@@ -86,6 +87,10 @@ const GoalView = () => {
               </Fab>
             </div>
           </div>
+
+          <Button variant="text" style={{ backgroundColor: "white" }}>
+            New Reflection
+          </Button>
         </div>
       </div>
     </div>
