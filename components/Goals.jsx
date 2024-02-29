@@ -20,7 +20,7 @@ const MyGoals = () => {
   };
 
   return (
-    <div className="container mx-auto p-4">
+    <div className="container mx-auto p-4 overflow-y-auto">
       <h1 className="text-3xl font-bold mb-4">Goal Tracker</h1>
 
       <List toggleModal={toggleModal} />
@@ -40,7 +40,9 @@ const MyGoals = () => {
       {isOpen && (
         <div className="fixed z-10 inset-0 overflow-y-auto flex justify-center items-center">
           <div className="fixed inset-0 bg-white ">
-            <div style={{ padding: 70 }}>
+            <div
+              style={{ maxHeight: "100%", overflowY: "auto", padding: "70px" }}
+            >
               {modalType === "New Goal" ? (
                 <>
                   <GoalForm />
