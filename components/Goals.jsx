@@ -41,16 +41,16 @@ const MyGoals = () => {
         <div className="fixed z-10 inset-0 overflow-y-auto flex justify-center items-center">
           <div className="fixed inset-0 bg-white ">
             <div
-              style={{ maxHeight: "100%", overflowY: "auto", padding: "70px" }}
+              style={{ maxHeight: "100%", overflowY: "auto", padding: "20px" }}
             >
               {modalType === "New Goal" ? (
-                <>
+                <div style={{ marginTop: 40 }}>
                   <GoalForm />
-                </>
+                </div>
               ) : (
-                <>
+                <div style={{ marginTop: 40 }}>
                   <GoalView />
-                </>
+                </div>
               )}
             </div>
           </div>
