@@ -146,6 +146,9 @@ const Navbar = () => {
               <li className="p-4">
                 <Link href="/goals">My Goals</Link>
               </li>
+              <li className="p-4">
+                <Link href="/profile">Profile</Link>
+              </li>
             </>
           ) : (
             <>
@@ -217,6 +220,9 @@ const Navbar = () => {
               <>
                 <li className="p-4 text-4xl hover:text-gray-500">
                   <Link href="/goals">My Goals</Link>
+                </li>
+                <li className="p-4 text-4xl hover:text-gray-500">
+                  <Link href="/profile">Profile</Link>
                 </li>
               </>
             ) : (
