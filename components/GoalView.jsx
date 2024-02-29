@@ -30,7 +30,7 @@ const GoalView = () => {
             time. Eating on time, working from 8am to 6pm
           </p>
         </div>
-
+        {/* 
         <div className="bg-green-200 w-full p-4 rounded-lg mb-4 border">
           <Typography component="legend" variant="h6">
             How close are you to your goal?
@@ -43,7 +43,7 @@ const GoalView = () => {
               setValue(newValue);
             }}
           />
-        </div>
+        </div> */}
 
         <div className="bg-blue-200 w-full p-2 pt-4 rounded-lg mb-4 border">
           {/* <Typography component="legend" variant="h6">
@@ -99,7 +99,7 @@ const GoalView = () => {
 
 const Navbar2 = ({ title }) => {
   return (
-    <nav className="z-14 bg-white p-4 fixed top-0 w-full flex justify-center items-center">
+    <nav className="z-14 bg-white p-4 fixed top-0 w-full flex justify-center items-center mt-5">
       <center>
         <div
           className="text-black text-3xl  font-bold"

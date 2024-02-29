@@ -44,18 +44,18 @@ const MyGoals = () => {
               style={{ maxHeight: "100%", overflowY: "auto", padding: "20px" }}
             >
               {modalType === "New Goal" ? (
-                <div style={{ marginTop: 40 }}>
+                <div style={{ marginTop: 60 }}>
                   <GoalForm />
                 </div>
               ) : (
-                <div style={{ marginTop: 40 }}>
+                <div style={{ marginTop: 60 }}>
                   <GoalView />
                 </div>
               )}
             </div>
           </div>
 
-          <div className="bg-black p-8 rounded shadow-md w-1/2">
+          <div className="bg-black p-8 rounded shadow-md w-1/2 ml-2 mr-2">
             <button
               onClick={toggleModal}
               className="absolute top-0 right-0 mt-4 mr-4 text-white-500 hover:text-white-700"
