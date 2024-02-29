@@ -127,7 +127,7 @@ const Journal = () => {
                       onChange={(e) => setNewMessage(e.target.value)}
                     />
 
-                    <div className="bg-green-700 hover:bg-green-500  rounded-full shadow-md">
+                    <div className="bg-green-700 hover:bg-green-500 z-0 rounded-full shadow-md">
                       <Fab color="success" size="medium">
                         <SendIcon />
                       </Fab>
