@@ -94,9 +94,6 @@ const Journal = () => {
             Reflection is a powerful tool for personal growth and development,
             offering individuals the opportunity to delve inward and gain
             profound insights into their thoughts, emotions, and actions.
-            Through reflection, individuals can engage in a deliberate and
-            introspective process of examining past experiences, contemplating
-            their significance, and discerning valuable lessons learned.
           </p>
           {/* <p className="text-gray-600 leading-loose">
             Moreover, reflection facilitates effective problem-solving and
