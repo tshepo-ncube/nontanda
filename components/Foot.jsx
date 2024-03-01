@@ -1,6 +1,7 @@
 // components/Footer.js
 import React from "react";
 import { FaInstagram, FaPinterest, FaTiktok, FaYoutube } from "react-icons/fa";
+import { MdOutlineMailOutline } from "react-icons/md";
 import {
   FiGithub,
   FiTwitter,
@@ -29,6 +30,11 @@ const socialLinks = [
     id: 4,
     icon: <FaYoutube />,
     url: "https://www.youtube.com/channel/UCm57A4zeMQqhA_LQYjFEG9A",
+  },
+  {
+    id: 4,
+    icon: <MdOutlineMailOutline />,
+    url: "https://mailto:lyd.research@gmail.com",
   },
 ];
 
