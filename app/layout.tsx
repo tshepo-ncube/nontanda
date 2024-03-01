@@ -14,26 +14,26 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const header = (
-    <header>
-      <div className="text-center bg-slate-800 p-8 my-6 rounded-md">
-        <Image
-          src="/logo.png"
-          width={40}
-          height={40}
-          className="mx-auto"
-          alt={"logo"}
-        />
+  // const header = (
+  //   <header>
+  //     <div className="text-center bg-slate-800 p-8 my-6 rounded-md">
+  //       <Image
+  //         src="/logo.png"
+  //         width={40}
+  //         height={40}
+  //         className="mx-auto"
+  //         alt={"logo"}
+  //       />
 
-        <Link href="/">
-          <h1 className="text-2xl text-white font-bold mt-4">Jack's Blog</h1>
-        </Link>
-        <p className="text-slate-300">
-          🤟 Welcome to the MindfulManifesters blog. 💻
-        </p>
-      </div>
-    </header>
-  );
+  //       <Link href="/">
+  //         <h1 className="text-2xl text-white font-bold mt-4">Jack's Blog</h1>
+  //       </Link>
+  //       <p className="text-slate-300">
+  //         🤟 Welcome to the MindfulManifesters blog. 💻
+  //       </p>
+  //     </div>
+  //   </header>
+  // );
 
   const footer = (
     <footer>
