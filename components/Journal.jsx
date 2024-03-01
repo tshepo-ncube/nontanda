@@ -111,7 +111,7 @@ const Journal = () => {
           </p> */}
         </div>
       </div>
-      <Grid container spacing={0}>
+      <Grid container spacing={0} style={{ marginTop: -40 }}>
         <Grid item xs={12} sm={12} md={12} lg={6}>
           {insights ? (
             <>
