@@ -2,8 +2,9 @@ import fs from "fs";
 import Markdown from "markdown-to-jsx";
 import matter from "gray-matter";
 import getPostMetadata from "../../../components/getPostMetadata";
-import About from "../../../components/About";
+import Foot from "../../../components/Foot";
 import HeaderComponent from "../../../components/HeaderComponent";
+//import Foot from "../../components/Foot";
 
 const getPostContent = (slug: string) => {
   const folder = "posts/";
@@ -47,6 +48,9 @@ const PostPage = (props: any) => {
             <Markdown>{post.content}</Markdown>
           </article>
         </div>
+      </div>
+      <div style={{ marginTop: -80 }}>
+        <Foot />
       </div>
     </>
   );
