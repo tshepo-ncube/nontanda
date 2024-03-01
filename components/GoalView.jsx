@@ -73,7 +73,7 @@ const GoalView = () => {
           />
         </div> */}
 
-        <div className="bg-white-200 w-full p-2 pt-4 rounded-lg mb-4 border">
+        <div className="bg-white-200 w-full p-2 pt-2 rounded-lg mb-4 border">
           {/* <Typography component="legend" variant="h6">
           Did you wake up early today?
         </Typography> */}
