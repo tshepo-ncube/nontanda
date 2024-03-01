@@ -2,7 +2,10 @@
 import React, { useState, useEffect } from "react";
 import Box from "@mui/material/Box";
 import Rating from "@mui/material/Rating";
+import { IconButton } from "@mui/material";
 import Button from "@mui/material/Button";
+import ThumbUpIcon from "@mui/icons-material/ThumbUp";
+import ThumbDownIcon from "@mui/icons-material/ThumbDown";
 import Typography from "@mui/material/Typography";
 import Fab from "@mui/material/Fab";
 import SendIcon from "@mui/icons-material/Send";
@@ -74,21 +77,80 @@ const GoalView = () => {
           {/* <Typography component="legend" variant="h6">
           Did you wake up early today?
         </Typography> */}
-          <div
-            className={`max-w-2/3 p-2 mb-2 ml-4 rounded-lg bg-green-500 text-white float-left`}
-          >
-            Did you wake up early today?
+
+          <div class="flex flex-col">
+            <div className="bg-white p-4">
+              {/* prompts from the AI*/}
+              <div>
+                <div
+                  className={`max-w-2/3 p-2 mb-2 ml-4 rounded-lg bg-green-500 text-white float-left`}
+                >
+                  Did you wake up early today?
+                </div>
+                <div
+                  className={`max-w-2/3 p-2 mb-2 ml-4 rounded-lg bg-green-500 text-white float-left`}
+                >
+                  How did you prioritize and manage your time?
+                </div>
+                <div
+                  className={`max-w-2/3 p-2 mb-2 ml-4 rounded-lg bg-green-500 text-white float-left`}
+                >
+                  What challenges did you face in keeping a consitent routine?
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-white p-2">
+              {/* message from the AI*/}
+              <div className=" bg-green-200  border w-90 p-2 rounded-lg mb-2">
+                <p className="text-black">
+                  I feel good about myself, I am fostering a reslient mindset, I
+                  am trying to be more reslient
+                </p>
+                {/* <div className="mt-auto">
+                  <IconButton color="primary">
+                    <ThumbUpIcon />
+                  </IconButton>
+                  <IconButton color="primary">
+                    <ThumbDownIcon />
+                  </IconButton>
+                </div> */}
+              </div>
+            </div>
+            <div className="bg-white p-2">
+              {/* message from the AI*/}
+              <div className="bg-white border w-90 p-2 rounded-lg">
+                <p className="text-black">
+                  Fostering a resilient mindset, embracing positivity, and
+                  prioritizing mental well-being for a healthier, happier, and
+                  more fulfilling life journey. How are you going to make sure
+                  you remain reslient?
+                </p>
+                <div className="mt-auto">
+                  <IconButton color="blue" style={{ color: "green" }}>
+                    <ThumbUpIcon />
+                  </IconButton>
+                  <IconButton color="white">
+                    <ThumbDownIcon />
+                  </IconButton>
+                </div>
+              </div>
+            </div>
           </div>
-          <div
-            className={`max-w-2/3 p-2 mb-2 ml-4 rounded-lg bg-green-500 text-white float-left`}
-          >
-            How did you prioritize and manage your time?
-          </div>
-          <div
-            className={`max-w-2/3 p-2 mb-2 ml-4 rounded-lg bg-green-500 text-white float-left`}
-          >
-            What challenges did you face in keeping a consitent routine?
-          </div>
+
+          {/* 
+          <div className="flex bg-green-200 flex-col justify-between px-6 py-4 h-full">
+            <div className="flex flex-col">
+              <div className="text-xl mb-2">
+                I want to be consistent in my routine. This includes, sleeping
+                on time. Eating on time, working from 8am to 6pm
+              </div>
+            
+            </div>
+            <div className="mt-auto">
+              <ThumbUpIcon /> <ThumbDownIcon />
+            </div>
+          </div> */}
 
           <div className="flex items-center p-4 w-full">
             <textarea
