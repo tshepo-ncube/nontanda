@@ -116,7 +116,7 @@ const Journal = () => {
           {insights ? (
             <>
               <div className="max-w-md mx-auto mt-8 p-4 border rounded shadow-lg">
-                <h2 className="text-xl font-bold mb-4">What's on your mind?</h2>
+                <h2 className="text-xl font-bold mb-4">How do you feel?</h2>
                 <div class="flex flex-col">
                   {/* <div className="bg-white p-4">
                    
