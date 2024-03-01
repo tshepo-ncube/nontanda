@@ -93,7 +93,7 @@ const Journal = () => {
       <div className="bg-white-100 p-18 mt-2">
         <div className="container mx-auto text-center">
           {/* <h2 className="text-4xl font-bold text-gray-800 mb-8">Who We Are</h2> */}
-          <p className="text-gray-600 leading-loose mb-8">
+          <p className="text-gray-600 leading-loose mb-8 p-4">
             Reflection is a powerful tool for personal growth and development,
             offering individuals the opportunity to delve inward and gain
             profound insights into their thoughts, emotions, and actions.
