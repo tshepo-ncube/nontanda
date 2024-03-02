@@ -230,10 +230,13 @@ function page() {
                         <p className="text-sm font-light text-gray-500 dark:text-gray-400">
                           Don’t have an account yet?{" "}
                           <a
-                            href="#"
-                            className="font-medium text-primary-600 hover:underline dark:text-primary-500"
+                            className="text-blue-700 font-medium  hover:underline dark:text-blue-700"
                             onClick={() => {
                               setSignState("SignUp");
+                              window.scrollTo({
+                                top: 0,
+                                behavior: "smooth", // Optional: Adds smooth scrolling animation
+                              });
                             }}
                           >
                             Sign up
@@ -343,7 +346,7 @@ function page() {
                             </div>
                           </div>
                           <a
-                            href="#"
+                            href=""
                             className="text-sm font-medium text-primary-600 hover:underline dark:text-primary-500"
                           >
                             Forgot password?
@@ -384,10 +387,13 @@ function page() {
                         <p className="text-sm font-light text-gray-500 dark:text-gray-400">
                           Already have an account?{" "}
                           <a
-                            href="#"
-                            className="font-medium text-primary-600 hover:underline dark:text-primary-500"
+                            className="font-medium text-blue-700 hover:underline dark:text-blue-700"
                             onClick={() => {
                               setSignState("SignIn");
+                              window.scrollTo({
+                                top: 0,
+                                behavior: "smooth", // Optional: Adds smooth scrolling animation
+                              });
                             }}
                           >
                             Sign In
