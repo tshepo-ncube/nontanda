@@ -36,10 +36,10 @@ const GoalForm = ({ onAddGoal }) => {
           <input
             type="text"
             name="text"
-            placeholder="I want to lose 30 pounds of weight"
+            placeholder="I want to lose 30 pounds within the next six months to improve my overall health and well-being."
             value={goal.text}
             onChange={handleChange}
-            className="w-full border border-gray-300 p-2 rounded-md"
+            className="w-full border border-gray-300 p-2 rounded-md mt-2"
           />
         </label>
         <label className="block text-sm font-semibold mb-2">
@@ -49,17 +49,17 @@ const GoalForm = ({ onAddGoal }) => {
             name="timeline"
             value={goal.timeline}
             onChange={handleChange}
-            className="w-full border border-gray-300 p-2 rounded-md"
+            className="w-full border border-gray-300 p-2 rounded-md mt-2"
           />
         </label>
-        <label className="block text-sm font-semibold mb-2">
+        <label className="block text-sm font-semibold mb-10">
           Description:
           <textarea
             name="description"
-            placeholder="Tell me more about your goal, including how you aim to achieve it!"
+            placeholder="Tell me more about your goal, HOW you aim to achieve it and WHY you want to achieve it!"
             value={goal.description}
             onChange={handleChange}
-            className="w-full border border-gray-300 p-2 rounded-md"
+            className="w-full border h-40 resize-none border-gray-300 p-2 rounded-md mt-2"
           />
         </label>
 
