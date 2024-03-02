@@ -97,6 +97,12 @@ const Journal = () => {
             Reflection is a powerful tool for personal growth and development,
             offering individuals the opportunity to delve inward and gain
             profound insights into their thoughts, emotions, and actions.
+            <i>
+              <br />
+              <strong className="text-black">
+                Try out our Reflection Assitant Below ⬇️
+              </strong>
+            </i>
           </p>
           {/* <p className="text-gray-600 leading-loose">
             Moreover, reflection facilitates effective problem-solving and
