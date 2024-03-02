@@ -141,7 +141,8 @@ const GoalView = () => {
                 for="email"
                 className=" block text-sm font-medium text-gray-900 dark:text-white"
               >
-                Reflect on your journey
+                Reflect on your journey (--ai should be able to ask why you feel
+                this way and go deeper)
               </label>
             </center>
             <div className="flex items-center p-4 w-full">
