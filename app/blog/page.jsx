@@ -28,6 +28,8 @@ function ourblog() {
             <BlogComponent />
           </div>
           {/* {footer} */}
+          <br />
+          <br />
           <Foot />
         </div>
       </body>

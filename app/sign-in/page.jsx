@@ -1,5 +1,6 @@
 "use client";
 import HeaderComponent from "../../components/HeaderComponent";
+import Foot from "../../components/Foot";
 import Navbar from "../../components/Navbar";
 import React, { useState, useEffect } from "react";
 import LoginForm from "../../components/login";
@@ -400,7 +401,7 @@ function page() {
             </>
           )}
 
-          {/* <Foot /> */}
+          <Foot />
         </div>
       </body>
     </>
