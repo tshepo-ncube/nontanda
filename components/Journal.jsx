@@ -13,7 +13,7 @@ import LinearProgress, {
 } from "@mui/material/LinearProgress";
 
 import SendIcon from "@mui/icons-material/Send";
-
+import Testimonials from "./testimonials";
 import { IconButton } from "@mui/material";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import ThumbDownIcon from "@mui/icons-material/ThumbDown";
@@ -111,14 +111,13 @@ const Journal = () => {
           </p> */}
         </div>
       </div>
-      <Grid container spacing={0} style={{ marginTop: -40 }}>
-        <Grid item xs={12} sm={12} md={12} lg={6}>
-          {insights ? (
-            <>
-              <div className="max-w-md mx-auto mt-8 p-4 border rounded shadow-lg">
-                <h2 className="text-xl font-bold mb-4">How do you feel?</h2>
-                <div class="flex flex-col">
-                  {/* <div className="bg-white p-4">
+      <center>
+        {insights ? (
+          <>
+            <div className="max-w-md mx-auto mt-8 p-4 border rounded shadow-lg">
+              <h2 className="text-xl font-bold mb-4">How do you feel?</h2>
+              <div class="flex flex-col">
+                {/* <div className="bg-white p-4">
                    
                     <div>
                       <div
@@ -140,14 +139,14 @@ const Journal = () => {
                     </div>
                   </div> */}
 
-                  <div className="bg-white p-2">
-                    {/* message from the AI*/}
-                    <div className=" bg-green-200  border w-90 p-2 rounded-lg mb-2">
-                      <p className="text-black">
-                        I feel good about myself, I am fostering a reslient
-                        mindset, I am trying to be more reslient
-                      </p>
-                      {/* <div className="mt-auto">
+                <div className="bg-white p-2">
+                  {/* message from the AI*/}
+                  <div className=" bg-green-200  border w-90 p-2 rounded-lg mb-2">
+                    <p className="text-black">
+                      I feel good about myself, I am fostering a reslient
+                      mindset, I am trying to be more reslient
+                    </p>
+                    {/* <div className="mt-auto">
                   <IconButton color="primary">
                     <ThumbUpIcon />
                   </IconButton>
@@ -155,10 +154,126 @@ const Journal = () => {
                     <ThumbDownIcon />
                   </IconButton>
                 </div> */}
+                  </div>
+                </div>
+                <div className="bg-white p-2">
+                  {/* message from the AI*/}
+                  <div className="bg-white border w-90 p-2 rounded-lg">
+                    <p className="text-black">
+                      Fostering a resilient mindset, embracing positivity, and
+                      prioritizing mental well-being for a healthier, happier,
+                      and more fulfilling life journey. How are you going to
+                      make sure you remain reslient?
+                    </p>
+                    <div className="mt-auto">
+                      <IconButton color="blue" style={{ color: "green" }}>
+                        <ThumbUpIcon />
+                      </IconButton>
+                      <IconButton color="white">
+                        <ThumbDownIcon />
+                      </IconButton>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="bg-white-200 w-full p-2 pt-2 rounded-lg  ">
+                <div className="flex items-center p-4 w-full">
+                  <textarea
+                    className="flex-1 h-40 p-2 mr-2 resize-none rounded border "
+                    placeholder={placeholderText}
+                    value={newMessage}
+                    rows={calculateRows(newMessage)}
+                    onChange={(e) => setNewMessage(e.target.value)}
+                  />
+
+                  <div className="bg-green-700 hover:bg-green-500 z-0 rounded-full shadow-md">
+                    <Fab color="success" size="medium">
+                      <SendIcon />
+                    </Fab>
+                  </div>
+                </div>
+
+                <center>
+                  <Button
+                    color="success"
+                    variant="text"
+                    style={{ backgroundColor: "white" }}
+                  >
+                    New Reflection
+                  </Button>
+                  <Button variant="text" style={{ backgroundColor: "white" }}>
+                    Reflection On A New Goal
+                  </Button>
+                </center>
+              </div>
+              {/* <div className="relative">
+                  <textarea
+                    className="w-full h-80 p-2 border rounded resize-none focus:outline-none focus:ring focus:border-green-300"
+                    value={entry}
+                    onChange={handleInputChange}
+                    placeholder={placeholderText}
+                  ></textarea>
+                </div>
+                <button
+                  className="mt-4 bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring"
+                  onClick={handleInsights}
+                >
+                  Insights
+                </button> */}
+            </div>
+          </>
+        ) : (
+          <>
+            <div className="max-w-md mx-auto mt-8 p-4 border rounded shadow-lg">
+              <h2 className="text-xl font-bold mb-4">Insight.</h2>
+              <div className="relative">
+                <div className="w-full mx-auto p-2 border rounded resize-none focus:outline-none focus:ring focus:border-green-300">
+                  <p>
+                    It sounds like you've been grappling with a heavy burden of
+                    self-doubt and questioning your worthiness in your
+                    relationships, despite the love and support you receive. The
+                    lingering doubts and insecurities seem to overshadow even
+                    your happiest moments, casting a shadow over your
+                    experiences. It's important to recognize that these feelings
+                    are valid, but they don't define your worth or deservingness
+                    of happiness. Perhaps exploring these doubts with compassion
+                    and seeking validation from within can help you cultivate a
+                    deeper sense of self-acceptance and find peace within your
+                    relationships. Remember, you are deserving of love and
+                    happiness, and your worthiness doesn't hinge on external
+                    validation.
+                  </p>
+                </div>
+                {/* <div className="absolute top-2 left-2 text-gray-400 overflow-hidden whitespace-nowrap">
+          {placeholderText}
+        </div> */}
+              </div>
+              <button
+                className="mt-4 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring"
+                onClick={handleReflect}
+              >
+                Reflect
+              </button>
+            </div>
+          </>
+        )}
+      </center>
+      {/* <Grid container spacing={0} style={{ marginTop: -40 }}>
+        <Grid item xs={12} sm={12} md={12} lg={6}>
+          {insights ? (
+            <>
+              <div className="max-w-md mx-auto mt-8 p-4 border rounded shadow-lg">
+                <h2 className="text-xl font-bold mb-4">How do you feel?</h2>
+                <div class="flex flex-col">
+                  <div className="bg-white p-2">
+                    <div className=" bg-green-200  border w-90 p-2 rounded-lg mb-2">
+                      <p className="text-black">
+                        I feel good about myself, I am fostering a reslient
+                        mindset, I am trying to be more reslient
+                      </p>
                     </div>
                   </div>
                   <div className="bg-white p-2">
-                    {/* message from the AI*/}
                     <div className="bg-white border w-90 p-2 rounded-lg">
                       <p className="text-black">
                         Fostering a resilient mindset, embracing positivity, and
@@ -207,20 +322,6 @@ const Journal = () => {
                     </Button>
                   </center>
                 </div>
-                {/* <div className="relative">
-                  <textarea
-                    className="w-full h-80 p-2 border rounded resize-none focus:outline-none focus:ring focus:border-green-300"
-                    value={entry}
-                    onChange={handleInputChange}
-                    placeholder={placeholderText}
-                  ></textarea>
-                </div>
-                <button
-                  className="mt-4 bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring"
-                  onClick={handleInsights}
-                >
-                  Insights
-                </button> */}
               </div>
             </>
           ) : (
@@ -245,9 +346,7 @@ const Journal = () => {
                       doesn't hinge on external validation.
                     </p>
                   </div>
-                  {/* <div className="absolute top-2 left-2 text-gray-400 overflow-hidden whitespace-nowrap">
-          {placeholderText}
-        </div> */}
+                 
                 </div>
                 <button
                   className="mt-4 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring"
@@ -260,47 +359,9 @@ const Journal = () => {
           )}
         </Grid>
 
-        <Grid item xs={12} sm={12} md={12} lg={6}>
-          {/* <ReflectionComponent /> */}
-          <div className="max-w-md mx-auto mt-8 p-4 border rounded shadow-lg">
-            <h2 className="text-xl font-bold mb-4">Benefits of Reflection</h2>
-            <ul className="list-disc pl-4">
-              <li className="mb-4">
-                Self-Awareness: Reflecting helps individuals become more aware
-                of their emotions, beliefs, and values.
-              </li>
-              <li className="mb-4">
-                Personal Growth: It allows individuals to learn from experiences
-                and develop strategies for growth.
-              </li>
-              <li className="mb-4">
-                Problem-Solving: Reflection enables individuals to gain new
-                perspectives and develop effective problem-solving skills.
-              </li>
-              <li className="mb-4">
-                Decision Making: It enhances decision-making skills by enabling
-                individuals to consider various options and consequences.
-              </li>
-              <li className="mb-4">
-                Emotional Regulation: Reflection helps individuals understand
-                and regulate their emotions better.
-              </li>
-              <li className="mb-4">
-                Improved Relationships: It fosters empathy and communication,
-                leading to stronger relationships.
-              </li>
-              <li className="mb-4">
-                Increased Resilience: Reflective thinking promotes resilience by
-                fostering a growth mindset.
-              </li>
-              <li className="mb-4">
-                Enhanced Creativity: Reflection stimulates creativity by
-                encouraging exploration of new ideas.
-              </li>
-            </ul>
-          </div>
-        </Grid>
-      </Grid>
+         
+      </Grid> */}
+      <Testimonials />
     </>
   );
 };
