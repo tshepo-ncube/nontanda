@@ -115,7 +115,7 @@ const Journal = () => {
         {insights ? (
           <>
             <div className="max-w-md mx-auto mt-8 p-4 border rounded shadow-lg">
-              <h2 className="text-xl font-bold mb-4">How do you feel?</h2>
+              <h2 className="text-xl font-bold mb-4">Reflection Assitant</h2>
               <div class="flex flex-col">
                 {/* <div className="bg-white p-4">
                    
@@ -177,6 +177,13 @@ const Journal = () => {
                 </div>
               </div>
               <div className="bg-white-200 w-full p-2 pt-2 rounded-lg  ">
+                <label
+                  style={{ marginBottom: -10 }}
+                  for="email"
+                  className="block text-sm font-medium text-gray-900 dark:text-white"
+                >
+                  How do you feel?
+                </label>
                 <div className="flex items-center p-4 w-full">
                   <textarea
                     className="flex-1 h-40 p-2 mr-2 resize-none rounded border "
@@ -199,10 +206,10 @@ const Journal = () => {
                     variant="text"
                     style={{ backgroundColor: "white" }}
                   >
-                    New Reflection
+                    clear chat
                   </Button>
                   <Button variant="text" style={{ backgroundColor: "white" }}>
-                    Reflection On A New Goal
+                    Reflect On A New Goal
                   </Button>
                 </center>
               </div>
