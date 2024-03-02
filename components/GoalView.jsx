@@ -10,6 +10,7 @@ import Typography from "@mui/material/Typography";
 import Fab from "@mui/material/Fab";
 import SendIcon from "@mui/icons-material/Send";
 import Navbar from "./Navbar";
+import ModalNavbar from "./ModalNavbar";
 // GoalView component
 const GoalView = () => {
   const [value, setValue] = React.useState(2);
@@ -46,11 +47,8 @@ const GoalView = () => {
   };
   return (
     <div className="flex flex-col items-center h-auto w-85 max-w-screen-lg mx-auto overflow-y-auto">
-      {/* Medium Text */}
-      <Navbar2 title={" I want to have a consistent routine"} />
-      {/* <div>
-        <p>Time Remaining: {formatTime(timeLeft)}</p>
-      </div> */}
+      <ModalNavbar title={" I want to have a consistent routine"} />
+
       <div style={{ marginTop: 20 }}>
         <div className="bg-blue-200 w-full p-4 rounded-lg mb-4">
           <p className="text-black">
@@ -58,26 +56,8 @@ const GoalView = () => {
             time. Eating on time, working from 8am to 6pm
           </p>
         </div>
-        {/* 
-        <div className="bg-green-200 w-full p-4 rounded-lg mb-4 border">
-          <Typography component="legend" variant="h6">
-            How close are you to your goal?
-          </Typography>
-
-          <Rating
-            name="simple-controlled"
-            value={value}
-            onChange={(event, newValue) => {
-              setValue(newValue);
-            }}
-          />
-        </div> */}
 
         <div className="bg-white-200 w-full p-2 pt-2 rounded-lg mb-4 border">
-          {/* <Typography component="legend" variant="h6">
-          Did you wake up early today?
-        </Typography> */}
-
           <div class="flex flex-col">
             <div className="bg-white p-4">
               {/* prompts from the AI*/}
@@ -107,14 +87,6 @@ const GoalView = () => {
                   I feel good about myself, I am fostering a reslient mindset, I
                   am trying to be more reslient
                 </p>
-                {/* <div className="mt-auto">
-                  <IconButton color="primary">
-                    <ThumbUpIcon />
-                  </IconButton>
-                  <IconButton color="primary">
-                    <ThumbDownIcon />
-                  </IconButton>
-                </div> */}
               </div>
             </div>
             <div className="bg-white p-2">
@@ -137,20 +109,6 @@ const GoalView = () => {
               </div>
             </div>
           </div>
-
-          {/* 
-          <div className="flex bg-green-200 flex-col justify-between px-6 py-4 h-full">
-            <div className="flex flex-col">
-              <div className="text-xl mb-2">
-                I want to be consistent in my routine. This includes, sleeping
-                on time. Eating on time, working from 8am to 6pm
-              </div>
-            
-            </div>
-            <div className="mt-auto">
-              <ThumbUpIcon /> <ThumbDownIcon />
-            </div>
-          </div> */}
 
           <div className="flex items-center p-4 w-full">
             <textarea
@@ -183,21 +141,6 @@ const GoalView = () => {
         </div>
       </div>
     </div>
-  );
-};
-
-const Navbar2 = ({ title }) => {
-  return (
-    <nav className="z-14 bg-white p-4 fixed top-0 w-full flex justify-center items-center">
-      <center>
-        <div
-          className="text-black text-3xl  font-bold pt-4"
-          style={{ fontSize: 21 }}
-        >
-          <h1>{title}</h1>
-        </div>
-      </center>
-    </nav>
   );
 };
 

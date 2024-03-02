@@ -1,6 +1,9 @@
 "use client";
 import React, { useState } from "react";
+import ModalNavbar from "./ModalNavbar";
 
+import AddIcon from "@mui/icons-material/Add";
+import Fab from "@mui/material/Fab";
 const GoalForm = ({ onAddGoal }) => {
   const [goal, setGoal] = useState({
     text: "",
@@ -26,20 +29,21 @@ const GoalForm = ({ onAddGoal }) => {
   };
   return (
     <div style={{ marginTop: 10 }}>
-      <Navbar2 title={"Create A New Goal"} />
-      <div style={{ marginTop: 60 }}>
+      <ModalNavbar title={"Create A New Goal"} />
+      <div style={{ marginTop: 60, padding: 10 }}>
         <label className="block text-sm font-semibold mb-2">
-          Goal:
+          Goal Name:
           <input
             type="text"
             name="text"
+            placeholder="I want to lose 30 pounds of weight"
             value={goal.text}
             onChange={handleChange}
             className="w-full border border-gray-300 p-2 rounded-md"
           />
         </label>
         <label className="block text-sm font-semibold mb-2">
-          Timeline:
+          Deadline:
           <input
             type="date"
             name="timeline"
@@ -52,34 +56,25 @@ const GoalForm = ({ onAddGoal }) => {
           Description:
           <textarea
             name="description"
+            placeholder="Tell me more about your goal, including how you aim to achieve it!"
             value={goal.description}
             onChange={handleChange}
             className="w-full border border-gray-300 p-2 rounded-md"
           />
         </label>
-        <button
+
+        <Fab
+          color="primary"
+          size="medium"
+          className="bg-green-600 hover:bg-green-500 z-0 "
+          variant="extended"
           onClick={handleAddGoal}
-          className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600"
         >
+          <AddIcon />
           Add Goal
-        </button>
+        </Fab>
       </div>
     </div>
-  );
-};
-
-const Navbar2 = ({ title }) => {
-  return (
-    <nav className="z-14 bg-white p-4 fixed top-0 w-full flex justify-center items-center">
-      <center>
-        <div
-          className="text-black text-3xl  font-bold"
-          style={{ fontSize: 21 }}
-        >
-          <h1>{title}</h1>
-        </div>
-      </center>
-    </nav>
   );
 };
 
