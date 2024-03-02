@@ -171,15 +171,13 @@ const Navbar = () => {
           <li className="p-4">
             {signedIn ? (
               <>
-                <Link href="" onClick={handleLogout}>
+                <Link href="/sign-in" onClick={handleLogout}>
                   Log out
                 </Link>
               </>
             ) : (
               <>
-                <Link href="" onClick={handleSignIn}>
-                  Sign In
-                </Link>
+                <Link href="/sign-in">Sign In</Link>
               </>
             )}
           </li>
@@ -252,15 +250,13 @@ const Navbar = () => {
             <li className="p-4 text-4xl hover:text-gray-500">
               {signedIn ? (
                 <>
-                  <Link href="" onClick={handleLogout}>
+                  <Link href="/sign-in" onClick={handleLogout}>
                     Log out
                   </Link>
                 </>
               ) : (
                 <>
-                  <Link href="" onClick={handleSignIn}>
-                    Sign In
-                  </Link>
+                  <Link href="/sign-in">Sign In</Link>
                 </>
               )}
             </li>

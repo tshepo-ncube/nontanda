@@ -34,7 +34,7 @@ const PricingTable = () => {
         <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
           <div className="max-w-xl mx-auto text-center">
             <h2 className="text-4xl font-bold text-black lg:text-5xl sm:text-5xl">
-              Pricing &amp; Plans
+              Plans &amp; <span className="text-blue-500">Pricing</span>
             </h2>
             <p className="mt-4 text-lg leading-relaxed text-gray-600">
               Discover the Perfect AI Companion for Your Journey! Mindful brings
