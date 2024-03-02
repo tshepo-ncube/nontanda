@@ -90,7 +90,7 @@ const Journal = () => {
   return (
     <>
       {" "}
-      <div className="bg-white-100 p-18 mt-2">
+      <div className="bg-white-100 p-18 mt-2" style={{ userSelect: "none" }}>
         <div className="container mx-auto text-center">
           {/* <h2 className="text-4xl font-bold text-gray-800 mb-8">Who We Are</h2> */}
           <p className="text-gray-600 leading-loose mb-8 p-4">
@@ -148,7 +148,7 @@ const Journal = () => {
                 <div className="bg-white p-2">
                   {/* message from the AI*/}
                   <div className=" bg-green-200  border w-90 p-2 rounded-lg mb-2">
-                    <p className="text-black">
+                    <p className="text-black" style={{ userSelect: "none" }}>
                       I feel good about myself, I am fostering a reslient
                       mindset, I am trying to be more reslient
                     </p>
@@ -165,7 +165,7 @@ const Journal = () => {
                 <div className="bg-white p-2">
                   {/* message from the AI*/}
                   <div className="bg-white border w-90 p-2 rounded-lg">
-                    <p className="text-black">
+                    <p className="text-black" style={{ userSelect: "none" }}>
                       Fostering a resilient mindset, embracing positivity, and
                       prioritizing mental well-being for a healthier, happier,
                       and more fulfilling life journey. How are you going to

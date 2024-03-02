@@ -15,7 +15,18 @@ import ModalNavbar from "./ModalNavbar";
 const GoalView = () => {
   const [value, setValue] = React.useState(2);
   const [newMessage, setNewMessage] = useState("");
-
+  const [placeholderText, setPlaceholderText] = useState(
+    "In what ways have my habits contributed to or hindered my progress?"
+  );
+  const placeholderOptions = [
+    "Are there any patterns or trends in your behavior that I've noticed?",
+    "Have your priorities or values shifted during this process?",
+    "How has your mindset evolved since you set this goal?",
+    "What strengths or skills have you discovered or developed along the way?",
+    "What challenges did you face today, how did you overcome them?",
+    "What have you learned about yourself during this journey?",
+    "How are you going to approach this goal moving forward?",
+  ];
   // Calculate the number of rows based on the length of the text
   const calculateRows = (text) => {
     const newLines = (text.match(/\n/g) || []).length + 1;
@@ -45,11 +56,24 @@ const GoalView = () => {
 
     return `${pad(days)}:${pad(hours)}:${pad(minutes)}:${pad(seconds)}`;
   };
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setPlaceholderText(
+        placeholderOptions[
+          Math.floor(Math.random() * placeholderOptions.length)
+        ]
+      );
+    }, 3500);
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <div className="flex flex-col items-center h-auto w-85 max-w-screen-lg mx-auto overflow-y-auto">
       <ModalNavbar title={" I want to have a consistent routine"} />
 
-      <div style={{ marginTop: 20 }}>
+      <div style={{ marginTop: 20, userSelect: "none" }}>
         <div className="bg-blue-200 w-full p-4 rounded-lg mb-4">
           <p className="text-black">
             I want to be consistent in my routine. This includes, sleeping on
@@ -110,19 +134,30 @@ const GoalView = () => {
             </div>
           </div>
 
-          <div className="flex items-center p-4 w-full">
-            <textarea
-              className="flex-1 p-2 mr-2  rounded border "
-              placeholder="What's on your mind..."
-              value={newMessage}
-              rows={calculateRows(newMessage)}
-              onChange={(e) => setNewMessage(e.target.value)}
-            />
+          <div>
+            <center>
+              <label
+                style={{ marginBottom: -10 }}
+                for="email"
+                className=" block text-sm font-medium text-gray-900 dark:text-white"
+              >
+                Reflect on your journey
+              </label>
+            </center>
+            <div className="flex items-center p-4 w-full">
+              <textarea
+                className="flex-1 p-2 mr-2  rounded border "
+                placeholder={placeholderText}
+                value={newMessage}
+                rows={calculateRows(newMessage)}
+                onChange={(e) => setNewMessage(e.target.value)}
+              />
 
-            <div className="bg-green-700 hover:bg-green-500  rounded-full shadow-md">
-              <Fab color="success" size="medium">
-                <SendIcon />
-              </Fab>
+              <div className="bg-green-700 hover:bg-green-500  rounded-full shadow-md">
+                <Fab color="success" size="medium">
+                  <SendIcon />
+                </Fab>
+              </div>
             </div>
           </div>
 
