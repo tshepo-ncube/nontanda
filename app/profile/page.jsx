@@ -25,7 +25,18 @@ function page() {
 
           <br />
           <br />
-          <h1>Profile</h1>
+
+          <div className="max-w-md mx-auto bg-white rounded-md overflow-hidden shadow-md p-6">
+            <h2 className="text-2xl font-bold mb-4">John Doe</h2>
+            <p className="text-gray-600 mb-4">Email: john.doe@example.com</p>
+            <p className="text-gray-700 mb-4">
+              Description: Lorem ipsum dolor sit amet, consectetur adipiscing
+              elit. Vivamus commodo quam id bibendum malesuada.
+            </p>
+            <button className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none">
+              subscribe
+            </button>
+          </div>
 
           {/* <Foot /> */}
         </div>
