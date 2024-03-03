@@ -106,7 +106,7 @@ function page() {
 
   return (
     <>
-      <HeaderComponent title={"Pricing | Mindful"} />
+      <HeaderComponent title={"SignIn | Mindful"} />
       <body>
         <div classNameName="mx-auto  max-w px-8">
           <Navbar />
