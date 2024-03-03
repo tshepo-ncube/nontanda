@@ -124,6 +124,7 @@ const Card = ({ recipientName, senderName, toggleModal }) => {
       />
 
       <div className="flex flex-col justify-between px-6 py-4 h-200">
+        <div className="text-green-500 mb-2 text-sm">Reflected 2 days ago</div>
         <div className="mt-auto mb-2">
           <BorderLinearProgress variant="determinate" value={50} />
         </div>
