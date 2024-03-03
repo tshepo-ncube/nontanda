@@ -86,6 +86,10 @@ const GoalView = () => {
             <div className="bg-white p-4">
               {/* prompts from the AI*/}
               <div>
+                <p>
+                  The A.I should assess the previous reflection and these
+                  questions are a follow up from the previous reflection session
+                </p>
                 <div
                   className={`max-w-2/3 p-2 mb-2 ml-4 rounded-lg bg-green-500 text-white float-left`}
                 >
