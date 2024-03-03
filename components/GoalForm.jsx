@@ -58,17 +58,6 @@ const GoalForm = ({ onAddGoal }) => {
             required
           />
         </label>
-        {/* <label className="block text-sm font-semibold mb-2">
-          Deadline:
-          <input
-            type="date"
-            name="timeline"
-            value={goal.timeline}
-            onChange={handleChange}
-            className="w-full border border-gray-300 p-2 rounded-md mt-2"
-            required
-          />
-        </label> */}
 
         <label className="block text-sm font-semibold ">
           When do you want to achieve this goal:
@@ -114,6 +103,18 @@ const GoalForm = ({ onAddGoal }) => {
           type="file"
           required
         ></input>
+
+        <label className="block text-sm font-semibold mb-2">
+          Reward:
+          <textarea
+            name="description"
+            placeholder="After losing 20 pounds, I will treat myself to a new wardrobe. It's not just about the clothes; it's a tangible way to showcase the upcoming positive changes in my body and boost my confidence."
+            value={goal.description}
+            required
+            onChange={handleChange}
+            className="w-full border h-40 resize-none border-gray-300 p-2 rounded-md mt-2"
+          />
+        </label>
 
         <Fab
           color="primary"
