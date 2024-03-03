@@ -1,10 +1,12 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ModalNavbar from "./ModalNavbar";
 
 import AddIcon from "@mui/icons-material/Add";
 import Fab from "@mui/material/Fab";
 const GoalForm = ({ onAddGoal }) => {
+  const [initialDate, setInitialDate] = useState("");
+
   const [goal, setGoal] = useState({
     text: "",
     timeline: "",
@@ -27,6 +29,19 @@ const GoalForm = ({ onAddGoal }) => {
       description: "",
     });
   };
+
+  useEffect(() => {
+    // Calculate the initial date, 10 days from now
+    const currentDate = new Date();
+    currentDate.setDate(currentDate.getDate() + 10);
+
+    // Format the date as "YYYY-MM-DD" for the input value
+    const formattedDate = currentDate.toISOString().split("T")[0];
+
+    // Set the initial date
+    setInitialDate(formattedDate);
+  }, []);
+
   return (
     <div style={{ marginTop: 10 }}>
       <ModalNavbar title={"Create A New Goal"} />
@@ -62,9 +77,9 @@ const GoalForm = ({ onAddGoal }) => {
         <input
           type="date"
           name="timeline"
-          value={goal.timeline}
+          value={initialDate}
           onChange={handleChange}
-          className="w-full border border-gray-300 p-2 rounded-md mt-2 mb-2"
+          className="w-full border border-gray-300 p-2 rounded-md mb-2"
           required
         />
 
