@@ -319,7 +319,7 @@ function Testimonials() {
                           Jenny Wilson
                         </p>
                         <p className="mt-0.5 text-sm font-pj text-gray-600">
-                          A.I Researcher
+                          Researcher
                         </p>
                       </div>
                     </div>
