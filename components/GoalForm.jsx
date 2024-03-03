@@ -56,7 +56,7 @@ const GoalForm = ({ onAddGoal }) => {
         </label> */}
 
         <label className="block text-sm font-semibold mb-2">
-          Deadline:
+          When do you want to achieve this goal:
           <input
             type="date"
             name="timeline"
