@@ -75,7 +75,7 @@ const GoalForm = ({ onAddGoal }) => {
         </label>
         <br />
         <input
-          style={{ marginTop: -12 }}
+          style={{ marginTop: -17 }}
           type="date"
           name="timeline"
           value={initialDate}
