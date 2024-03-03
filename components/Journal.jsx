@@ -98,8 +98,8 @@ const Journal = () => {
             offering individuals the opportunity to delve inward and gain
             profound insights into their thoughts, emotions, and actions.{" "}
             <i>
-              Our goal assistant learns your behaviour and helps you learn more
-              about yourself{" "}
+              Our assistant learns your behaviour and helps you learn more about
+              yourself{" "}
             </i>
             <i>
               <br />
