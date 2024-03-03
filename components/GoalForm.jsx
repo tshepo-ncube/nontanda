@@ -43,6 +43,18 @@ const GoalForm = ({ onAddGoal }) => {
             required
           />
         </label>
+        {/* <label className="block text-sm font-semibold mb-2">
+          Deadline:
+          <input
+            type="date"
+            name="timeline"
+            value={goal.timeline}
+            onChange={handleChange}
+            className="w-full border border-gray-300 p-2 rounded-md mt-2"
+            required
+          />
+        </label> */}
+
         <label className="block text-sm font-semibold mb-2">
           Deadline:
           <input
@@ -54,6 +66,7 @@ const GoalForm = ({ onAddGoal }) => {
             required
           />
         </label>
+
         <label className="block text-sm font-semibold mb-2">
           Description:
           <textarea
