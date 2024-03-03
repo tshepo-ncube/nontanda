@@ -96,9 +96,11 @@ const Journal = () => {
           <p className="text-gray-600 leading-loose mb-8 p-4">
             Reflection is a powerful tool for personal growth and development,
             offering individuals the opportunity to delve inward and gain
-            profound insights into their thoughts, emotions, and actions. Our
-            goal assistant learns your behaviour and helps you not make the same
-            mistakes
+            profound insights into their thoughts, emotions, and actions.{" "}
+            <i>
+              Our goal assistant learns your behaviour and helps you learn more
+              about yourself{" "}
+            </i>
             <i>
               <br />
               <strong className="text-black">
