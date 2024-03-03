@@ -70,11 +70,12 @@ const GoalForm = ({ onAddGoal }) => {
           />
         </label> */}
 
-        <label className="block text-sm font-semibold mb-2">
+        <label className="block text-sm font-semibold ">
           When do you want to achieve this goal:
         </label>
         <br />
         <input
+          style={{ marginTop: -12 }}
           type="date"
           name="timeline"
           value={initialDate}
