@@ -49,7 +49,7 @@ const MyGoals = () => {
 
       <List toggleModal={toggleModal} />
 
-      <div className="bg-green-700 hover:bg-green-500  rounded-full shadow-md fixed bottom-12 right-7">
+      <div className="bg-green-700 hover:bg-green-500  rounded-full shadow-md fixed bottom-6 right-7">
         <Fab
           color="primary"
           variant="extended"
