@@ -88,7 +88,7 @@ const GoalForm = ({ onAddGoal }) => {
           Description:
           <textarea
             name="description"
-            placeholder="Tell me more about your goal, HOW you aim to achieve it and WHY you want to achieve it!"
+            placeholder="I'm determined to shed 30 pounds in the next six months, prioritizing my health. I'll focus on a balanced diet, regular exercise, and self-care. This goal aims to enhance my overall well-being and vitality."
             value={goal.description}
             required
             onChange={handleChange}
