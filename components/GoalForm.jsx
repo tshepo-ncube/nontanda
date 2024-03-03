@@ -57,15 +57,16 @@ const GoalForm = ({ onAddGoal }) => {
 
         <label className="block text-sm font-semibold mb-2">
           When do you want to achieve this goal:
-          <input
-            type="date"
-            name="timeline"
-            value={goal.timeline}
-            onChange={handleChange}
-            className="w-full border border-gray-300 p-2 rounded-md mt-2"
-            required
-          />
         </label>
+        <br />
+        <input
+          type="date"
+          name="timeline"
+          value={goal.timeline}
+          onChange={handleChange}
+          className="w-full border border-gray-300 p-2 rounded-md mt-2 mb-2"
+          required
+        />
 
         <label className="block text-sm font-semibold mb-2">
           Description:
