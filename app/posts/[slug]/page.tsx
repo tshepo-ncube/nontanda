@@ -3,6 +3,7 @@ import Markdown from "markdown-to-jsx";
 import matter from "gray-matter";
 import getPostMetadata from "../../../components/getPostMetadata";
 import Foot from "../../../components/Foot";
+import Button from "@mui/material/Button";
 import HeaderComponent from "../../../components/HeaderComponent";
 //import Foot from "../../components/Foot";
 

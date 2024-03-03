@@ -186,7 +186,10 @@ const Journal = () => {
                   </div>
                 </div>
               </div>
-              <div className="bg-white-200 w-full p-2 pt-2 rounded-lg  ">
+              <div
+                className="bg-white-200 w-full p-2 pt-2 rounded-lg  "
+                id="reflectSection"
+              >
                 <label
                   style={{ marginBottom: -10 }}
                   for="email"

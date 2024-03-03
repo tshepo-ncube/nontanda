@@ -62,3 +62,8 @@ By choosing to live drug-free, you're committing to a lifestyle that prioritizes
 In a world where mental health issues and substance abuse are prevalent, embracing the mantra of "be kind to your mind, live drug-free" is more important than ever. By taking proactive steps to prioritize your mental wellness and make informed choices about substance use, you're empowering yourself to lead a healthier, happier life.
 
 <strong><i>So, let's commit to being kind to our minds, supporting each other, and creating a culture of mental wellness and sobriety. Together, we can make a positive difference in our lives and communities.</i> </strong>
+<br/>
+<br/>
+<button href="http://localhost:3000/#reflectSection" class="bg-blue-500 text-white p-2 rounded-md hover:bg-blue-700 focus:outline-none">
+reflect on your journey
+</button>
