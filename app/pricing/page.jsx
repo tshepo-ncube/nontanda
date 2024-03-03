@@ -861,7 +861,7 @@ const PricingTable = () => {
               <a
                 href="#"
                 title=""
-                classNameName="flex items-center justify-center w-full px-1 py-2 mt-5 text-sm text-white transition-all duration-200 bg-blue-600 border border-transparent rounded-md hover:bg-blue-700"
+                className="flex items-center justify-center w-full px-1 py-2 mt-5 text-sm text-white transition-all duration-200 bg-yellow-500 border border-transparent rounded-md hover:bg-yellow-700"
                 role="button"
               >
                 {" "}
