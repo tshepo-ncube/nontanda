@@ -162,11 +162,24 @@ const GoalView = () => {
                 onChange={(e) => setNewMessage(e.target.value)}
               />
 
-              <div className="bg-green-700 hover:bg-green-500  rounded-full shadow-md">
+              {/* <div className="bg-green-700 hover:bg-green-500  rounded-full shadow-md">
                 <Fab color="success" size="medium">
                   <SendIcon />
                 </Fab>
-              </div>
+              </div> */}
+            </div>
+            <div className="bg-green-700 hover:bg-green-500  rounded-full shadow-md">
+              <Fab
+                color="primary"
+                className="w-full"
+                variant="extended"
+                onClick={() => {
+                  toggleModal("New Goal");
+                }}
+              >
+                <SendIcon className="ml-2 mr-2" />
+                send message
+              </Fab>
             </div>
           </div>
 
