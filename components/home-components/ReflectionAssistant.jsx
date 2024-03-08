@@ -260,13 +260,13 @@ function ReflectionAssistant() {
           id="reflectSection"
         >
           <label
-            style={{ marginBottom: -10 }}
+            style={{ marginBottom: 2 }}
             for="email"
-            className="block text-sm font-medium text-gray-900 dark:text-white"
+            className="block text-sm  font-medium text-gray-900 dark:text-white"
           >
             How do you feel?
           </label>
-          <div className="flex items-center p-4 w-full">
+          <div className="flex items-center w-full">
             <textarea
               className="flex-1 h-40 p-2 mr-2 resize-none rounded border "
               placeholder={placeholderText}
@@ -282,7 +282,7 @@ function ReflectionAssistant() {
                   </div> */}
           </div>
 
-          <div className=" rounded-full shadow-md">
+          <div className="bg-green-500 rounded-full shadow-md mt-2 mb-2">
             <Fab
               color="primary"
               className="w-full"
