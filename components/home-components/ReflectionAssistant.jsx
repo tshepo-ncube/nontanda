@@ -72,6 +72,10 @@ function ReflectionAssistant() {
     return () => clearInterval(interval);
   }, []);
 
+  useEffect(() => {
+    scrollToBottom();
+  }, []);
+
   const handleInputChange = (event) => {
     setEntry(event.target.value);
   };
