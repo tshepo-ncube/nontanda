@@ -92,7 +92,7 @@ function ReflectionAssistant() {
   };
   return (
     <div>
-      <div className="max-w-md mx-auto mt-8 p-4 border rounded shadow-lg">
+      <div className="max-w-md mx-auto mt-8 p-2 border rounded shadow-lg">
         <h2 className="text-xl font-bold mb-4">Reflection Assitant</h2>
         <div class="flex flex-col max-h-80 overflow-y-auto" ref={divRef}>
           <div className="bg-white p-2">
