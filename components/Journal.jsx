@@ -17,6 +17,7 @@ import Testimonials from "./testimonials";
 import { IconButton } from "@mui/material";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import ThumbDownIcon from "@mui/icons-material/ThumbDown";
+import ReflectionAssitant from "./home-components/ReflectionAssistant";
 const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
   height: 10,
   borderRadius: 5,
@@ -124,137 +125,7 @@ const Journal = () => {
       <center>
         {insights ? (
           <>
-            <div className="max-w-md mx-auto mt-8 p-4 border rounded shadow-lg">
-              <h2 className="text-xl font-bold mb-4">Reflection Assitant</h2>
-              <div class="flex flex-col">
-                {/* <div className="bg-white p-4">
-                   
-                    <div>
-                      <div
-                        className={`max-w-2/3 p-2 mb-2 ml-4 rounded-lg bg-green-500 text-white float-left`}
-                      >
-                        Did you wake up early today?
-                      </div>
-                      <div
-                        className={`max-w-2/3 p-2 mb-2 ml-4 rounded-lg bg-green-500 text-white float-left`}
-                      >
-                        How did you prioritize and manage your time?
-                      </div>
-                      <div
-                        className={`max-w-2/3 p-2 mb-2 ml-4 rounded-lg bg-green-500 text-white float-left`}
-                      >
-                        What challenges did you face in keeping a consitent
-                        routine?
-                      </div>
-                    </div>
-                  </div> */}
-
-                <div className="bg-white p-2">
-                  {/* message from the AI*/}
-                  <div className=" bg-green-200  border w-90 p-2 rounded-lg mb-2">
-                    <p className="text-black" style={{ userSelect: "none" }}>
-                      I feel good about myself, I am fostering a reslient
-                      mindset, I am trying to be more reslient
-                    </p>
-                    {/* <div className="mt-auto">
-                  <IconButton color="primary">
-                    <ThumbUpIcon />
-                  </IconButton>
-                  <IconButton color="primary">
-                    <ThumbDownIcon />
-                  </IconButton>
-                </div> */}
-                  </div>
-                </div>
-                <div className="bg-white p-2">
-                  {/* message from the AI*/}
-                  <div className="bg-white border w-90 p-2 rounded-lg">
-                    <p className="text-black" style={{ userSelect: "none" }}>
-                      Fostering a resilient mindset, embracing positivity, and
-                      prioritizing mental well-being for a healthier, happier,
-                      and more fulfilling life journey. How are you going to
-                      make sure you remain reslient?
-                    </p>
-                    <div className="mt-auto">
-                      <IconButton color="blue" style={{ color: "green" }}>
-                        <ThumbUpIcon />
-                      </IconButton>
-                      <IconButton color="white">
-                        <ThumbDownIcon />
-                      </IconButton>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div
-                className="bg-white-200 w-full p-2 pt-2 rounded-lg  "
-                id="reflectSection"
-              >
-                <label
-                  style={{ marginBottom: -10 }}
-                  for="email"
-                  className="block text-sm font-medium text-gray-900 dark:text-white"
-                >
-                  How do you feel?
-                </label>
-                <div className="flex items-center p-4 w-full">
-                  <textarea
-                    className="flex-1 h-40 p-2 mr-2 resize-none rounded border "
-                    placeholder={placeholderText}
-                    value={newMessage}
-                    rows={calculateRows(newMessage)}
-                    onChange={(e) => setNewMessage(e.target.value)}
-                  />
-
-                  {/* <div className="bg-green-700 hover:bg-green-500 z-0 rounded-full shadow-md">
-                    <Fab color="success" size="medium">
-                      <SendIcon />
-                    </Fab>
-                  </div> */}
-                </div>
-
-                <div className="bg-green-700 hover:bg-green-500  rounded-full shadow-md">
-                  <Fab
-                    color="primary"
-                    className="w-full"
-                    variant="extended"
-                    onClick={() => {
-                      toggleModal("New Goal");
-                    }}
-                  >
-                    <SendIcon className="ml-2 mr-2" />
-                    send message
-                  </Fab>
-                </div>
-
-                <center>
-                  <Button
-                    color="success"
-                    variant="text"
-                    style={{ backgroundColor: "white" }}
-                  >
-                    clear chat
-                  </Button>
-                  <Button variant="text" style={{ backgroundColor: "white" }}>
-                    Reflect On A New Goal
-                  </Button>
-                </center>
-              </div>
-              {/* <div className="relative">
-                  <textarea
-                    className="w-full h-80 p-2 border rounded resize-none focus:outline-none focus:ring focus:border-green-300"
-                    value={entry}
-                    onChange={handleInputChange}
-                    placeholder={placeholderText}
-                  ></textarea>
-                </div>
-                <button
-                  className="mt-4 bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring"
-                  onClick={handleInsights}
-                >
-                  Insights
-                </button> */}
-            </div>
+            <ReflectionAssitant />
           </>
         ) : (
           <>

@@ -84,7 +84,7 @@ const GoalView = () => {
         <center>
           <Button variant="text">view progress</Button>
         </center>
-
+        
         <div className="bg-white-200 w-full p-2 pt-2 rounded-lg mb-4 border">
           <div class="flex flex-col">
             <div className="bg-white p-4">
