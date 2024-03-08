@@ -79,7 +79,6 @@ function ReflectionAssistant() {
 
   useEffect(() => {
     scrollToBottom();
-    scrollToButton();
   }, []);
 
   const handleInputChange = (event) => {
