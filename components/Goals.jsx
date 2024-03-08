@@ -83,11 +83,11 @@ const MyGoals = () => {
           <div className="bg-black p-8 rounded shadow-md w-1/2 ml-2 mr-2">
             <button
               onClick={toggleModal}
-              className="absolute top-0 right-0 mt-4 mr-4 text-white-500 hover:text-white-700"
+              className="absolute top-0 ml-4 left-0 mt-4 mr-4 text-white-500 hover:text-white-700"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6"
+                className="h-8 w-8"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
