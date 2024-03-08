@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Grid from "@mui/material/Grid";
 import { Fab, Button } from "@mui/material";
 import ReflectionComponent from "./Explaination";
@@ -49,6 +49,12 @@ const Journal = () => {
 
   const [value, setValue] = React.useState(2);
   const [newMessage, setNewMessage] = useState("");
+  const assistantRef = useRef(null);
+
+  // Step 2: Scroll function
+  const scrollToAssistant = () => {
+    assistantRef.current.scrollTop = divRef.current.scrollHeight;
+  };
 
   // Calculate the number of rows based on the length of the text
   const calculateRows = (text) => {
@@ -67,6 +73,10 @@ const Journal = () => {
     }, 3500);
 
     return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+    scrollToAssistant();
   }, []);
 
   const handleInputChange = (event) => {
@@ -124,9 +134,9 @@ const Journal = () => {
       </div>
       <center>
         {insights ? (
-          <>
+          <div ref={assistantRef}>
             <ReflectionAssitant />
-          </>
+          </div>
         ) : (
           <>
             <div className="max-w-md mx-auto mt-8 p-4 border rounded shadow-lg">

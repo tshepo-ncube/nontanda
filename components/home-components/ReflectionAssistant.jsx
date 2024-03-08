@@ -47,10 +47,15 @@ function ReflectionAssistant() {
   ]);
 
   const divRef = useRef(null);
+  const sendBtnRef = useRef(null);
 
   // Step 2: Scroll function
   const scrollToBottom = () => {
     divRef.current.scrollTop = divRef.current.scrollHeight;
+  };
+
+  const scrollToButton = () => {
+    sendBtnRef.current.scrollTop = divRef.current.scrollHeight;
   };
 
   // Calculate the number of rows based on the length of the text
@@ -74,6 +79,7 @@ function ReflectionAssistant() {
 
   useEffect(() => {
     scrollToBottom();
+    scrollToButton();
   }, []);
 
   const handleInputChange = (event) => {
@@ -286,7 +292,10 @@ function ReflectionAssistant() {
                   </div> */}
           </div>
 
-          <div className="bg-blue-500 rounded-full shadow-md mt-2 mb-2">
+          <div
+            className="bg-blue-500 rounded-full shadow-md mt-2 mb-2"
+            ref={scrollToButton}
+          >
             <Fab
               color="primary"
               className="w-full"
