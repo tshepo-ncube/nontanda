@@ -282,7 +282,7 @@ function ReflectionAssistant() {
                   </div> */}
           </div>
 
-          <div className="bg-green-500 rounded-full shadow-md mt-2 mb-2">
+          <div className="bg-blue-500 rounded-full shadow-md mt-2 mb-2">
             <Fab
               color="primary"
               className="w-full"
