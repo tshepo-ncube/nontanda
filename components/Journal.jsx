@@ -53,7 +53,7 @@ const Journal = () => {
 
   // Step 2: Scroll function
   const scrollToAssistant = () => {
-    assistantRef.current.scrollTop = divRef.current.scrollHeight;
+    assistantRef.current.scrollTop = assistantRef.current.scrollHeight;
   };
 
   // Calculate the number of rows based on the length of the text
