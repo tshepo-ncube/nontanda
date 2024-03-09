@@ -338,9 +338,12 @@ function ReflectionAssistant() {
             >
               clear chat
             </Button>
-            <Button variant="text" style={{ backgroundColor: "white" }}>
-              Reflect On A New Goal
-            </Button>
+
+            <Link href="/my-goals">
+              <Button variant="text" style={{ backgroundColor: "white" }}>
+                Reflect On A New Goal
+              </Button>
+            </Link>
           </center>
         </div>
         {/* <div className="relative">
