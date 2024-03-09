@@ -3,7 +3,7 @@ import React, { useState, useEffect, useRef } from "react";
 import Grid from "@mui/material/Grid";
 import { Fab, Button } from "@mui/material";
 import Box from "@mui/material/Box";
-
+import Link from "next/link";
 import CircularProgress, {
   circularProgressClasses,
 } from "@mui/material/CircularProgress";
@@ -218,28 +218,9 @@ function ReflectionAssistant() {
         <hr style={{ marginTop: 8 }} />
         <div
           style={{ height: "90%" }}
-          class="flex flex-col max-h-80 overflow-y-auto mt-2"
+          class="flex flex-col max-h-80 h-80 overflow-y-auto mt-2"
           ref={divRef}
         >
-          {/* <div className="bg-white p-2"> 
-            <div className=" bg-green-200  border w-90 p-2 rounded-lg mb-2">
-              <p className="text-black" style={{ userSelect: "none" }}>
-                I feel good about myself, I am fostering a reslient mindset, I
-                am trying to be more reslient
-              </p>
-            </div>
-          </div>
-          <div className="bg-white p-2"> 
-            <div className="bg-white border w-90 p-2 rounded-lg">
-              <p className="text-black" style={{ userSelect: "none" }}>
-                Fostering a resilient mindset, embracing positivity, and
-                prioritizing mental well-being for a healthier, happier, and
-                more fulfilling life journey. How are you going to make sure you
-                remain reslient?
-              </p>
-            </div>
-          </div> */}
-
           {messages.map((msg) =>
             msg.role === "user" ? (
               <>
@@ -270,14 +251,7 @@ function ReflectionAssistant() {
             )
           )}
 
-          <div className="mt-auto">
-            {/* <IconButton color="blue" style={{ color: "green" }}>
-              <ThumbUpIcon />
-            </IconButton>
-            <IconButton color="white">
-              <ThumbDownIcon />
-            </IconButton> */}
-          </div>
+          <div className="mt-auto"></div>
         </div>
         <div
           className="bg-white-200 w-full p-2 pt-2 rounded-lg  "
