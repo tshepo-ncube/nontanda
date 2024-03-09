@@ -313,7 +313,7 @@ function ReflectionAssistant() {
               clear chat
             </Button>
 
-            <Link href="/goals">
+            <Link href="/goals" target="_blank">
               <Button variant="text" style={{ backgroundColor: "white" }}>
                 Reflect On A New Goal
               </Button>
