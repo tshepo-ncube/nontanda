@@ -217,19 +217,19 @@ const Navbar = () => {
             >
               <Link href="/">Home</Link>
             </li>
-            <hr style={{ marginTop: 8, width: "80%" }} />
+            <hr style={{ marginTop: 8 }} />
 
             <li className="p-4 text-4xl hover:text-gray-500">
               <Link href="/chat">Chat</Link>
             </li>
-            <hr style={{ marginTop: 8, width: "80%" }} />
+            <hr style={{ marginTop: 8 }} />
 
             {user ? (
               <>
                 <li className="p-4 text-4xl hover:text-gray-500">
                   <Link href="/goals">My Goals</Link>
                 </li>
-                <hr style={{ marginTop: 8, width: "80%" }} />
+                <hr style={{ marginTop: 8 }} />
                 <li className="p-4 text-4xl hover:text-gray-500">
                   <Link href="/profile">Profile</Link>
                 </li>
@@ -239,7 +239,7 @@ const Navbar = () => {
                 <li className="p-4 text-4xl hover:text-gray-500">
                   <Link href="/goals">My Goals</Link>
                 </li>
-                <hr style={{ marginTop: 8, width: "80%" }} />
+                <hr style={{ marginTop: 8 }} />
               </>
             )}
 
@@ -249,11 +249,11 @@ const Navbar = () => {
             >
               <Link href="/blog">Blog</Link>
             </li>
-            <hr style={{ marginTop: 8, width: "80%" }} />
+            <hr style={{ marginTop: 8 }} />
             <li className="p-4 text-4xl hover:text-gray-500">
               <Link href="/about">About</Link>
             </li>
-            <hr style={{ marginTop: 8, width: "80%" }} />
+            <hr style={{ marginTop: 8 }} />
 
             <li
               onClick={handleNav}
@@ -261,7 +261,7 @@ const Navbar = () => {
             >
               <Link href="/pricing">Pricing</Link>
             </li>
-            <hr style={{ marginTop: 8, width: "80%" }} />
+            <hr style={{ marginTop: 8 }} />
             <li className="p-4 text-4xl hover:text-gray-500">
               {signedIn ? (
                 <>
@@ -275,7 +275,7 @@ const Navbar = () => {
                 </>
               )}
             </li>
-            <hr style={{ marginTop: 8, width: "80%" }} />
+            <hr style={{ marginTop: 8 }} />
 
             {/* <li className='p-4'>
                 <Link href='/chat'>Chat</Link>
