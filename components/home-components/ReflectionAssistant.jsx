@@ -1,7 +1,9 @@
+"use client";
 import React, { useState, useEffect, useRef } from "react";
 import Grid from "@mui/material/Grid";
 import { Fab, Button } from "@mui/material";
 import Box from "@mui/material/Box";
+
 import CircularProgress, {
   circularProgressClasses,
 } from "@mui/material/CircularProgress";
@@ -14,9 +16,17 @@ import SendIcon from "@mui/icons-material/Send";
 import { IconButton } from "@mui/material";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import ThumbDownIcon from "@mui/icons-material/ThumbDown";
+
+import OpenAI from "openai";
+const openai = new OpenAI({
+  apiKey: "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",
+  dangerouslyAllowBrowser: true,
+});
+
 function ReflectionAssistant() {
   const [entry, setEntry] = useState("");
   const [insights, setInsights] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [placeholderText, setPlaceholderText] = useState(
     "Lately, I feel like I'm drifting apart from the people I care about most, and it's leaving me feeling lonely and disconnected..."
   );
@@ -33,21 +43,68 @@ function ReflectionAssistant() {
   const [value, setValue] = React.useState(2);
   const [newMessage, setNewMessage] = useState("");
 
-  const [messages, setMessages] = useState([
-    {
-      message:
-        " I feel good about myself, I am fostering a reslient mindset, I am trying to be more reslient",
-      role: "user",
-    },
-    {
-      message:
-        "  Fostering a resilient mindset, embracing positivity, and prioritizing mental well-being for a healthier, happier, and more fulfilling life journey. How are you going to make sure you remain reslient?",
-      role: "assistant",
-    },
-  ]);
+  // const [messages, setMessages] = useState([
+  //   {
+  //     message:
+  //       " I feel good about myself, I am fostering a reslient mindset, I am trying to be more reslient",
+  //     role: "user",
+  //   },
+  //   {
+  //     message:
+  //       "  Fostering a resilient mindset, embracing positivity, and prioritizing mental well-being for a healthier, happier, and more fulfilling life journey. How are you going to make sure you remain reslient?",
+  //     role: "assistant",
+  //   },
+  // ]);
+
+  const [messages, setMessages] = useState([]);
 
   const divRef = useRef(null);
   const sendBtnRef = useRef(null);
+
+  const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+  const waitForCompletion = async (threadId, runId) => {
+    let runStatus = await openai.beta.threads.runs.retrieve(threadId, runId);
+    while (runStatus.status !== "completed") {
+      await delay(5000); // Wait for 5 seconds before checking again
+      runStatus = await openai.beta.threads.runs.retrieve(threadId, runId);
+    }
+    return runStatus;
+  };
+
+  const checkStatusAndPrintMessages = async (threadId, runId) => {
+    await waitForCompletion(threadId, runId);
+    let messages = await openai.beta.threads.messages.list(threadId);
+    let msgList = messages.data;
+    // If you want the messages in reverse chronological order, just sort them as such.
+    // Since you're calling reverse() after sorting by created_at descending, it's equivalent to sorting by created_at ascending.
+    msgList.sort((a, b) => a.created_at - b.created_at);
+    sessionStorage.setItem("messages", JSON.stringify(msgList));
+    setMessages(msgList);
+    msgList.forEach((msg) => {
+      const role = msg.role;
+      // Ensure that msg.content[0] and msg.content[0].text exist before trying to access .value
+      const content =
+        msg.content[0] && msg.content[0].text
+          ? msg.content[0].text.value
+          : "Content missing";
+      console.log(
+        `${role.charAt(0).toUpperCase() + role.slice(1)}: ${content}`
+      );
+      console.log("\n");
+    });
+    let length = msgList.length;
+    if (msgList[length - 1].role !== "user") {
+      console.log("loading........");
+
+      checkStatusAndPrintMessages(
+        "thread_l8VaqVxLBVDL61e0tf4LEdxq",
+        "run_XdLBs1DUx2MIDcVkSWhX3SeJ"
+      );
+    } else {
+      setLoading(false);
+    }
+  };
 
   // Step 2: Scroll function
   const scrollToBottom = () => {
@@ -77,8 +134,29 @@ function ReflectionAssistant() {
     return () => clearInterval(interval);
   }, []);
 
+  // useEffect(() => {
+  //   scrollToBottom();
+  //   // Example usage
+  //   checkStatusAndPrintMessages(
+  //     "thread_l8VaqVxLBVDL61e0tf4LEdxq",
+  //     "run_XdLBs1DUx2MIDcVkSWhX3SeJ"
+  //   );
+  // }, []);
+
   useEffect(() => {
-    scrollToBottom();
+    const cachedData = sessionStorage.getItem("messages");
+    if (false) {
+      setMessages(JSON.parse(cachedData));
+    } else {
+      // fetchData().then((apiData) => {
+      //   sessionStorage.setItem("myData", JSON.stringify(apiData));
+      //   setData(apiData);
+      // });
+      checkStatusAndPrintMessages(
+        "thread_l8VaqVxLBVDL61e0tf4LEdxq",
+        "run_XdLBs1DUx2MIDcVkSWhX3SeJ"
+      );
+    }
   }, []);
 
   const handleInputChange = (event) => {
@@ -99,13 +177,46 @@ function ReflectionAssistant() {
     console.log("Journal Entry:", entry);
     setInsights(true);
   };
+  const sendMsgOpenAi = async () => {
+    const message = await openai.beta.threads.messages.create(
+      "thread_l8VaqVxLBVDL61e0tf4LEdxq",
+      {
+        role: "user",
+        content: newMessage,
+      }
+    );
+
+    const run = await openai.beta.threads.runs.create(
+      "thread_l8VaqVxLBVDL61e0tf4LEdxq",
+      {
+        assistant_id: "asst_1CgeKXC8weUXBFM2opqTHaZD",
+        instructions:
+          "Please address the user as Tshepo, his goal is to lose 20 pounds of weight, Please have a conversation with the user and answer in a paragraph less than 300 characters",
+      }
+    );
+    console.log(`run id : ${run.id}`);
+    console.log(run);
+
+    checkStatusAndPrintMessages(
+      "thread_l8VaqVxLBVDL61e0tf4LEdxq",
+      "run_XdLBs1DUx2MIDcVkSWhX3SeJ"
+    );
+
+    setNewMessage("");
+  };
+  const sendMessageHandler = async () => {
+    setLoading(true);
+    sendMsgOpenAi();
+    scrollToBottom();
+  };
   return (
-    <div>
-      <div className="max-w-md mx-auto mt-8 p-2 border rounded shadow-lg">
-        <h2 className="text-xl font-bold mb-4">Reflection Assitant</h2>
+    <div style={{ marginLeft: 0, marginRight: 0 }}>
+      <div className="w-full mx-auto mt-2 p-2 ">
+        <center>
+          <h2 className="text-xl font-bold mb-4">Reflection Assitant</h2>
+        </center>
         <div class="flex flex-col max-h-80 overflow-y-auto" ref={divRef}>
-          <div className="bg-white p-2">
-            {/* message from the user*/}
+          {/* <div className="bg-white p-2"> 
             <div className=" bg-green-200  border w-90 p-2 rounded-lg mb-2">
               <p className="text-black" style={{ userSelect: "none" }}>
                 I feel good about myself, I am fostering a reslient mindset, I
@@ -113,8 +224,7 @@ function ReflectionAssistant() {
               </p>
             </div>
           </div>
-          <div className="bg-white p-2">
-            {/* message from the AI*/}
+          <div className="bg-white p-2"> 
             <div className="bg-white border w-90 p-2 rounded-lg">
               <p className="text-black" style={{ userSelect: "none" }}>
                 Fostering a resilient mindset, embracing positivity, and
@@ -123,7 +233,7 @@ function ReflectionAssistant() {
                 remain reslient?
               </p>
             </div>
-          </div>
+          </div> */}
 
           {messages.map((msg) =>
             msg.role === "user" ? (
@@ -132,7 +242,9 @@ function ReflectionAssistant() {
                   {/* message from the user*/}
                   <div className=" bg-green-200  border w-90 p-2 rounded-lg mb-2">
                     <p className="text-black" style={{ userSelect: "none" }}>
-                      {msg.message}
+                      {msg.content[0] && msg.content[0].text
+                        ? msg.content[0].text.value
+                        : "Content missing"}
                     </p>
                   </div>
                 </div>
@@ -143,111 +255,9 @@ function ReflectionAssistant() {
                   {/* message from the AI*/}
                   <div className="bg-white border w-90 p-2 rounded-lg">
                     <p className="text-black" style={{ userSelect: "none" }}>
-                      {msg.message}
-                    </p>
-                  </div>
-                </div>
-              </>
-            )
-          )}
-
-          {messages.map((msg) =>
-            msg.role === "user" ? (
-              <>
-                <div className="bg-white p-2">
-                  {/* message from the user*/}
-                  <div className=" bg-green-200  border w-90 p-2 rounded-lg mb-2">
-                    <p className="text-black" style={{ userSelect: "none" }}>
-                      {msg.message}
-                    </p>
-                  </div>
-                </div>
-              </>
-            ) : (
-              <>
-                <div className="bg-white p-2">
-                  {/* message from the AI*/}
-                  <div className="bg-white border w-90 p-2 rounded-lg">
-                    <p className="text-black" style={{ userSelect: "none" }}>
-                      {msg.message}
-                    </p>
-                  </div>
-                </div>
-              </>
-            )
-          )}
-
-          {messages.map((msg) =>
-            msg.role === "user" ? (
-              <>
-                <div className="bg-white p-2">
-                  {/* message from the user*/}
-                  <div className=" bg-green-200  border w-90 p-2 rounded-lg mb-2">
-                    <p className="text-black" style={{ userSelect: "none" }}>
-                      {msg.message}
-                    </p>
-                  </div>
-                </div>
-              </>
-            ) : (
-              <>
-                <div className="bg-white p-2">
-                  {/* message from the AI*/}
-                  <div className="bg-white border w-90 p-2 rounded-lg">
-                    <p className="text-black" style={{ userSelect: "none" }}>
-                      {msg.message}
-                    </p>
-                  </div>
-                </div>
-              </>
-            )
-          )}
-
-          {messages.map((msg) =>
-            msg.role === "user" ? (
-              <>
-                <div className="bg-white p-2">
-                  {/* message from the user*/}
-                  <div className=" bg-green-200  border w-90 p-2 rounded-lg mb-2">
-                    <p className="text-black" style={{ userSelect: "none" }}>
-                      {msg.message}
-                    </p>
-                  </div>
-                </div>
-              </>
-            ) : (
-              <>
-                <div className="bg-white p-2">
-                  {/* message from the AI*/}
-                  <div className="bg-white border w-90 p-2 rounded-lg">
-                    <p className="text-black" style={{ userSelect: "none" }}>
-                      {msg.message}
-                    </p>
-                  </div>
-                </div>
-              </>
-            )
-          )}
-
-          {messages.map((msg) =>
-            msg.role === "user" ? (
-              <>
-                <div className="bg-white p-2">
-                  {/* message from the user*/}
-                  <div className=" bg-green-200  border w-90 p-2 rounded-lg mb-2">
-                    <p className="text-black" style={{ userSelect: "none" }}>
-                      {msg.message}
-                    </p>
-                  </div>
-                </div>
-              </>
-            ) : (
-              <>
-                <div className="bg-white p-2">
-                  {/* message from the AI*/}
-                  <div className="bg-white border w-90 p-2 rounded-lg">
-                    <p className="text-black" style={{ userSelect: "none" }}>
-                      {msg.message}
+                      {msg.content[0]
+                        ? msg.content[0].text.value
+                        : "Content missing"}
                     </p>
                   </div>
                 </div>
@@ -256,28 +266,37 @@ function ReflectionAssistant() {
           )}
 
           <div className="mt-auto">
-            <IconButton color="blue" style={{ color: "green" }}>
+            {/* <IconButton color="blue" style={{ color: "green" }}>
               <ThumbUpIcon />
             </IconButton>
             <IconButton color="white">
               <ThumbDownIcon />
-            </IconButton>
+            </IconButton> */}
           </div>
         </div>
         <div
           className="bg-white-200 w-full p-2 pt-2 rounded-lg  "
           id="reflectSection"
         >
-          <label
+          {loading ? (
+            <>
+              <Box sx={{ width: "100%", marginBottom: 2 }}>
+                <LinearProgress />
+              </Box>
+            </>
+          ) : (
+            <></>
+          )}
+          {/* <label
             style={{ marginBottom: 2 }}
             for="email"
             className="block text-sm  font-medium text-gray-900 dark:text-white"
           >
             How do you feel?
-          </label>
+          </label> */}
           <div className="flex items-center w-full">
             <textarea
-              className="flex-1 h-40 p-2 mr-2 resize-none rounded border "
+              className="flex-1 h-22 p-2 mr-2 resize-none rounded border "
               placeholder={placeholderText}
               value={newMessage}
               rows={calculateRows(newMessage)}
@@ -300,7 +319,7 @@ function ReflectionAssistant() {
               //   toggleModal("New Goal");
 
               // }}
-              onClick={scrollToBottom}
+              onClick={sendMessageHandler}
             >
               <SendIcon className="ml-2 mr-2" />
               send message

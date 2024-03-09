@@ -141,6 +141,10 @@ const Navbar = () => {
             <Link href="/">Home</Link>
           </li>
 
+          <li className="p-4">
+            <Link href="/chat">Chat</Link>
+          </li>
+
           {user ? (
             <>
               <li className="p-4">
@@ -212,6 +216,10 @@ const Navbar = () => {
               className="p-4 text-4xl hover:text-gray-500"
             >
               <Link href="/">Home</Link>
+            </li>
+
+            <li className="p-4 text-4xl hover:text-gray-500">
+              <Link href="/chat">Chat</Link>
             </li>
 
             {user ? (

@@ -1,6 +1,7 @@
 import React from "react";
 import EmailForm from "./EmailForm";
 import Link from "next/link";
+import Testimonials from "./testimonials";
 
 const Home = () => {
   return (
@@ -17,23 +18,22 @@ const Home = () => {
         <div className="container mx-auto text-center p-4">
           <h1 className="text-4xl font-bold mb-4">Welcome to Mindful</h1>
           <p className="text-lg">
-            Empowering our community through mindfulness.
+            Our assistant learns your behaviour and helps you learn more about
+            yourself. Try it, NO SIGN UPS!
           </p>
           {/* <button className="bg-white text-black px-4 py-2 rounded border border-gray-300 hover:bg-gray-100 focus:outline-none focus:border-blue-500">
-      Chat
-    </button> */}
+            Chat
+          </button> */}
 
           {/* <button className="bg-white text-black-500 px-4 py-2 mt-2 rounded-full border border-black-500 hover:bg-blue-500 hover:text-white focus:outline-none focus:border-blue-700 transition duration-300">
       Start Chat
     </button> */}
 
-          {/* <Link href='/chat'>
-
-      <button className="bg-black text-white px-4 py-2 mt-4 rounded-full border border-black hover:bg-gray-800 hover:border-gray-800 focus:outline-none focus:border-gray-900 transition duration-300">
-        Start Chat
-      </button>
-
-    </Link> */}
+          <Link href="/chat">
+            <button className="bg-black text-white px-4 py-2 mt-4 rounded-full border border-black hover:bg-gray-800 hover:border-gray-800 focus:outline-none focus:border-gray-900 transition duration-300">
+              Start Chat
+            </button>
+          </Link>
         </div>
       </div>
 
@@ -56,6 +56,8 @@ const Home = () => {
           </p>
         </div>
       </div>
+
+      <Testimonials />
 
       <EmailForm />
     </div>

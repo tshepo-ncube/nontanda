@@ -42,8 +42,8 @@ const HomePage = () => {
           <br />
           <br />
           {/* {children} */}
+          <Home />
 
-          <Journal />
           {/* {footer} */}
           <Foot />
         </div>
