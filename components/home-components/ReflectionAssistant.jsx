@@ -213,9 +213,14 @@ function ReflectionAssistant() {
     <div style={{ marginLeft: 0, marginRight: 0 }}>
       <div className="w-full mx-auto mt-2 p-2 ">
         <center>
-          <h2 className="text-xl font-bold mb-4">Reflection Assitant</h2>
+          <h2 className="text-xl font-bold mt-4">Mindful Assitant</h2>
         </center>
-        <div class="flex flex-col max-h-80 overflow-y-auto" ref={divRef}>
+        <hr style={{ marginTop: 8 }} />
+        <div
+          style={{ height: "90%" }}
+          class="flex flex-col max-h-80 overflow-y-auto mt-2"
+          ref={divRef}
+        >
           {/* <div className="bg-white p-2"> 
             <div className=" bg-green-200  border w-90 p-2 rounded-lg mb-2">
               <p className="text-black" style={{ userSelect: "none" }}>
