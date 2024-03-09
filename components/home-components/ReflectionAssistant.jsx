@@ -315,8 +315,8 @@ function ReflectionAssistant() {
                   </div> */}
           </div>
 
-          <div className="bg-blue-500 rounded-full shadow-md mt-2 mb-2">
-            <Fab
+          <button className="bg-blue-500 w-full p-2 rounded-full shadow-md mt-2 mb-2">
+            {/* <Fab
               color="primary"
               className="w-full"
               variant="extended"
@@ -325,11 +325,10 @@ function ReflectionAssistant() {
 
               // }}
               onClick={sendMessageHandler}
-            >
-              <SendIcon className="ml-2 mr-2" />
-              send message
-            </Fab>
-          </div>
+            ></Fab> */}
+            <SendIcon className="ml-2 mr-2 text-white" />
+            {/* <p className="text-white">send message</p> */}
+          </button>
 
           <center>
             <Button
