@@ -30,7 +30,7 @@ const Home = () => {
     </button> */}
 
           <Link href="/chat">
-            <button className="bg-black text-white px-4 py-2 mt-4 rounded-full border border-black hover:bg-gray-800 hover:border-gray-800 focus:outline-none focus:border-gray-900 transition duration-300">
+            <button className="bg-white text-black px-4 py-2 mt-4 rounded-full border border-black hover:bg-gray-800 hover:border-gray-800 focus:outline-none focus:border-gray-900 transition duration-300">
               Start Chat
             </button>
           </Link>
