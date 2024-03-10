@@ -115,7 +115,63 @@ const GoalView = () => {
               </div>
             </div> */}
 
-            <div>
+            <div className="bg-white p-2">
+              {/* message from the user*/}
+              <div className=" bg-green-200  border w-90 p-2 rounded-lg mb-2">
+                <p className="text-black" style={{ userSelect: "none" }}>
+                  Reaching 1000 users on my app is more than just hitting a
+                  number; it's about creating something that genuinely resonates
+                  with people. This goal pushes me to dive deep into
+                  understanding what users truly need and how my app can make a
+                  difference in their lives. Every new user is a validation of
+                  the hard work and passion I've poured into this project. It's
+                  not just about marketing strategies or features; it's about
+                  building connections and trust. As I move closer to this
+                  milestone, I'm reminded that success is a blend of
+                  persistence, innovation, and the ability to listen and adapt.
+                  Each user's feedback is a golden opportunity for improvement,
+                  making the journey towards 1000 users a deeply enriching
+                  experience that goes beyond numbers.
+                </p>
+              </div>
+            </div>
+
+            <div className="bg-white p-2">
+              {/* message from the AI*/}
+              <div className="bg-white border w-90 p-2 rounded-lg">
+                <p className="text-black" style={{ userSelect: "none" }}>
+                  As I move closer to this milestone, I'm reminded that success
+                  is a blend of persistence, innovation, and the ability to
+                  listen and adapt. Each user's feedback is a golden opportunity
+                  for improvement, making the journey towards 1000 users a
+                  deeply enriching experience that goes beyond numbers.
+                </p>
+              </div>
+            </div>
+
+            <center>
+              <div className="flex items-center w-full">
+                <textarea
+                  className="flex-1 h-22 p-2 mr-2 resize-none rounded border "
+                  placeholder={placeholderText}
+                  value={newMessage}
+                  rows={calculateRows(newMessage)}
+                  onChange={(e) => setNewMessage(e.target.value)}
+                  readOnly
+                />
+
+                {/* <div className="bg-green-700 hover:bg-green-500 z-0 rounded-full shadow-md">
+                    <Fab color="success" size="medium">
+                      <SendIcon />
+                    </Fab>
+                  </div> */}
+              </div>
+              <button className="text-black bg-yellow-400 w-full hover:bg-yellow-600 p-2 rounded-full shadow-md">
+                subscribe to respond
+              </button>
+            </center>
+
+            {/* <div>
               <center>
                 <label
                   style={{ marginBottom: -10 }}
@@ -134,25 +190,14 @@ const GoalView = () => {
                   onChange={(e) => setNewMessage(e.target.value)}
                 />
 
-                {/* <div className="bg-green-700 hover:bg-green-500  rounded-full shadow-md">
-                <Fab color="success" size="medium">
-                  <SendIcon />
-                </Fab>
-              </div> */}
+                
               </div>
               <button className="bg-green-700 w-full hover:bg-green-500 p-2 rounded-full shadow-md">
-                {/* <Fab
-                  color="primary"
-                  className="w-full"
-                  variant="extended"
-                  onClick={() => {
-                    toggleModal("New Goal");
-                  }}
-                ></Fab> */}
+             
 
                 <AddIcon className="justify-center items-center ml-2 mr-2 text-white" />
               </button>
-            </div>
+            </div> */}
 
             <center>
               <Button

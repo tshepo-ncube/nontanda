@@ -73,37 +73,36 @@ function ReflectionAssistant() {
   };
 
   const checkStatusAndPrintMessages = async (threadId, runId) => {
-    await waitForCompletion(threadId, runId);
-    let messages = await openai.beta.threads.messages.list(threadId);
-    let msgList = messages.data;
-    // If you want the messages in reverse chronological order, just sort them as such.
-    // Since you're calling reverse() after sorting by created_at descending, it's equivalent to sorting by created_at ascending.
-    msgList.sort((a, b) => a.created_at - b.created_at);
-    sessionStorage.setItem("messages", JSON.stringify(msgList));
-    setMessages(msgList);
-    msgList.forEach((msg) => {
-      const role = msg.role;
-      // Ensure that msg.content[0] and msg.content[0].text exist before trying to access .value
-      const content =
-        msg.content[0] && msg.content[0].text
-          ? msg.content[0].text.value
-          : "Content missing";
-      console.log(
-        `${role.charAt(0).toUpperCase() + role.slice(1)}: ${content}`
-      );
-      console.log("\n");
-    });
-    let length = msgList.length;
-    if (msgList[length - 1].role !== "user") {
-      console.log("loading........");
-
-      checkStatusAndPrintMessages(
-        "thread_l8VaqVxLBVDL61e0tf4LEdxq",
-        "run_XdLBs1DUx2MIDcVkSWhX3SeJ"
-      );
-    } else {
-      setLoading(false);
-    }
+    // await waitForCompletion(threadId, runId);
+    // let messages = await openai.beta.threads.messages.list(threadId);
+    // let msgList = messages.data;
+    // // If you want the messages in reverse chronological order, just sort them as such.
+    // // Since you're calling reverse() after sorting by created_at descending, it's equivalent to sorting by created_at ascending.
+    // msgList.sort((a, b) => a.created_at - b.created_at);
+    // sessionStorage.setItem("messages", JSON.stringify(msgList));
+    // setMessages(msgList);
+    // msgList.forEach((msg) => {
+    //   const role = msg.role;
+    //   // Ensure that msg.content[0] and msg.content[0].text exist before trying to access .value
+    //   const content =
+    //     msg.content[0] && msg.content[0].text
+    //       ? msg.content[0].text.value
+    //       : "Content missing";
+    //   console.log(
+    //     `${role.charAt(0).toUpperCase() + role.slice(1)}: ${content}`
+    //   );
+    //   console.log("\n");
+    // });
+    // let length = msgList.length;
+    // if (msgList[length - 1].role !== "user") {
+    //   console.log("loading........");
+    //   checkStatusAndPrintMessages(
+    //     "thread_l8VaqVxLBVDL61e0tf4LEdxq",
+    //     "run_XdLBs1DUx2MIDcVkSWhX3SeJ"
+    //   );
+    // } else {
+    //   setLoading(false);
+    // }
   };
 
   // Step 2: Scroll function
@@ -217,10 +216,11 @@ function ReflectionAssistant() {
         </center>
         <hr style={{ marginTop: 8 }} />
         <div
-          style={{ height: "90%" }}
+          style={{ height: 500 }}
           class="flex flex-col max-h-80 h-80 overflow-y-auto mt-2"
           ref={divRef}
         >
+          {/* <p>hey there</p> */}
           {messages.map((msg) =>
             msg.role === "user" ? (
               <>
