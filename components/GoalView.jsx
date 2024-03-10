@@ -166,7 +166,7 @@ const GoalView = () => {
                     </Fab>
                   </div> */}
               </div>
-              <button className="text-black bg-yellow-400 w-full hover:bg-yellow-600 p-2 rounded-full shadow-md">
+              <button className="text-black font-bold bg-yellow-400 w-full hover:bg-yellow-600 p-2 rounded-full shadow-md">
                 subscribe to respond
               </button>
             </center>
