@@ -100,6 +100,71 @@ const PricingTable = () => {
               <tbody>
                 <tr>
                   <td className="py-4 pr-4 font-medium border-b border-gray-200">
+                    Respond to Reflection Assitant
+                  </td>
+
+                  <td className="px-4 py-4 text-center border-b border-gray-200">
+                    <svg
+                      className="w-5 h-5 mx-auto"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 20 20"
+                      fill="#808080"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                        clip-rule="evenodd"
+                      ></path>
+                    </svg>
+                  </td>
+
+                  <td className="px-4 py-4 text-center border-b border-gray-200">
+                    <svg
+                      className="w-5 h-5 mx-auto"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 20 20"
+                      fill="#3490dc"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                        clip-rule="evenodd"
+                      ></path>
+                    </svg>
+                  </td>
+
+                  <td className="px-4 py-4 text-center text-white bg-gray-900 border-b border-white/20">
+                    <svg
+                      className="w-5 h-5 mx-auto"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 20 20"
+                      fill="#3490dc"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                        clip-rule="evenodd"
+                      ></path>
+                    </svg>
+                  </td>
+
+                  <td className="px-4 py-4 text-center border-b border-gray-200">
+                    <svg
+                      className="w-5 h-5 mx-auto"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 20 20"
+                      fill="#3490dc"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                        clip-rule="evenodd"
+                      ></path>
+                    </svg>
+                  </td>
+                </tr>
+                <tr>
+                  <td className="py-4 pr-4 font-medium border-b border-gray-200">
                     Confidential Conversations
                   </td>
 
@@ -772,6 +837,76 @@ const PricingTable = () => {
                 {" "}
                 Per month{" "}
               </span>
+            </div>
+          </div>
+
+          <div className="px-2 py-4 sm:px-4">
+            <p className="font-semibold">Respond to Reflection Assistant</p>
+          </div>
+
+          <div className="grid grid-cols-4 text-center divide-x divide-gray-200">
+            <div className="px-2 py-2">
+              {" "}
+              <svg
+                className="w-5 h-5 mx-auto"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 20 20"
+                fill="#808080"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                  clip-rule="evenodd"
+                ></path>
+              </svg>
+            </div>
+
+            <div className="px-2 py-2">
+              {" "}
+              <svg
+                className="w-5 h-5 mx-auto"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 20 20"
+                fill="#3490dc"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                  clip-rule="evenodd"
+                ></path>
+              </svg>
+            </div>
+
+            <div className="px-2 py-2">
+              {" "}
+              <svg
+                className="w-5 h-5 mx-auto"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 20 20"
+                fill="#3490dc"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                  clip-rule="evenodd"
+                ></path>
+              </svg>
+            </div>
+
+            <div className="px-2 py-2">
+              {" "}
+              <svg
+                className="w-5 h-5 mx-auto"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 20 20"
+                fill="#3490dc"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                  clip-rule="evenodd"
+                ></path>
+              </svg>
             </div>
           </div>
 
