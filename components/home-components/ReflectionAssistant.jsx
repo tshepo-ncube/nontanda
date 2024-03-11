@@ -137,7 +137,7 @@ function ReflectionAssistant() {
   }, []);
 
   useEffect(() => {
-    scrollToBottom();
+    //scrollToBottom();
     // Example usage
     checkStatusAndPrintMessages(
       "thread_l8VaqVxLBVDL61e0tf4LEdxq",
