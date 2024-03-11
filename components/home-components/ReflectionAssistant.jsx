@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect, useRef } from "react";
 import { ThreeDots } from "react-loader-spinner";
-
+import Skeleton from "@mui/material/Skeleton";
 import Grid from "@mui/material/Grid";
 import { Fab, Button } from "@mui/material";
 import Box from "@mui/material/Box";
@@ -59,7 +59,7 @@ function ReflectionAssistant() {
   // ]);
 
   const [messages, setMessages] = useState([]);
-
+  const [msgsLoading, setMsgsLoading] = useState(true);
   const divRef = useRef(null);
   const sendBtnRef = useRef(null);
 
@@ -105,6 +105,7 @@ function ReflectionAssistant() {
     } else {
       setLoading(false);
     }
+    setMsgsLoading(false);
   };
 
   // Step 2: Scroll function
@@ -231,46 +232,98 @@ function ReflectionAssistant() {
           className="flex flex-col max-h-80 h-80 overflow-y-auto mt-2"
           ref={divRef}
         >
-          {/* <p>hey there</p> */}
-          {messages.map((msg) =>
-            msg.role === "user" ? (
-              <>
-                <div className="bg-white p-2">
-                  {/* message from the user*/}
-                  <div className=" bg-green-200  border w-90 p-2 rounded-lg mb-2">
-                    <p className="text-black" style={{ userSelect: "none" }}>
-                      {msg.content[0] && msg.content[0].text
-                        ? msg.content[0].text.value
-                        : "Content missing"}
-                    </p>
+          {msgsLoading ? (
+            <>
+              <Skeleton
+                variant="rounded"
+                style={{ marginBottom: 5 }}
+                width={"100%"}
+                height={50}
+              />
+              <Skeleton
+                variant="rounded"
+                style={{ marginBottom: 5 }}
+                width={"100%"}
+                height={50}
+              />
+              <Skeleton
+                variant="rounded"
+                style={{ marginBottom: 5 }}
+                width={"100%"}
+                height={50}
+              />
+              <Skeleton
+                variant="rounded"
+                style={{ marginBottom: 5 }}
+                width={"100%"}
+                height={50}
+              />
+            </>
+          ) : (
+            <>
+              {messages.length === 0 ? (
+                <>
+                  <div className="bg-white p-2">
+                    {/* message from the AI*/}
+                    <div className="bg-white border w-90 p-2 rounded-lg">
+                      <p className="text-black" style={{ userSelect: "none" }}>
+                        please type a message...
+                      </p>
+                    </div>
                   </div>
-                </div>
-              </>
-            ) : (
-              <>
-                <div className="bg-white p-2">
-                  {/* message from the AI*/}
-                  <div className="bg-white border w-90 p-2 rounded-lg">
-                    <p className="text-black" style={{ userSelect: "none" }}>
-                      {msg.content[0] ? (
-                        msg.content[0].text.value
-                      ) : (
-                        <ThreeDots
-                          visible={true}
-                          height="20"
-                          width="40"
-                          color="#4fa94d"
-                          radius="9"
-                          ariaLabel="three-dots-loading"
-                          wrapperStyle={{}}
-                          wrapperClass=""
-                        />
-                      )}
-                    </p>
-                  </div>
-                </div>
-              </>
-            )
+                </>
+              ) : (
+                <>
+                  {messages.map((msg) =>
+                    msg.role === "user" ? (
+                      <>
+                        <div className="bg-white p-2">
+                          {/* message from the user*/}
+                          <div className=" bg-green-200  border w-90 p-2 rounded-lg mb-2">
+                            <p
+                              className="text-black"
+                              style={{ userSelect: "none" }}
+                            >
+                              {msg.content[0] && msg.content[0].text
+                                ? msg.content[0].text.value
+                                : "Content missing"}
+                            </p>
+                          </div>
+                        </div>
+                      </>
+                    ) : (
+                      <>
+                        <div className="bg-white p-2">
+                          {/* message from the AI*/}
+                          <div className="bg-white border w-90 p-2 rounded-lg">
+                            <p
+                              className="text-black"
+                              style={{ userSelect: "none" }}
+                            >
+                              {msg.content[0] ? (
+                                msg.content[0].text.value
+                              ) : (
+                                <ThreeDots
+                                  visible={true}
+                                  height="20"
+                                  width="40"
+                                  color="#4fa94d"
+                                  radius="9"
+                                  ariaLabel="three-dots-loading"
+                                  wrapperStyle={{}}
+                                  wrapperClass=""
+                                />
+                              )}
+                            </p>
+                          </div>
+                        </div>
+                      </>
+                    )
+                  )}
+                </>
+              )}
+              {/* <p>hey there</p> */}
+            </>
           )}
 
           <div className="mt-auto"></div>
