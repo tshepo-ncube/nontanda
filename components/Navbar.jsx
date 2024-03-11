@@ -166,9 +166,9 @@ const Navbar = () => {
             <Link href="/blog">Blog</Link>
           </li>
 
-          <li className="p-4">
+          {/* <li className="p-4">
             <Link href="/about">About</Link>
-          </li>
+          </li> */}
           <li className="p-4">
             <Link href="/pricing">Pricing</Link>
           </li>
@@ -250,10 +250,10 @@ const Navbar = () => {
               <Link href="/blog">Blog</Link>
             </li>
             <hr style={{ marginTop: 8 }} />
-            <li className="p-4 text-4xl hover:text-gray-500">
+            {/* <li className="p-4 text-4xl hover:text-gray-500">
               <Link href="/about">About</Link>
             </li>
-            <hr style={{ marginTop: 8 }} />
+            <hr style={{ marginTop: 8 }} /> */}
 
             <li
               onClick={handleNav}
