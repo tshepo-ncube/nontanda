@@ -433,7 +433,7 @@ const PricingTable = () => {
                   </td>
 
                   <td className="px-4 py-4 text-center border-b border-gray-200">
-                    12
+                    6
                   </td>
 
                   <td className="px-4 py-4 text-center border-b border-gray-200">
@@ -1125,7 +1125,7 @@ const PricingTable = () => {
           </div>
 
           <div className="grid grid-cols-4 text-center divide-x divide-gray-200">
-            <div className="px-2 py-2">12</div>
+            <div className="px-2 py-2">6</div>
 
             <div className="px-2 py-2">27</div>
 
