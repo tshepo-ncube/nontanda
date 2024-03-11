@@ -67,7 +67,7 @@ const PricingTable = () => {
                       {" "}
                       Basic{" "}
                     </span>
-                    <p className="mt-6 text-6xl font-bold">$4.99</p>
+                    <p className="mt-6 text-6xl font-bold">$7.99</p>
                     <p className="mt-2 text-base font-normal text-gray-500">
                       Per month
                     </p>
@@ -89,7 +89,7 @@ const PricingTable = () => {
                       {" "}
                       Gold{" "}
                     </span>
-                    <p className="mt-6 text-6xl font-bold">$14.99</p>
+                    <p className="mt-6 text-6xl font-bold">$19.99</p>
                     <p className="mt-2 text-base font-normal text-gray-500">
                       Per month
                     </p>
@@ -811,7 +811,7 @@ const PricingTable = () => {
 
             <div className="px-2 py-2">
               <span className="text-sm font-medium text-blue-600"> Basic </span>
-              <p className="mt-2 text-xl font-bold">$4.99</p>
+              <p className="mt-2 text-xl font-bold">$7.99</p>
               <span className="mt-1 text-sm font-normal text-gray-500">
                 {" "}
                 Per month{" "}
@@ -832,7 +832,7 @@ const PricingTable = () => {
 
             <div className="px-2 py-2">
               <span className="text-sm font-medium text-blue-600"> Gold </span>
-              <p className="mt-2 text-xl font-bold">$14.99</p>
+              <p className="mt-2 text-xl font-bold">$19.99</p>
               <span className="mt-1 text-sm font-normal text-gray-500">
                 {" "}
                 Per month{" "}
