@@ -45,7 +45,7 @@ const MyGoals = () => {
 
   return (
     <div className="container mx-auto p-4 overflow-y-auto">
-      <h1 className="text-3xl font-bold mb-4">Goal Tracker</h1>
+      <h1 className="text-3xl font-bold mb-4">Goal Assistant</h1>
 
       <List toggleModal={toggleModal} />
 

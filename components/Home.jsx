@@ -45,8 +45,11 @@ const Home = () => {
         <div className="container mx-auto text-center p-4">
           <h1 className="text-4xl font-bold mb-4">Welcome to Mindful</h1>
           <p className="text-lg">
-            Our assistant learns your behaviour and helps you learn more about
-            yourself. <br /> Try it, NO SIGN UPS!
+            Our mindful assistant learns your behaviour and helps you learn more
+            about yourself. <br />
+            <i>
+              <strong>Try it, for free!</strong>
+            </i>
           </p>
           {/* <button className="bg-white text-black px-4 py-2 rounded border border-gray-300 hover:bg-gray-100 focus:outline-none focus:border-blue-500">
             Chat

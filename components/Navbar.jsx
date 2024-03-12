@@ -157,7 +157,7 @@ const Navbar = () => {
           ) : (
             <>
               <li className="p-4">
-                <Link href="/goals">My Goals</Link>
+                <Link href="/goals">Goal Assistant</Link>
               </li>
             </>
           )}
@@ -237,7 +237,7 @@ const Navbar = () => {
             ) : (
               <>
                 <li className="p-4 text-4xl hover:text-gray-500">
-                  <Link href="/goals">My Goals</Link>
+                  <Link href="/goals">Goal Assistant</Link>
                 </li>
                 <hr style={{ marginTop: 8 }} />
               </>
