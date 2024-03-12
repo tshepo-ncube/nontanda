@@ -32,20 +32,20 @@ const HomePage = () => {
     <>
       <HeaderComponent title={"Mindful"} />
       <body>
-        <div className="mx-auto  max-w px-8">
+        <div className="mx-auto  max-w">
           {/* {header} */}
           {/* {children} */}
           <Navbar />
           <br />
           <br />
 
-          <br />
-          <br />
           {/* {children} */}
           <Home />
 
           {/* {footer} */}
-          <Foot />
+          <div className="px-8">
+            <Foot />
+          </div>
         </div>
       </body>
     </>

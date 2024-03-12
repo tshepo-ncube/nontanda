@@ -1,9 +1,36 @@
-import React from "react";
+"use client";
+import React, { useEffect } from "react";
 import EmailForm from "./EmailForm";
 import Link from "next/link";
 import Testimonials from "./testimonials";
 
+// utils/analytics.js
+import ReactGA from "react-ga";
+// export const initGA = () => {
+//   ReactGA.initialize("G-YE94Z3VF7X"); // Replace with your actual GA Measurement ID
+// };
+
+// export const logPageView = () => {
+//   ReactGA.set({ page: window.location.pathname });
+//   ReactGA.pageview(window.location.pathname);
+// };
+
+// import ReactGA from 'react-ga';
+
 const Home = () => {
+  function handleChatBtnClick() {
+    // Track a custom event
+    ReactGA.event({
+      category: "Button Click",
+      action: "Clicked on Chat Home Button",
+      label: "Home Page",
+    });
+    // Continue with your button's click handler
+  }
+
+  useEffect(() => {
+    ReactGA.initialize("G-YE94Z3VF7X");
+  }, []);
   return (
     <div className="bg-black-500 min-h-screen mb-18">
       {/* Hero Section */}
@@ -12,14 +39,14 @@ const Home = () => {
         style={{
           backgroundColor: "rgba(0, 0, 0, 0.7)",
           backgroundImage:
-            "url('https://images.unsplash.com/photo-1682685797527-63b4e495938f?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')",
+            "url('https://images.unsplash.com/photo-1507120410856-1f35574c3b45?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')",
         }}
       >
         <div className="container mx-auto text-center p-4">
           <h1 className="text-4xl font-bold mb-4">Welcome to Mindful</h1>
           <p className="text-lg">
             Our assistant learns your behaviour and helps you learn more about
-            yourself. Try it, NO SIGN UPS!
+            yourself. <br /> Try it, NO SIGN UPS!
           </p>
           {/* <button className="bg-white text-black px-4 py-2 rounded border border-gray-300 hover:bg-gray-100 focus:outline-none focus:border-blue-500">
             Chat
@@ -30,7 +57,10 @@ const Home = () => {
     </button> */}
 
           <Link href="/chat">
-            <button className="bg-white text-black px-4 py-2 mt-4 rounded-full border hover:text-white hover:bg-gray-800 hover:border-gray-800 focus:outline-none focus:border-gray-900 transition duration-300">
+            <button
+              onClick={handleChatBtnClick}
+              className="bg-white text-black px-4 py-2 mt-4 rounded-full border hover:text-white hover:bg-blue-500 hover:border-blue-800 focus:outline-none focus:border-gray-900 transition duration-300"
+            >
               Start Chat
             </button>
           </Link>

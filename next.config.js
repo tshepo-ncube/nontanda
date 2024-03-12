@@ -5,11 +5,10 @@ const nextConfig = {
   experimental: {
     appDir: true,
   },
-   images: {
-    domains: [
-      'images.unsplash.com',
-    ]
-  }
+  images: {
+    domains: ["images.unsplash.com"],
+  },
+  output: "export",
 };
 
 module.exports = nextConfig;
