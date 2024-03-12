@@ -25,6 +25,7 @@ import {
   GoogleAuthProvider,
   onAuthStateChanged,
   signOut,
+  createUserWithEmailAndPassword,
 } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 
@@ -49,15 +50,38 @@ function SignIn({ setSignState }) {
   const [user, setUser] = useState(null);
   const auth = getAuth();
   const [name, setName] = useState(null);
+  const [error, setError] = useState(null);
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
   const [confirmPassword, setConfirmPassword] = useState(null);
 
-  const handleSignUp = () => {};
+  const handleSignUp = () => {
+    if (confirmPassword !== password) {
+      setError("passwords do not match ");
+    } else {
+      createUserWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+          // Signed up
+          const user = userCredential.user;
+          setUser(user);
+          // IdP data available using getAdditionalUserInfo(result)
+          window.location.href = "http://localhost:3000/goals";
+          // ...
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          // ..
+          //alert(errorMessage);
+          setError(errorMessage);
+        });
+    }
+  };
   const handleGoogleSignUp = () => {
     console.log("handle signIn");
 
     const auth = getAuth();
+
     signInWithPopup(auth, provider)
       .then((result) => {
         // This gives you a Google Access Token. You can use it to access the Google API.
@@ -118,7 +142,7 @@ function SignIn({ setSignState }) {
               Create an account
             </h1>
             <form className="space-y-4 md:space-y-6" action="#">
-              <div>
+              {/* <div>
                 <label
                   for="name"
                   className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
@@ -136,7 +160,7 @@ function SignIn({ setSignState }) {
                   }}
                   required
                 ></input>
-              </div>
+              </div> */}
               <div>
                 <label
                   for="email"
@@ -195,7 +219,7 @@ function SignIn({ setSignState }) {
                 ></input>
               </div>
               <div className="flex items-center justify-between">
-                <div className="flex items-start">
+                {/* <div className="flex items-start">
                   <div className="flex items-center h-5">
                     <input
                       id="remember"
@@ -213,14 +237,21 @@ function SignIn({ setSignState }) {
                       Remember me
                     </label>
                   </div>
-                </div>
-                <a
+                </div> */}
+                {/* <a
                   href=""
                   className="text-sm font-medium text-primary-600 hover:underline dark:text-primary-500"
                 >
                   Forgot password?
-                </a>
+                </a> */}
               </div>
+              {error ? (
+                <>
+                  <p className="text-red-500 text-center ">{error}</p>
+                </>
+              ) : (
+                <></>
+              )}
               <button
                 type="submit"
                 onClick={handleSignUp}
@@ -228,14 +259,15 @@ function SignIn({ setSignState }) {
               >
                 Sign Up
               </button>
+
               <div className="px-2 sm:px-0 max-w-sm" style={{ marginTop: 10 }}>
                 <button
                   type="button"
                   onClick={handleGoogleSignUp}
-                  class="text-white w-full  bg-yellow-500 hover:bg-yellow-700 focus:ring-4 focus:outline-none focus:ring-[#4285F4]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center justify-between dark:focus:ring-[#4285F4]/55 mr-2 mb-2"
+                  className="text-white w-full  bg-yellow-500 hover:bg-yellow-700 focus:ring-4 focus:outline-none focus:ring-[#4285F4]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center justify-between dark:focus:ring-[#4285F4]/55 mr-2 mb-2"
                 >
                   <svg
-                    class="mr-2 -ml-1 w-4 h-4"
+                    className="mr-2 -ml-1 w-4 h-4"
                     aria-hidden="true"
                     focusable="false"
                     data-prefix="fab"

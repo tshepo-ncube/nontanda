@@ -72,6 +72,7 @@ const Navbar = () => {
     signOut(auth)
       .then(() => {
         // Sign-out successful.
+        window.location.href = "http://localhost:3000/sign-in";
       })
       .catch((error) => {
         // An error happened.

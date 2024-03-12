@@ -25,6 +25,7 @@ import {
   GoogleAuthProvider,
   onAuthStateChanged,
   signOut,
+  signInWithEmailAndPassword,
 } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 
@@ -50,6 +51,9 @@ function SignIn({ setSignState }) {
   const [signedIn, setSignedIn] = useState(null);
   const [user, setUser] = useState(null);
   const auth = getAuth();
+  const [error, setError] = useState(null);
+  const [email, setEmail] = useState(null);
+  const [password, setPassword] = useState(null);
   const handleGoogleSignIn = () => {
     console.log("handle signIn");
 
@@ -104,7 +108,21 @@ function SignIn({ setSignState }) {
   //   // To stop listening for changes (unsubscribe) - optional
   //   return () => unsubscribe();
   // }, [auth]); // Ensure that auth is added to the dependency array to avoid unnecessary re-renders
-
+  const handleEmailSignIn = () => {
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Signed in
+        const user = userCredential.user;
+        setUser(user);
+        // ...
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        setError(errorMessage);
+        //alert(errorMessage);
+      });
+  };
   return (
     <section className="bg-gray-50 dark:bg-gray-900">
       <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
@@ -127,7 +145,11 @@ function SignIn({ setSignState }) {
                   id="email"
                   className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="name@company.com"
-                  required=""
+                  onChange={(e) => {
+                    setEmail(e.target.value);
+                  }}
+                  value={email}
+                  required
                 ></input>
               </div>
               <div>
@@ -143,11 +165,15 @@ function SignIn({ setSignState }) {
                   id="password"
                   placeholder="••••••••"
                   className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  required=""
+                  onChange={(e) => {
+                    setPassword(e.target.value);
+                  }}
+                  value={password}
+                  required
                 ></input>
               </div>
               <div className="flex items-center justify-between">
-                <div className="flex items-start">
+                {/* <div className="flex items-start">
                   <div className="flex items-center h-5">
                     <input
                       id="remember"
@@ -165,16 +191,24 @@ function SignIn({ setSignState }) {
                       Remember me
                     </label>
                   </div>
-                </div>
-                <a
+                </div> */}
+                {/* <a
                   href="#"
                   className="text-sm font-medium text-primary-600 hover:underline dark:text-primary-500"
                 >
                   Forgot password?
-                </a>
+                </a> */}
               </div>
+              {error ? (
+                <>
+                  <p className="text-red-500 text-center ">{error}</p>
+                </>
+              ) : (
+                <></>
+              )}
               <button
                 type="submit"
+                onClick={handleEmailSignIn}
                 className="w-full mb-10 text-white bg-blue-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
               >
                 Sign in
@@ -184,10 +218,10 @@ function SignIn({ setSignState }) {
                 <button
                   type="button"
                   onClick={handleGoogleSignIn}
-                  class="text-white w-full  bg-yellow-500 hover:bg-yellow-500 focus:ring-4 focus:outline-none focus:ring-[#4285F4]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center justify-between dark:focus:ring-[#4285F4]/55 mr-2 mb-2"
+                  className="text-white w-full  bg-yellow-500 hover:bg-yellow-500 focus:ring-4 focus:outline-none focus:ring-[#4285F4]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center justify-between dark:focus:ring-[#4285F4]/55 mr-2 mb-2"
                 >
                   <svg
-                    class="mr-2 -ml-1 w-4 h-4"
+                    className="mr-2 -ml-1 w-4 h-4"
                     aria-hidden="true"
                     focusable="false"
                     data-prefix="fab"
