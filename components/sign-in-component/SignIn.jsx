@@ -45,8 +45,8 @@ const firebaseConfig = {
 };
 const app = initializeApp(firebaseConfig);
 // Initialize the FirebaseUI Widget using Firebase.
-function SignIn() {
-  const [signState, setSignState] = useState("SignIn");
+function SignIn({ setSignState }) {
+  //const [signState, setSignState] = useState("SignIn");
   const [signedIn, setSignedIn] = useState(null);
   const [user, setUser] = useState(null);
   const auth = getAuth();
@@ -77,33 +77,33 @@ function SignIn() {
       });
   };
 
-  useEffect(() => {
-    // Check if user is logged in
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user) {
-        // User is signed in.
-        console.log("User is logged in:", user);
-        setSignedIn(true);
+  // useEffect(() => {
+  //   // Check if user is logged in
+  //   const unsubscribe = onAuthStateChanged(auth, (user) => {
+  //     if (user) {
+  //       // User is signed in.
+  //       console.log("User is logged in:", user);
+  //       setSignedIn(true);
 
-        // User is signed in.
-        setUser({
-          email: user.email,
-          name: user.displayName,
-          profilePicture: user.photoURL,
-        });
+  //       // User is signed in.
+  //       setUser({
+  //         email: user.email,
+  //         name: user.displayName,
+  //         profilePicture: user.photoURL,
+  //       });
 
-        window.location.href = "http://localhost:3000/goals";
-      } else {
-        setSignedIn(false);
-        setUser(null);
-        // No user is signed in.
-        console.log("No user is logged in");
-      }
-    });
+  //       window.location.href = "http://localhost:3000/goals";
+  //     } else {
+  //       setSignedIn(false);
+  //       setUser(null);
+  //       // No user is signed in.
+  //       console.log("No user is logged in");
+  //     }
+  //   });
 
-    // To stop listening for changes (unsubscribe) - optional
-    return () => unsubscribe();
-  }, [auth]); // Ensure that auth is added to the dependency array to avoid unnecessary re-renders
+  //   // To stop listening for changes (unsubscribe) - optional
+  //   return () => unsubscribe();
+  // }, [auth]); // Ensure that auth is added to the dependency array to avoid unnecessary re-renders
 
   return (
     <section className="bg-gray-50 dark:bg-gray-900">
@@ -180,7 +180,7 @@ function SignIn() {
                 Sign in
               </button>
 
-              <div class="px-2 sm:px-0 max-w-sm" style={{ marginTop: 10 }}>
+              <div className="px-2 sm:px-0 max-w-sm" style={{ marginTop: 10 }}>
                 <button
                   type="button"
                   onClick={handleGoogleSignIn}

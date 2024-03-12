@@ -43,8 +43,8 @@ const firebaseConfig = {
   appId: "1:816933119912:web:a009d7a035bf3c491c1f9d",
   measurementId: "G-1G8NESR5QL",
 };
-function SignIn() {
-  const [signState, setSignState] = useState("SignIn");
+function SignIn({ setSignState }) {
+  //const [signState, setSignState] = useState("SignIn");
   const [signedIn, setSignedIn] = useState(null);
   const [user, setUser] = useState(null);
   const auth = getAuth();
@@ -228,7 +228,7 @@ function SignIn() {
               >
                 Sign Up
               </button>
-              <div class="px-2 sm:px-0 max-w-sm" style={{ marginTop: 10 }}>
+              <div className="px-2 sm:px-0 max-w-sm" style={{ marginTop: 10 }}>
                 <button
                   type="button"
                   onClick={handleGoogleSignUp}

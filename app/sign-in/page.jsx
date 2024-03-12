@@ -130,11 +130,11 @@ function page() {
 
           {signState === "SignIn" ? (
             <>
-              <SignIn />
+              <SignIn setSignState={setSignState} />
             </>
           ) : (
             <>
-              <SignUp />
+              <SignUp setSignState={setSignState} />
             </>
           )}
 
