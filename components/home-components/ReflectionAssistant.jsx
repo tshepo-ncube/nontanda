@@ -351,7 +351,8 @@ function ReflectionAssistant() {
           <div className="flex items-center w-full">
             <textarea
               className="flex-1 h-22 p-2 mr-2 resize-none rounded border "
-              placeholder={placeholderText}
+              placeholder={"Tell me something..."}
+              // placeholder={placeholderText}
               value={newMessage}
               rows={calculateRows(newMessage)}
               onChange={(e) => setNewMessage(e.target.value)}

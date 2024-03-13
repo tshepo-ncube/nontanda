@@ -6,7 +6,7 @@ const ModalNavbar = ({ title }) => {
       <center>
         <div
           className="text-black text-3xl  font-bold pt-4"
-          style={{ fontSize: 21 }}
+          style={{ fontSize: 21, marginTop: 4 }}
         >
           <h1>{title}</h1>
         </div>
