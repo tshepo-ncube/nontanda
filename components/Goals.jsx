@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import GoalForm from "./GoalForm";
 import Fab from "@mui/material/Fab";
 import GoalView from "./GoalView";
@@ -16,6 +16,50 @@ import LinearProgress, {
 import AddIcon from "@mui/icons-material/Add";
 
 import SendIcon from "@mui/icons-material/Send";
+
+import { initializeApp } from "firebase/app";
+import {
+  getAuth,
+  signInWithPopup,
+  GoogleAuthProvider,
+  onAuthStateChanged,
+  signOut,
+  createUserWithEmailAndPassword,
+} from "firebase/auth";
+
+import {
+  getFirestore,
+  collection,
+  addDoc,
+  doc,
+  getDoc,
+  query,
+  where,
+  setDoc,
+  updateDoc,
+  getDocs,
+  runTransaction,
+} from "firebase/firestore";
+import { useNavigate } from "react-router-dom";
+
+const provider = new GoogleAuthProvider();
+//import { firebase } from "firebase";
+// import { firebaseui } from "firebaseui";
+//var firebase = require("firebase");
+//var firebaseui = require("firebaseui");
+// TODO: Replace the following with your app's Firebase project configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyC-TWCp-jNGYuzdjZbmD4tn5KsOCjgRCWM",
+  authDomain: "mindfulmanifesters-bb23e.firebaseapp.com",
+  projectId: "mindfulmanifesters-bb23e",
+  storageBucket: "mindfulmanifesters-bb23e.appspot.com",
+  messagingSenderId: "816933119912",
+  appId: "1:816933119912:web:a009d7a035bf3c491c1f9d",
+  measurementId: "G-1G8NESR5QL",
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
 
 const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
   height: 10,
@@ -34,7 +78,7 @@ const MyGoals = () => {
   const [goals, setGoals] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
   const [modalType, setModalType] = useState("New Goal");
-
+  const [data, setData] = useState({});
   const toggleModal = (modalType) => {
     setIsOpen(!isOpen);
     setModalType(modalType);
@@ -43,17 +87,68 @@ const MyGoals = () => {
     setGoals((prevGoals) => [...prevGoals, newGoal]);
   };
 
+  const getGoals = async () => {
+    const candidatesCollectionRef = collection(db, "goals");
+    const q = query(
+      candidatesCollectionRef,
+      where("userID", "==", "tshepo@gmail.com")
+    );
+
+    try {
+      const snapshot = await getDocs(q);
+      if (snapshot.empty) {
+        console.log("No matching documents.");
+        return;
+      }
+
+      snapshot.forEach((doc) => {
+        console.log(doc.id, "=>", doc.data());
+      });
+    } catch (error) {
+      console.error("Error getting documents: ", error);
+    }
+  };
+
+  const setUserDetails = async (user) => {
+    // Implementation for user registration
+
+    const docRef = doc(db, "users", "madara");
+
+    // Set the data in the document
+    const data = {
+      CurrentMessages: 15,
+      LastMessage: new Date(),
+      Name: "Mandara",
+      Plan: "Free",
+    };
+
+    //console.log(userObj.toUserObject());
+    // Save the document
+    await updateDoc(docRef, data)
+      .then(() => {
+        console.log("Document successfully written!");
+
+        return { registeredUser: true, Error: "" };
+      })
+      .catch((error) => {
+        console.error("Error writing document: ", error);
+        return { registeredUser: false, Error: error };
+      });
+  };
+
   return (
     <div className="container mx-auto p-4 overflow-y-auto">
       <h1 className="text-3xl font-bold mb-4">Goal Assistant</h1>
 
-      <List toggleModal={toggleModal} />
+      <List toggleModal={toggleModal} setData={setData} />
 
       <div className="bg-green-700 hover:bg-green-500  rounded-full shadow-md fixed bottom-6 right-7">
         <Fab
           color="primary"
           variant="extended"
           onClick={() => {
+            //getGoals();
+            //setUserDetails({});
             toggleModal("New Goal");
           }}
         >
@@ -74,7 +169,7 @@ const MyGoals = () => {
                 </div>
               ) : (
                 <div style={{ marginTop: 60 }}>
-                  <GoalView />
+                  <GoalView data={data} />
                 </div>
               )}
             </div>
@@ -108,11 +203,16 @@ const MyGoals = () => {
 };
 
 export default MyGoals;
-
-const Card = ({ recipientName, senderName, toggleModal }) => {
+//  key={card.id}
+//             title={card.title}
+//             reward={card.reward}
+//             descr={card.descr}
+//             dateCreated={card.dateCreated}
+const Card = ({ title, reward, descr, dateCreated, toggleModal, setData }) => {
   return (
     <div
       onClick={() => {
+        setData({ title: title, descr: descr });
         toggleModal("GoalView");
       }}
       className="block max-w-md h-200 mx-100 rounded overflow-hidden shadow-lg border bg-white-100 cursor-pointer"
@@ -129,7 +229,7 @@ const Card = ({ recipientName, senderName, toggleModal }) => {
           <BorderLinearProgress variant="determinate" value={50} />
         </div>
         <div className="flex flex-col">
-          <div className="font-bold text-xl mb-2">{recipientName}</div>
+          <div className="font-bold text-xl mb-2">{title}</div>
           {/* Other content goes here */}
         </div>
       </div>
@@ -177,8 +277,9 @@ const Card = ({ recipientName, senderName, toggleModal }) => {
 }
 //export default Card;
 
-const List = ({ toggleModal }) => {
+const List = ({ toggleModal, setData }) => {
   // Sample data for demonstration
+  const [goals, setGoals] = useState([]);
   const cardData = [
     { id: 1, recipientName: "I want to learn mandarin", senderName: "Bob" },
     {
@@ -194,15 +295,47 @@ const List = ({ toggleModal }) => {
     // { id: 3, recipientName: "Eve", senderName: "Frank" },
   ];
 
+  const getGoals = async () => {
+    const candidatesCollectionRef = collection(db, "goals");
+    const q = query(
+      candidatesCollectionRef,
+      where("userID", "==", "tshepo@gmail.com")
+    );
+
+    try {
+      const snapshot = await getDocs(q);
+      if (snapshot.empty) {
+        console.log("No matching documents.");
+        return;
+      }
+      const goalList = [];
+      snapshot.forEach((doc) => {
+        goalList.push(doc.data());
+        console.log(doc.id, "=>", doc.data());
+      });
+      setGoals(goalList);
+      console.log(goals);
+    } catch (error) {
+      console.error("Error getting documents: ", error);
+    }
+  };
+
+  useEffect(() => {
+    getGoals();
+  }, []);
+
   return (
     <>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {cardData.map((card) => (
+        {goals.map((card) => (
           <Card
             key={card.id}
-            recipientName={card.recipientName}
-            senderName={card.senderName}
+            title={card.Title}
+            reward={card.reward}
+            descr={card.Descr}
+            setData={setData}
             toggleModal={toggleModal}
+            dateCreated={card.dateCreated}
           />
         ))}
       </div>

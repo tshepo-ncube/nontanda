@@ -99,8 +99,8 @@ function ReflectionAssistant() {
     if (msgList[length - 1].role !== "user") {
       console.log("loading........");
       checkStatusAndPrintMessages(
-        "thread_l8VaqVxLBVDL61e0tf4LEdxq",
-        "run_XdLBs1DUx2MIDcVkSWhX3SeJ"
+        "thread_NWXJ1BmVcioMrytGGihRBAvf",
+        "run_oaWP3GLQzV1lEtLpGtnAYUiE"
       );
     } else {
       setLoading(false);
@@ -140,8 +140,8 @@ function ReflectionAssistant() {
     //scrollToBottom();
     // Example usage
     checkStatusAndPrintMessages(
-      "thread_l8VaqVxLBVDL61e0tf4LEdxq",
-      "run_XdLBs1DUx2MIDcVkSWhX3SeJ"
+      "thread_NWXJ1BmVcioMrytGGihRBAvf",
+      "run_oaWP3GLQzV1lEtLpGtnAYUiE"
     );
   }, [messages]);
 
@@ -149,8 +149,8 @@ function ReflectionAssistant() {
     scrollToBottom();
     // Example usage
     checkStatusAndPrintMessages(
-      "thread_l8VaqVxLBVDL61e0tf4LEdxq",
-      "run_XdLBs1DUx2MIDcVkSWhX3SeJ"
+      "thread_NWXJ1BmVcioMrytGGihRBAvf",
+      "run_oaWP3GLQzV1lEtLpGtnAYUiE"
     );
   }, []);
 
@@ -164,8 +164,8 @@ function ReflectionAssistant() {
       //   setData(apiData);
       // });
       checkStatusAndPrintMessages(
-        "thread_l8VaqVxLBVDL61e0tf4LEdxq",
-        "run_XdLBs1DUx2MIDcVkSWhX3SeJ"
+        "thread_NWXJ1BmVcioMrytGGihRBAvf",
+        "run_oaWP3GLQzV1lEtLpGtnAYUiE"
       );
     }
   }, []);
@@ -190,7 +190,7 @@ function ReflectionAssistant() {
   };
   const sendMsgOpenAi = async () => {
     const message = await openai.beta.threads.messages.create(
-      "thread_l8VaqVxLBVDL61e0tf4LEdxq",
+      "thread_NWXJ1BmVcioMrytGGihRBAvf",
       {
         role: "user",
         content: newMessage,
@@ -198,9 +198,9 @@ function ReflectionAssistant() {
     );
 
     const run = await openai.beta.threads.runs.create(
-      "thread_l8VaqVxLBVDL61e0tf4LEdxq",
+      "thread_NWXJ1BmVcioMrytGGihRBAvf",
       {
-        assistant_id: "asst_1CgeKXC8weUXBFM2opqTHaZD",
+        assistant_id: "asst_TuuWO4MxdsPJPgmdgLkXyeUN",
         instructions:
           "Please address the user as Tshepo, his goal is to lose 20 pounds of weight, Please have a conversation with the user and answer in a paragraph less than 300 characters",
       }
@@ -209,8 +209,8 @@ function ReflectionAssistant() {
     console.log(run);
 
     checkStatusAndPrintMessages(
-      "thread_l8VaqVxLBVDL61e0tf4LEdxq",
-      "run_XdLBs1DUx2MIDcVkSWhX3SeJ"
+      "thread_NWXJ1BmVcioMrytGGihRBAvf",
+      "run_oaWP3GLQzV1lEtLpGtnAYUiE"
     );
 
     setNewMessage("");

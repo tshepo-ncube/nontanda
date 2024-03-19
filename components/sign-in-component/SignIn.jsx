@@ -65,8 +65,10 @@ function SignIn({ setSignState }) {
         const token = credential.accessToken;
         // The signed-in user info.
         const user = result.user;
+        //  const user = result.user;
+        DB.setUserDetails(user);
         // IdP data available using getAdditionalUserInfo(result)
-        window.location.href = "http://localhost:3000/goals";
+        //window.location.href = "http://localhost:3000/goals";
         // ...
       })
       .catch((error) => {
@@ -114,6 +116,7 @@ function SignIn({ setSignState }) {
         // Signed in
         const user = userCredential.user;
         setUser(user);
+        console.log(user);
         // ...
       })
       .catch((error) => {

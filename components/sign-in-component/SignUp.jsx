@@ -17,7 +17,7 @@ import {
   MDBInput,
   MDBCheckbox,
 } from "mdb-react-ui-kit";
-
+import DB from "../../database-layer/DB";
 import { initializeApp } from "firebase/app";
 import {
   getAuth,
@@ -27,6 +27,18 @@ import {
   signOut,
   createUserWithEmailAndPassword,
 } from "firebase/auth";
+
+import {
+  getFirestore,
+  collection,
+  addDoc,
+  doc,
+  getDoc,
+  setDoc,
+  updateDoc,
+  getDocs,
+  runTransaction,
+} from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
 
 const provider = new GoogleAuthProvider();
@@ -44,6 +56,9 @@ const firebaseConfig = {
   appId: "1:816933119912:web:a009d7a035bf3c491c1f9d",
   measurementId: "G-1G8NESR5QL",
 };
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
 function SignIn({ setSignState }) {
   //const [signState, setSignState] = useState("SignIn");
   const [signedIn, setSignedIn] = useState(null);
@@ -54,7 +69,32 @@ function SignIn({ setSignState }) {
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
   const [confirmPassword, setConfirmPassword] = useState(null);
+  const setUserDetails = async (user) => {
+    // Implementation for user registration
 
+    const docRef = doc(db, "users", "tshepo");
+
+    // Set the data in the document
+    const data = {
+      CurrentMessages: 15,
+      LastMessage: new Date(),
+      Name: user.name,
+      Plan: "Free",
+    };
+
+    //console.log(userObj.toUserObject());
+    // Save the document
+    await setDoc(docRef, data)
+      .then(() => {
+        console.log("Document successfully written!");
+
+        return { registeredUser: true, Error: "" };
+      })
+      .catch((error) => {
+        console.error("Error writing document: ", error);
+        return { registeredUser: false, Error: error };
+      });
+  };
   const handleSignUp = () => {
     if (confirmPassword !== password) {
       setError("passwords do not match ");
@@ -64,8 +104,9 @@ function SignIn({ setSignState }) {
           // Signed up
           const user = userCredential.user;
           setUser(user);
+          setUserDetails(user);
           // IdP data available using getAdditionalUserInfo(result)
-          window.location.href = "http://localhost:3000/goals";
+          //window.location.href = "http://localhost:3000/goals";
           // ...
         })
         .catch((error) => {
@@ -89,8 +130,9 @@ function SignIn({ setSignState }) {
         const token = credential.accessToken;
         // The signed-in user info.
         const user = result.user;
+        setUserDetails(user);
         // IdP data available using getAdditionalUserInfo(result)
-        window.location.href = "http://localhost:3000/goals";
+        //window.location.href = "http://localhost:3000/goals";
         // ...
       })
       .catch((error) => {
@@ -120,7 +162,7 @@ function SignIn({ setSignState }) {
           profilePicture: user.photoURL,
         });
 
-        window.location.href = "http://localhost:3000/goals";
+        // window.location.href = "http://localhost:3000/goals";
       } else {
         setSignedIn(false);
         setUser(null);
