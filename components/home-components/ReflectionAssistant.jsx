@@ -260,11 +260,18 @@ function ReflectionAssistant() {
           }}
         >
           {/* Mobile Button */}
-          <div onClick={handleNav} style={{ zIndex: 9999 }}>
+
+          <div onClick={handleNav}>
             {nav ? (
-              <AiOutlineClose size={20} style={{ color: `${textColor}` }} />
+              <AiOutlineClose
+                size={20}
+                style={{ color: `${textColor}`, zIndex: 9999 }}
+              />
             ) : (
-              <AiOutlineMenu size={20} style={{ color: `${textColor}` }} />
+              <AiOutlineMenu
+                size={20}
+                style={{ color: `${textColor}`, zIndex: 1 }}
+              />
             )}
           </div>
 
