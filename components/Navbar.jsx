@@ -148,18 +148,18 @@ const Navbar = () => {
 
           {user ? (
             <>
-              <li className="p-4">
+              {/* <li className="p-4">
                 <Link href="/goals">My Goals</Link>
-              </li>
+              </li> */}
               <li className="p-4">
                 <Link href="/profile">Profile</Link>
               </li>
             </>
           ) : (
             <>
-              <li className="p-4">
+              {/* <li className="p-4">
                 <Link href="/goals">Goal Assistant</Link>
-              </li>
+              </li> */}
             </>
           )}
 
@@ -221,26 +221,26 @@ const Navbar = () => {
             <hr style={{ marginTop: 8 }} />
 
             <li className="p-4 text-4xl hover:text-gray-500">
-              <Link href="/chat">Chat</Link>
+              <Link href="/chat">Goal Assistant</Link>
             </li>
             <hr style={{ marginTop: 8 }} />
 
             {user ? (
               <>
-                <li className="p-4 text-4xl hover:text-gray-500">
+                {/* <li className="p-4 text-4xl hover:text-gray-500">
                   <Link href="/goals">My Goals</Link>
                 </li>
-                <hr style={{ marginTop: 8 }} />
+                <hr style={{ marginTop: 8 }} /> */}
                 <li className="p-4 text-4xl hover:text-gray-500">
                   <Link href="/profile">Profile</Link>
                 </li>
               </>
             ) : (
               <>
-                <li className="p-4 text-4xl hover:text-gray-500">
+                {/* <li className="p-4 text-4xl hover:text-gray-500">
                   <Link href="/goals">Goal Assistant</Link>
                 </li>
-                <hr style={{ marginTop: 8 }} />
+                <hr style={{ marginTop: 8 }} /> */}
               </>
             )}
 
