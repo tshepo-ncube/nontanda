@@ -6,6 +6,10 @@ import Grid from "@mui/material/Grid";
 import { Fab, Button } from "@mui/material";
 import Box from "@mui/material/Box";
 
+import { useTheme, ThemeProvider, createTheme } from "@mui/material/styles";
+import Brightness4Icon from "@mui/icons-material/Brightness4";
+import Brightness7Icon from "@mui/icons-material/Brightness7";
+
 import ButtonGroup from "@mui/material/ButtonGroup";
 import AddIcon from "@mui/icons-material/Add";
 import Link from "next/link";
@@ -15,7 +19,6 @@ import CircularProgress, {
 import { styled } from "@mui/material/styles";
 import Stack from "@mui/material/Stack";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
-
 import SendIcon from "@mui/icons-material/Send";
 import { IconButton } from "@mui/material";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
@@ -43,7 +46,11 @@ const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
   },
 }));
 
+const ColorModeContext = React.createContext({ toggleColorMode: () => {} });
+
 function ReflectionAssistant() {
+  const theme = useTheme();
+  const colorMode = React.useContext(ColorModeContext);
   const [entry, setEntry] = useState("");
   const [insights, setInsights] = useState(true);
   const [loading, setLoading] = useState(false);
@@ -332,6 +339,9 @@ function ReflectionAssistant() {
                           New Goal
                         </Button>
                       </Link>
+                      <Button style={{ backgroundColor: "white" }}>
+                        Dark Mode
+                      </Button>
                     </ButtonGroup>
                   </Box>
                 </center>
