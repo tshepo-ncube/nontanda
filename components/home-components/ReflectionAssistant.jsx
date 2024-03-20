@@ -304,6 +304,22 @@ function ReflectionAssistant() {
                   My Goals
                 </h2>
 
+                <center>
+                  <Button
+                    color="success"
+                    variant="text"
+                    style={{ backgroundColor: "white" }}
+                  >
+                    clear chat
+                  </Button>
+
+                  <Link href="/goals" target="_blank">
+                    <Button variant="text" style={{ backgroundColor: "white" }}>
+                      Reflect On A New Goal
+                    </Button>
+                  </Link>
+                </center>
+
                 <button className="w-full text-left py-2 focus:outline-none focus-visible:bg-indigo-50 bg-white border rounded mb-2 p-10">
                   <div className="flex items-center">
                     <img
@@ -469,7 +485,7 @@ function ReflectionAssistant() {
         <hr style={{ marginTop: 8 }} />
         <div
           style={{ height: 500 }}
-          className="flex flex-col max-h-80 h-80 overflow-y-auto mt-2"
+          className="flex flex-col   h-screen overflow-y-auto mt-2"
           ref={divRef}
         >
           {msgsLoading ? (
@@ -588,7 +604,7 @@ function ReflectionAssistant() {
           >
             How do you feel?
           </label> */}
-          <div className="flex items-center w-full">
+          {/* <div className="flex items-center w-full">
             <textarea
               className="flex-1 h-22 p-2 mr-2 resize-none rounded border "
               placeholder={"Tell me something..."}
@@ -598,46 +614,36 @@ function ReflectionAssistant() {
               onChange={(e) => setNewMessage(e.target.value)}
             />
 
-            {/* <div className="bg-green-700 hover:bg-green-500 z-0 rounded-full shadow-md">
-                    <Fab color="success" size="medium">
-                      <SendIcon />
-                    </Fab>
-                  </div> */}
+          
+          </div> */}
+
+          <div className="bg-gray-100 px-4 py-2 fixed w-full bottom-10">
+            <div className="flex items-center">
+              <input
+                className="w-full border rounded-full py-2 px-4 mr-2 resize-none"
+                type="text"
+                placeholder="How's your goal going..."
+                // placeholder={placeholderText}
+                value={newMessage}
+                rows={calculateRows(newMessage)}
+                onChange={(e) => setNewMessage(e.target.value)}
+              ></input>
+              <button
+                onClick={sendMessageHandler}
+                className="bg-blue-500 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-full"
+              >
+                <SendIcon className="ml-2 mr-2 text-white" />
+              </button>
+            </div>
           </div>
 
-          <button
+          {/* <button
             onClick={sendMessageHandler}
             className="bg-blue-500 w-full p-2 rounded-full shadow-md mt-2 mb-2"
           >
-            {/* <Fab
-              color="primary"
-              className="w-full"
-              variant="extended"
-              // onClick={() => {
-              //   toggleModal("New Goal");
-
-              // }}
-              onClick={sendMessageHandler}
-            ></Fab> */}
-            <SendIcon className="ml-2 mr-2 text-white" />
-            {/* <p className="text-white">send message</p> */}
-          </button>
-
-          <center>
-            <Button
-              color="success"
-              variant="text"
-              style={{ backgroundColor: "white" }}
-            >
-              clear chat
-            </Button>
-
-            <Link href="/goals" target="_blank">
-              <Button variant="text" style={{ backgroundColor: "white" }}>
-                Reflect On A New Goal
-              </Button>
-            </Link>
-          </center>
+             
+            <SendIcon className="ml-2 mr-2 text-white" /> 
+          </button> */}
         </div>
         {/* <div className="relative">
                   <textarea
