@@ -70,22 +70,26 @@ const Home = () => {
         </div>
       </div>
 
-      <div className="bg-white-100 p-18 mt-10">
+      <div className="bg-white-100 p-8 mt-10">
         <div className="container mx-auto text-center">
           {/* <h2 className="text-4xl font-bold text-gray-800 mb-8">Who We Are</h2> */}
           <p className="text-gray-600 leading-loose mb-8">
-            We are passionate about mindfulness and committed to helping
-            individuals on their journey to a more mindful life. Our focus
-            extends to creating mindful content, developing thoughtful products,
-            and offering services designed to cultivate mindfulness. By
-            integrating mindfulness into various aspects of life, we aim to
-            empower people to lead more conscious and fulfilling lives.
+            Welcome to MindfulManifesters, your personal chatbot guide designed
+            to turn your goals into achievements. Our platform offers
+            personalized conversations, progress tracking, and motivational
+            support tailored to each of your ambitions, whether they're related
+            to personal development, fitness, or professional growth. With the
+            ability to add unlimited goals, MindfulManifesters is here to ensure
+            that every target you set is not just a dream, but a milestone
+            you're equipped to reach.
           </p>
           <p className="text-gray-600 leading-loose">
-            Whether through our engaging content, purposeful products, or
-            transformative services, we strive to be your companion in the
-            mindful business. Join us in the pursuit of mindfulness and discover
-            the positive impact it can have on your well-being.
+            Join MindfulManifesters today and embrace a community dedicated to
+            growth and achievement. Our adaptive chatbot technology provides
+            customized encouragement and actionable insights, making it easier
+            than ever to stay on track and overcome obstacles. Start manifesting
+            your aspirations into reality with MindfulManifesters, where your
+            goals aren't just planned; they're achieved.
           </p>
         </div>
       </div>
