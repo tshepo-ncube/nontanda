@@ -244,24 +244,32 @@ function ReflectionAssistant() {
   return (
     <div style={{ marginLeft: 0, marginRight: 0 }}>
       <div className="w-full mx-auto mt-2 p-2 ">
-        <center>
-          <h2 className="text-xl font-bold mt-2">Goal Assistant</h2>
-        </center>
-        {/* Mobile Button */}
         <div
-          onClick={handleNav}
-          className="block  left-0 "
-          style={{ zIndex: 9999 }}
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+          }}
         >
-          {nav ? (
-            <>
+          {/* Mobile Button */}
+          <div onClick={handleNav} style={{ zIndex: 9999 }}>
+            {nav ? (
               <AiOutlineClose size={20} style={{ color: `${textColor}` }} />
-            </>
-          ) : (
-            <>
+            ) : (
               <AiOutlineMenu size={20} style={{ color: `${textColor}` }} />
-            </>
-          )}
+            )}
+          </div>
+
+          {/* Title */}
+          <div style={{ textAlign: "center", flex: 1 }}>
+            <h2 className="text-xl font-bold mt-2">Goal Assistant</h2>
+          </div>
+
+          {/* Placeholder for alignment */}
+          <div style={{ width: 20, height: 20, opacity: 0 }}>
+            {" "}
+            {/* Invisible placeholder to balance the layout */}{" "}
+          </div>
         </div>
 
         {nav ? (
