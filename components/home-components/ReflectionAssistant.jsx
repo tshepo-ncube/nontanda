@@ -6,6 +6,7 @@ import Grid from "@mui/material/Grid";
 import { Fab, Button } from "@mui/material";
 import Box from "@mui/material/Box";
 
+import ButtonGroup from "@mui/material/ButtonGroup";
 import AddIcon from "@mui/icons-material/Add";
 import Link from "next/link";
 import CircularProgress, {
@@ -305,19 +306,34 @@ function ReflectionAssistant() {
                 </h2>
 
                 <center className="mb-4">
-                  <Button
-                    color="success"
-                    variant="text"
-                    style={{ backgroundColor: "white" }}
+                  <Box
+                    sx={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      "& > *": {
+                        m: 1,
+                      },
+                    }}
                   >
-                    clear chat
-                  </Button>
-
-                  <Link href="/goals" target="_blank">
-                    <Button variant="text" style={{ backgroundColor: "white" }}>
-                      New Goal
-                    </Button>
-                  </Link>
+                    <ButtonGroup variant="text" aria-label="Basic button group">
+                      <Button
+                        color="error"
+                        style={{ backgroundColor: "white" }}
+                      >
+                        clear chat
+                      </Button>
+                      <Link href="/goals" target="_blank">
+                        <Button
+                          variant="text"
+                          color="success"
+                          style={{ backgroundColor: "white" }}
+                        >
+                          New Goal
+                        </Button>
+                      </Link>
+                    </ButtonGroup>
+                  </Box>
                 </center>
 
                 <button className="w-full text-left py-2 focus:outline-none focus-visible:bg-indigo-50 bg-white border rounded mb-2 p-10">
