@@ -5,25 +5,42 @@ import Skeleton from "@mui/material/Skeleton";
 import Grid from "@mui/material/Grid";
 import { Fab, Button } from "@mui/material";
 import Box from "@mui/material/Box";
+
+import AddIcon from "@mui/icons-material/Add";
 import Link from "next/link";
 import CircularProgress, {
   circularProgressClasses,
 } from "@mui/material/CircularProgress";
 import { styled } from "@mui/material/styles";
-import LinearProgress, {
-  linearProgressClasses,
-} from "@mui/material/LinearProgress";
+import Stack from "@mui/material/Stack";
+import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 
 import SendIcon from "@mui/icons-material/Send";
 import { IconButton } from "@mui/material";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import ThumbDownIcon from "@mui/icons-material/ThumbDown";
-
+import ChatCard from "../goals-components/ChatCard";
+import LinearProgress, {
+  linearProgressClasses,
+} from "@mui/material/LinearProgress";
 import OpenAI from "openai";
 const openai = new OpenAI({
   apiKey: "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",
   dangerouslyAllowBrowser: true,
 });
+
+const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
+  height: 10,
+  borderRadius: 5,
+  [`&.${linearProgressClasses.colorPrimary}`]: {
+    backgroundColor:
+      theme.palette.grey[theme.palette.mode === "light" ? 200 : 800],
+  },
+  [`& .${linearProgressClasses.bar}`]: {
+    borderRadius: 5,
+    backgroundColor: theme.palette.mode === "light" ? "#1a90ff" : "#308fe8",
+  },
+}));
 
 function ReflectionAssistant() {
   const [entry, setEntry] = useState("");
@@ -41,10 +58,10 @@ function ReflectionAssistant() {
     "The future feels uncertain and daunting, and I'm struggling to find a sense of direction or purpose in my life...",
     "No matter how hard I try to stay positive, negative thoughts and self-doubt keep creeping in, making it difficult to see a way out of this rut...",
   ];
-
+  const [nav, setNav] = useState(false);
   const [value, setValue] = React.useState(2);
   const [newMessage, setNewMessage] = useState("");
-
+  const [textColor, setTextColor] = useState("black");
   // const [messages, setMessages] = useState([
   //   {
   //     message:
@@ -220,12 +237,227 @@ function ReflectionAssistant() {
     sendMsgOpenAi();
     scrollToBottom();
   };
+
+  const handleNav = () => {
+    setNav(!nav);
+  };
   return (
     <div style={{ marginLeft: 0, marginRight: 0 }}>
       <div className="w-full mx-auto mt-2 p-2 ">
         <center>
-          <h2 className="text-xl font-bold mt-4">Mindful Assitant</h2>
+          <h2 className="text-xl font-bold mt-2">Goal Assistant</h2>
         </center>
+        {/* Mobile Button */}
+        <div
+          onClick={handleNav}
+          className="block  left-0 "
+          style={{ zIndex: 9999 }}
+        >
+          {nav ? (
+            <>
+              <AiOutlineClose size={20} style={{ color: `${textColor}` }} />
+            </>
+          ) : (
+            <>
+              <AiOutlineMenu size={20} style={{ color: `${textColor}` }} />
+            </>
+          )}
+        </div>
+
+        {nav ? (
+          <>
+            <div
+              className={
+                "z-10 absolute top-0 left-0 bottom-0 flex justify-center lg:w-[40%] sm:w-full md:w-full h-screen bg-gray-100 text-center ease-in duration-300 p-4"
+              }
+            >
+              <div className="bg-green-700 hover:bg-green-500  rounded-full shadow-md absolute bottom-6 right-7">
+                <Fab color="primary" onClick={() => {}}>
+                  <AddIcon />
+                </Fab>
+              </div>
+              <div
+                onClick={handleNav}
+                className="absolute top-0 right-0 p-6"
+                style={{ zIndex: 9999 }}
+              >
+                {nav ? (
+                  <>
+                    <AiOutlineClose size={20} style={{ color: "black" }} />
+                  </>
+                ) : (
+                  <>
+                    <AiOutlineMenu size={20} style={{ color: "black" }} />
+                  </>
+                )}
+              </div>
+              <Stack className="top-0">
+                <h2 className="text-xl text-black font-bold mt-2 mb-6">
+                  My Goals
+                </h2>
+
+                <button className="w-full text-left py-2 focus:outline-none focus-visible:bg-indigo-50 bg-white border rounded mb-2 p-10">
+                  <div className="flex items-center">
+                    <img
+                      className="rounded-full items-start flex-shrink-0 mr-3"
+                      src="https://res.cloudinary.com/dc6deairt/image/upload/v1638102932/user-32-01_pfck4u.jpg"
+                      width="32"
+                      height="32"
+                      alt="Marie Zulfikar"
+                    ></img>
+                    <div>
+                      <h4 className="text-sm font-semibold text-gray-900">
+                        Keto diet
+                      </h4>
+                      <div className="text-[13px] text-red-700">
+                        2 hours left
+                      </div>
+                    </div>
+                  </div>
+                </button>
+
+                <button className="w-full text-left py-2 focus:outline-none focus-visible:bg-indigo-50 bg-white border rounded mb-2 p-10">
+                  <div className="flex items-center">
+                    <img
+                      className="rounded-full items-start flex-shrink-0 mr-3"
+                      src="https://res.cloudinary.com/dc6deairt/image/upload/v1638102932/user-32-01_pfck4u.jpg"
+                      width="32"
+                      height="32"
+                      alt="Marie Zulfikar"
+                    ></img>
+                    <div>
+                      <h4 className="text-sm font-semibold text-gray-900">
+                        90% for Research Proposal
+                      </h4>
+                      <div className="text-[13px] text-green-700">
+                        23 days left
+                      </div>
+                    </div>
+                  </div>
+                </button>
+
+                <button className="w-full text-left py-2 focus:outline-none focus-visible:bg-indigo-50 bg-white border rounded mb-2 p-10">
+                  <div className="flex items-center">
+                    <img
+                      className="rounded-full items-start flex-shrink-0 mr-3"
+                      src="https://res.cloudinary.com/dc6deairt/image/upload/v1638102932/user-32-01_pfck4u.jpg"
+                      width="32"
+                      height="32"
+                      alt="Marie Zulfikar"
+                    ></img>
+                    <div>
+                      <h4 className="text-sm font-semibold text-gray-900">
+                        90% for Research Proposal
+                      </h4>
+                      <div className="text-[13px] text-green-700">
+                        23 days left
+                      </div>
+                    </div>
+                  </div>
+                </button>
+
+                <button className="w-full text-left py-2 focus:outline-none focus-visible:bg-indigo-50 bg-white border rounded mb-2 p-10">
+                  <div className="flex items-center">
+                    <img
+                      className="rounded-full items-start flex-shrink-0 mr-3"
+                      src="https://res.cloudinary.com/dc6deairt/image/upload/v1638102932/user-32-01_pfck4u.jpg"
+                      width="32"
+                      height="32"
+                      alt="Marie Zulfikar"
+                    ></img>
+                    <div>
+                      <h4 className="text-sm font-semibold text-gray-900">
+                        90% for Research Proposal
+                      </h4>
+                      <div className="text-[13px] text-green-700">
+                        23 days left
+                      </div>
+                    </div>
+                  </div>
+                </button>
+
+                <button className="w-full text-left py-2 focus:outline-none focus-visible:bg-indigo-50 bg-white border rounded mb-2 p-10">
+                  <div className="flex items-center">
+                    <img
+                      className="rounded-full items-start flex-shrink-0 mr-3"
+                      src="https://res.cloudinary.com/dc6deairt/image/upload/v1638102932/user-32-01_pfck4u.jpg"
+                      width="32"
+                      height="32"
+                      alt="Marie Zulfikar"
+                    ></img>
+                    <div>
+                      <h4 className="text-sm font-semibold text-gray-900">
+                        Marie Zulfikar
+                      </h4>
+                      <div className="text-[13px]">
+                        The video chat ended · 2hrs
+                      </div>
+                    </div>
+                  </div>
+                </button>
+
+                {/* <>
+                  <a className="xl:w-full sm:w-full lg:w-full w-full  md:w-full flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+                    <img
+                      className="object-cover w-full rounded-t-lg h-120 md:h-full md:w-48 md:rounded-none md:rounded-s-lg"
+                      src="https://flowbite.com/docs/images/blog/image-1.jpg"
+                      alt=""
+                    ></img>
+                    <div className="flex flex-col justify-between p-4 leading-normal">
+                      <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                        Goal Name here Goal Name here Goal Name here
+                      </h5>
+                      <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
+                        23 days left
+                      </p>{" "}
+                      <div className="w-40 px-2 text-xs group rounded-xl disabled:border *:select-none [&>*:not(.sr-only)]:relative *:disabled:opacity-20 disabled:text-gray-950 disabled:border-gray-200 disabled:bg-gray-100 dark:disabled:border-gray-800/50 disabled:dark:bg-gray-900 dark:*:disabled:!text-white text-gray-950 bg-gray-100 hover:bg-gray-200/75 active:bg-gray-100 dark:text-white dark:bg-gray-500/10 dark:hover:bg-gray-500/15 dark:active:bg-gray-500/10 flex gap-1.5 items-center h-8 justify-center">
+                        <span> 23 March 2022</span>
+                      </div>
+                    </div>
+                  </a>
+                </> */}
+
+                {/* <div
+                  onClick={() => {}}
+                  className="block max-w-md h-200 mx-100 rounded overflow-hidden shadow-lg border bg-white-100 cursor-pointer"
+                >
+                  <img
+                    className="w-full h-40"
+                    src="https://flowbite.com/docs/images/blog/image-1.jpg"
+                    alt="Serene Landscape"
+                  />
+
+                  <div className="flex flex-col justify-between px-6 py-4 h-200 bg-white">
+                    <div className="text-green-500 mb-2 text-sm">
+                      Reflected 2 days ago
+                    </div>
+                    <div className="mt-auto mb-2">
+                      <BorderLinearProgress variant="determinate" value={50} />
+                    </div>
+                    <div className="flex flex-col">
+                      <div className="font-bold text-xl mb-2">
+                        {"hey there"}
+                      </div>
+                   
+                    </div>
+                  </div>
+                </div> */}
+              </Stack>
+            </div>
+          </>
+        ) : (
+          <></>
+        )}
+
+        {/* <div
+          className={
+            nav
+              ? "z-10 absolute top-0 left-0 right-0 bottom-0 flex justify-center items-center w-[50%] h-screen bg-red-500 text-center ease-in duration-300"
+              : "z-10 absolute top-0 left-[-100%] right-0 bottom-0 flex justify-center items-center w-[50%]] h-screen  text-center ease-in duration-300"
+          }
+        >
+           
+        </div> */}
         <hr style={{ marginTop: 8 }} />
         <div
           style={{ height: 500 }}
