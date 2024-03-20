@@ -279,11 +279,11 @@ function ReflectionAssistant() {
                 "z-10 absolute top-0 left-0 bottom-0 flex justify-center lg:w-[40%] sm:w-full md:w-full h-screen bg-gray-100 text-center ease-in duration-300 p-4"
               }
             >
-              <div className="bg-green-700 hover:bg-green-500  rounded-full shadow-md absolute bottom-6 right-7">
+              {/* <div className="bg-green-700 hover:bg-green-500  rounded-full shadow-md absolute bottom-6 right-7">
                 <Fab color="primary" onClick={() => {}}>
                   <AddIcon />
                 </Fab>
-              </div>
+              </div> */}
               <div
                 onClick={handleNav}
                 className="absolute top-0 right-0 p-6"
@@ -304,7 +304,7 @@ function ReflectionAssistant() {
                   My Goals
                 </h2>
 
-                <center>
+                <center className="mb-4">
                   <Button
                     color="success"
                     variant="text"
@@ -315,7 +315,7 @@ function ReflectionAssistant() {
 
                   <Link href="/goals" target="_blank">
                     <Button variant="text" style={{ backgroundColor: "white" }}>
-                      Reflect On A New Goal
+                      New Goal
                     </Button>
                   </Link>
                 </center>
