@@ -9,7 +9,7 @@ import Box from "@mui/material/Box";
 import { useTheme, ThemeProvider, createTheme } from "@mui/material/styles";
 import Brightness4Icon from "@mui/icons-material/Brightness4";
 import Brightness7Icon from "@mui/icons-material/Brightness7";
-
+import { IoIosArrowBack } from "react-icons/io";
 import ButtonGroup from "@mui/material/ButtonGroup";
 import AddIcon from "@mui/icons-material/Add";
 import Link from "next/link";
@@ -28,6 +28,7 @@ import LinearProgress, {
   linearProgressClasses,
 } from "@mui/material/LinearProgress";
 import OpenAI from "openai";
+import GoalForm from "../GoalForm";
 const openai = new OpenAI({
   apiKey: "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",
   dangerouslyAllowBrowser: true,
@@ -84,6 +85,7 @@ function ReflectionAssistant() {
   // ]);
 
   const [messages, setMessages] = useState([]);
+  const [newGoal, setNewGoal] = useState(false);
   const [msgsLoading, setMsgsLoading] = useState(true);
   const divRef = useRef(null);
   const sendBtnRef = useRef(null);
@@ -249,6 +251,10 @@ function ReflectionAssistant() {
   const handleNav = () => {
     setNav(!nav);
   };
+
+  const handleNewGoal = () => {
+    setNewGoal(!newGoal);
+  };
   return (
     <div style={{ marginLeft: 0, marginRight: 0 }}>
       <div className="w-full mx-auto mt-2 p-2 ">
@@ -291,7 +297,7 @@ function ReflectionAssistant() {
           <>
             <div
               className={
-                "z-10 absolute top-0 left-0 bottom-0 flex justify-center lg:w-[40%] sm:w-full md:w-full h-screen bg-gray-100 text-center ease-in duration-300 p-4"
+                "overflow-y-auto z-10 absolute top-0 left-0 bottom-0 flex justify-center lg:w-[40%] sm:w-full md:w-full h-screen bg-gray-100 text-center ease-in duration-300 p-4"
               }
             >
               {/* <div className="bg-green-700 hover:bg-green-500  rounded-full shadow-md absolute bottom-6 right-7">
@@ -315,190 +321,110 @@ function ReflectionAssistant() {
                 )}
               </div>
               <Stack className="top-0">
-                <h2 className="text-xl text-black font-bold mt-2 mb-6">
-                  My Goals
-                </h2>
-
-                <center className="mb-4">
-                  <Box
-                    sx={{
-                      display: "flex",
-                      flexDirection: "column",
-                      alignItems: "center",
-                      "& > *": {
-                        m: 1,
-                      },
-                    }}
-                  >
-                    <ButtonGroup variant="text" aria-label="Basic button group">
+                {newGoal ? (
+                  <>
+                    <div
+                      onClick={handleNewGoal}
+                      className="absolute top-0 left-0 p-6"
+                      style={{ zIndex: 9999 }}
+                    >
+                      {/* <IoIosArrowBack size={20} style={{ color: "black" }} /> */}
                       <Button
-                        color="error"
                         style={{ backgroundColor: "white" }}
+                        onClick={handleNewGoal}
                       >
-                        clear chat
+                        back
                       </Button>
-                      <Link href="/goals" target="_blank">
-                        <Button
+                    </div>
+                    <h2 className="text-xl text-black font-bold mt-2">
+                      New Goal
+                    </h2>
+
+                    <GoalForm onAddGoal={() => {}} />
+                  </>
+                ) : (
+                  <>
+                    <h2 className="text-xl text-black font-bold mt-2">
+                      My Goals
+                    </h2>
+
+                    <center className="mb-4">
+                      <Box
+                        sx={{
+                          display: "flex",
+                          flexDirection: "column",
+                          alignItems: "center",
+                          "& > *": {
+                            m: 1,
+                          },
+                        }}
+                      >
+                        <ButtonGroup
                           variant="text"
-                          color="success"
-                          style={{ backgroundColor: "white" }}
+                          aria-label="Basic button group"
                         >
-                          New Goal
-                        </Button>
-                      </Link>
-                      <Button style={{ backgroundColor: "white" }}>
-                        Dark Mode
-                      </Button>
-                    </ButtonGroup>
-                  </Box>
-                </center>
+                          <Button
+                            color="error"
+                            style={{ backgroundColor: "white" }}
+                          >
+                            clear chat
+                          </Button>
+                          <Button
+                            variant="text"
+                            color="success"
+                            onClick={handleNewGoal}
+                            style={{ backgroundColor: "white" }}
+                          >
+                            New Goal
+                          </Button>
+                          <Button style={{ backgroundColor: "white" }}>
+                            Dark Mode
+                          </Button>
+                        </ButtonGroup>
+                      </Box>
+                    </center>
 
-                <button className="w-full text-left py-2 focus:outline-none focus-visible:bg-indigo-50 bg-white border rounded mb-2 p-10">
-                  <div className="flex items-center">
-                    <img
-                      className="rounded-full items-start flex-shrink-0 mr-3"
-                      src="https://res.cloudinary.com/dc6deairt/image/upload/v1638102932/user-32-01_pfck4u.jpg"
-                      width="32"
-                      height="32"
-                      alt="Marie Zulfikar"
-                    ></img>
-                    <div>
-                      <h4 className="text-sm font-semibold text-gray-900">
-                        Keto diet
-                      </h4>
-                      <div className="text-[13px] text-red-700">
-                        2 hours left
+                    <button className="w-full text-left py-2 focus:outline-none focus-visible:bg-indigo-50 bg-white border rounded mb-2 p-10">
+                      <div className="flex items-center">
+                        <img
+                          className="rounded-full items-start flex-shrink-0 mr-3"
+                          src="https://res.cloudinary.com/dc6deairt/image/upload/v1638102932/user-32-01_pfck4u.jpg"
+                          width="32"
+                          height="32"
+                          alt="Marie Zulfikar"
+                        ></img>
+                        <div>
+                          <h4 className="text-sm font-semibold text-gray-900">
+                            Keto diet
+                          </h4>
+                          <div className="text-[13px] text-red-700">
+                            2 hours left
+                          </div>
+                        </div>
                       </div>
-                    </div>
-                  </div>
-                </button>
+                    </button>
 
-                <button className="w-full text-left py-2 focus:outline-none focus-visible:bg-indigo-50 bg-white border rounded mb-2 p-10">
-                  <div className="flex items-center">
-                    <img
-                      className="rounded-full items-start flex-shrink-0 mr-3"
-                      src="https://res.cloudinary.com/dc6deairt/image/upload/v1638102932/user-32-01_pfck4u.jpg"
-                      width="32"
-                      height="32"
-                      alt="Marie Zulfikar"
-                    ></img>
-                    <div>
-                      <h4 className="text-sm font-semibold text-gray-900">
-                        90% for Research Proposal
-                      </h4>
-                      <div className="text-[13px] text-green-700">
-                        23 days left
+                    <button className="w-full text-left py-2 focus:outline-none focus-visible:bg-indigo-50 bg-white border rounded mb-2 p-10">
+                      <div className="flex items-center">
+                        <img
+                          className="rounded-full items-start flex-shrink-0 mr-3"
+                          src="https://res.cloudinary.com/dc6deairt/image/upload/v1638102932/user-32-01_pfck4u.jpg"
+                          width="32"
+                          height="32"
+                          alt="Marie Zulfikar"
+                        ></img>
+                        <div>
+                          <h4 className="text-sm font-semibold text-gray-900">
+                            90% for Research Proposal
+                          </h4>
+                          <div className="text-[13px] text-green-700">
+                            23 days left
+                          </div>
+                        </div>
                       </div>
-                    </div>
-                  </div>
-                </button>
-
-                <button className="w-full text-left py-2 focus:outline-none focus-visible:bg-indigo-50 bg-white border rounded mb-2 p-10">
-                  <div className="flex items-center">
-                    <img
-                      className="rounded-full items-start flex-shrink-0 mr-3"
-                      src="https://res.cloudinary.com/dc6deairt/image/upload/v1638102932/user-32-01_pfck4u.jpg"
-                      width="32"
-                      height="32"
-                      alt="Marie Zulfikar"
-                    ></img>
-                    <div>
-                      <h4 className="text-sm font-semibold text-gray-900">
-                        90% for Research Proposal
-                      </h4>
-                      <div className="text-[13px] text-green-700">
-                        23 days left
-                      </div>
-                    </div>
-                  </div>
-                </button>
-
-                <button className="w-full text-left py-2 focus:outline-none focus-visible:bg-indigo-50 bg-white border rounded mb-2 p-10">
-                  <div className="flex items-center">
-                    <img
-                      className="rounded-full items-start flex-shrink-0 mr-3"
-                      src="https://res.cloudinary.com/dc6deairt/image/upload/v1638102932/user-32-01_pfck4u.jpg"
-                      width="32"
-                      height="32"
-                      alt="Marie Zulfikar"
-                    ></img>
-                    <div>
-                      <h4 className="text-sm font-semibold text-gray-900">
-                        90% for Research Proposal
-                      </h4>
-                      <div className="text-[13px] text-green-700">
-                        23 days left
-                      </div>
-                    </div>
-                  </div>
-                </button>
-
-                <button className="w-full text-left py-2 focus:outline-none focus-visible:bg-indigo-50 bg-white border rounded mb-2 p-10">
-                  <div className="flex items-center">
-                    <img
-                      className="rounded-full items-start flex-shrink-0 mr-3"
-                      src="https://res.cloudinary.com/dc6deairt/image/upload/v1638102932/user-32-01_pfck4u.jpg"
-                      width="32"
-                      height="32"
-                      alt="Marie Zulfikar"
-                    ></img>
-                    <div>
-                      <h4 className="text-sm font-semibold text-gray-900">
-                        Marie Zulfikar
-                      </h4>
-                      <div className="text-[13px]">
-                        The video chat ended · 2hrs
-                      </div>
-                    </div>
-                  </div>
-                </button>
-
-                {/* <>
-                  <a className="xl:w-full sm:w-full lg:w-full w-full  md:w-full flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
-                    <img
-                      className="object-cover w-full rounded-t-lg h-120 md:h-full md:w-48 md:rounded-none md:rounded-s-lg"
-                      src="https://flowbite.com/docs/images/blog/image-1.jpg"
-                      alt=""
-                    ></img>
-                    <div className="flex flex-col justify-between p-4 leading-normal">
-                      <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                        Goal Name here Goal Name here Goal Name here
-                      </h5>
-                      <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                        23 days left
-                      </p>{" "}
-                      <div className="w-40 px-2 text-xs group rounded-xl disabled:border *:select-none [&>*:not(.sr-only)]:relative *:disabled:opacity-20 disabled:text-gray-950 disabled:border-gray-200 disabled:bg-gray-100 dark:disabled:border-gray-800/50 disabled:dark:bg-gray-900 dark:*:disabled:!text-white text-gray-950 bg-gray-100 hover:bg-gray-200/75 active:bg-gray-100 dark:text-white dark:bg-gray-500/10 dark:hover:bg-gray-500/15 dark:active:bg-gray-500/10 flex gap-1.5 items-center h-8 justify-center">
-                        <span> 23 March 2022</span>
-                      </div>
-                    </div>
-                  </a>
-                </> */}
-
-                {/* <div
-                  onClick={() => {}}
-                  className="block max-w-md h-200 mx-100 rounded overflow-hidden shadow-lg border bg-white-100 cursor-pointer"
-                >
-                  <img
-                    className="w-full h-40"
-                    src="https://flowbite.com/docs/images/blog/image-1.jpg"
-                    alt="Serene Landscape"
-                  />
-
-                  <div className="flex flex-col justify-between px-6 py-4 h-200 bg-white">
-                    <div className="text-green-500 mb-2 text-sm">
-                      Reflected 2 days ago
-                    </div>
-                    <div className="mt-auto mb-2">
-                      <BorderLinearProgress variant="determinate" value={50} />
-                    </div>
-                    <div className="flex flex-col">
-                      <div className="font-bold text-xl mb-2">
-                        {"hey there"}
-                      </div>
-                   
-                    </div>
-                  </div>
-                </div> */}
+                    </button>
+                  </>
+                )}
               </Stack>
             </div>
           </>
@@ -650,25 +576,27 @@ function ReflectionAssistant() {
           
           </div> */}
 
-          <div className="bg-white px-4 py-2 fixed w-full bottom-5">
-            <div className="flex items-center">
-              <input
-                className="w-full border rounded-full py-2 px-4 mr-2 resize-none"
-                type="text"
-                placeholder="How's your goal going..."
-                // placeholder={placeholderText}
-                value={newMessage}
-                rows={calculateRows(newMessage)}
-                onChange={(e) => setNewMessage(e.target.value)}
-              ></input>
-              <button
-                onClick={sendMessageHandler}
-                className="bg-green-500 hover:bg-green-700 text-white font-medium py-2 px-4 rounded-full"
-              >
-                <SendIcon className="ml-2 mr-2 text-white" />
-              </button>
+          <center>
+            <div className="bg-white px-4 py-2 fixed w-full bottom-5">
+              <div className="flex items-center">
+                <input
+                  className="w-full border rounded-full py-2 px-4 mr-2 resize-none"
+                  type="text"
+                  placeholder="How's your goal going..."
+                  // placeholder={placeholderText}
+                  value={newMessage}
+                  rows={calculateRows(newMessage)}
+                  onChange={(e) => setNewMessage(e.target.value)}
+                ></input>
+                <button
+                  onClick={sendMessageHandler}
+                  className="bg-green-500 hover:bg-green-700 text-white font-medium py-2 px-4 rounded-full"
+                >
+                  <SendIcon className="ml-2 mr-2 text-white" />
+                </button>
+              </div>
             </div>
-          </div>
+          </center>
 
           {/* <button
             onClick={sendMessageHandler}

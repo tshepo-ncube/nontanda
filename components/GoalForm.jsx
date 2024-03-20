@@ -44,8 +44,8 @@ const GoalForm = ({ onAddGoal }) => {
 
   return (
     <div style={{ marginTop: 10 }}>
-      <ModalNavbar title={"Create A New Goal"} />
-      <form style={{ marginTop: 60, padding: 10 }}>
+      {/* <ModalNavbar title={"Create A New Goal"} /> */}
+      <form style={{ marginTop: 10, padding: 10 }}>
         <label className="block text-sm font-semibold mb-2">
           Goal Name:
           <input
