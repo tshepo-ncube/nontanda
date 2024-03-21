@@ -576,7 +576,7 @@ function ReflectionAssistant() {
           </div> */}
 
           <center>
-            <div className="bg-white px-4 py-2 pb-20 fixed w-full bottom-5">
+            <div className="bg-white px-4 py-2 fixed w-full bottom-5">
               <div className="flex items-center">
                 <input
                   className="w-full border rounded-full py-2 px-4 mr-2 resize-none"
