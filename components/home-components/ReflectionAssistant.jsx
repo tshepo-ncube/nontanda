@@ -443,7 +443,6 @@ function ReflectionAssistant() {
         </div> */}
         <hr style={{ marginTop: 8 }} />
         <div
-          style={{ height: 500 }}
           className="flex flex-col   h-screen overflow-y-auto mt-2"
           ref={divRef}
         >
