@@ -297,7 +297,7 @@ function ReflectionAssistant() {
           <>
             <div
               className={
-                "overflow-y-auto z-10 absolute top-0 left-0 bottom-0 flex justify-center lg:w-[40%] sm:w-full md:w-[40%] h-screen bg-gray-100 text-center ease-in duration-300 p-4"
+                "overflow-y-auto z-10 absolute top-0 left-0 bottom-0 flex justify-center lg:w-[40%] sm:w-full md:w-[60%] h-screen bg-gray-100 text-center ease-in duration-300 p-4"
               }
             >
               {/* <div className="bg-green-700 hover:bg-green-500  rounded-full shadow-md absolute bottom-6 right-7">
