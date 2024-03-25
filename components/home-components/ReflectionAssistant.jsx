@@ -156,18 +156,6 @@ function ReflectionAssistant() {
   const [msgsLoading, setMsgsLoading] = useState(true);
   const [goals, setGoals] = useState([
     {
-      Descr: "In 6 months, eating right, sleeping right and training right",
-      Due: "2024-04-30",
-      Image: "",
-      Reward: "I will buy fitness clothes",
-      Title: "I want to lose 300 pounds",
-      assistantID: "asst_L1rmvjtYlVbgGWk89a53CmP3",
-
-      runID: "run_gbSGAWlXgKHi2l80yWASBuKe",
-      threadID: "thread_crJHTa7QROz47WVmcj94DiUf",
-      userID: "tshepo@gmail.com",
-    },
-    {
       Descr: "I want to win",
       Due: "2024-05-31",
       Image: "",
@@ -183,15 +171,15 @@ function ReflectionAssistant() {
   const divRef = useRef(null);
   const sendBtnRef = useRef(null);
   const [currentGoal, setCurrentGoal] = useState({
-    Descr: "In 6 months, eating right, sleeping right and training right",
-    Due: "2024-04-30",
+    Descr: "I want to win",
+    Due: "2024-05-31",
     Image: "",
-    Reward: "I will buy fitness clothes",
-    Title: "I want to lose 300 pounds",
-    assistantID: "asst_L1rmvjtYlVbgGWk89a53CmP3",
-
-    runID: "run_gbSGAWlXgKHi2l80yWASBuKe",
-    threadID: "thread_crJHTa7QROz47WVmcj94DiUf",
+    Reward: null,
+    Title: "I want to win a sprint race",
+    assistantID: "asst_V5hJOxL2VdRlSjcjB1vwdhkE",
+    dateCreated: "March 25, 2024 at 5:28:52 PM UTC+2",
+    runID: "run_qjQ2OKAdQ0RVBaY35YQ637Q8",
+    threadID: "thread_rE5NuiYYyYcAxo1SsYSvB1rA",
     userID: "tshepo@gmail.com",
   });
 
@@ -599,6 +587,7 @@ function ReflectionAssistant() {
                       <button
                         onClick={() => {
                           changeChat(goalData);
+                          handleNav();
                         }}
                         className="w-full text-left py-2 focus:outline-none focus-visible:bg-indigo-50 bg-white border rounded mb-2 p-10"
                       >
