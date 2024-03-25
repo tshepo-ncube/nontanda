@@ -32,7 +32,7 @@ const Home = () => {
     ReactGA.initialize("G-YE94Z3VF7X");
   }, []);
   return (
-    <div className="bg-black-500 min-h-screen mb-18">
+    <div style={{ marginTop: -50 }} className="bg-black-500 min-h-screen mb-18">
       {/* Hero Section */}
       <div
         className="relative text-white py-20"

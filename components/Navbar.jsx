@@ -117,16 +117,34 @@ const Navbar = () => {
     };
     window.addEventListener("scroll", changeColor);
   }, []);
+  const [scrolling, setScrolling] = useState(false);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 0) {
+        setScrolling(true);
+      } else {
+        setScrolling(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
   return (
     <div
       style={{
-        backgroundColor: `${color}`,
+        //   backgroundColor: `${color}`,
         borderBottom: 10,
         borderBottomColor: "black",
         borderColor: "black",
       }}
-      className="fixed left-0 top-0 w-full z-10 ease-in duration-300"
+      className={`${
+        scrolling ? "opacity-50" : ""
+      }  fixed left-0 top-0 w-full z-10 ease-in duration-300 `}
     >
       <div
         className="max-w-[1240px] m-auto flex justify-between items-center p-4 text-white"
@@ -138,8 +156,10 @@ const Navbar = () => {
           </h1>
         </Link>
         <ul style={{ color: `${textColor}` }} className="hidden sm:flex">
-          <li className="p-4">
-            <Link href="/">Home</Link>
+          <li className="p-4 text-white">
+            <Link href="/" className="p-4 text-white">
+              Home
+            </Link>
           </li>
 
           <li className="p-4">
