@@ -7,7 +7,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import Alert from "@mui/material/Alert";
 import AddIcon from "@mui/icons-material/Add";
 import Fab from "@mui/material/Fab";
-
+import OpenAI from "openai";
 import Button from "@mui/material/Button";
 import { initializeApp } from "firebase/app";
 import {
@@ -33,6 +33,11 @@ import {
   runTransaction,
 } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
+
+const openai = new OpenAI({
+  apiKey: "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",
+  dangerouslyAllowBrowser: true,
+});
 
 const provider = new GoogleAuthProvider();
 //import { firebase } from "firebase";
@@ -97,6 +102,21 @@ const GoalForm = ({ onAddGoal }) => {
   const [goalReward, setGoalReward] = useState(null);
 
   async function addGoalFirebase() {
+    const assistant = await openai.beta.assistants.create({
+      name: "Goal Mentor",
+      instructions: `You are an assistant designed to help Tshepo with his goal, his goal is : "${goalName}, his goal descripion is ${goalDesc}, he wants to achieve it by ${goalTime}, and will reward himself with ${goalReward}"`,
+
+      //tools: [{ type: "code_interpreter" }],
+
+      model: "gpt-4-1106-preview",
+    });
+
+    const thread = await openai.beta.threads.create();
+
+    const run = await openai.beta.threads.runs.create(thread.id, {
+      assistant_id: assistant.id,
+      instructions: "Please address the user as Tshepo.",
+    });
     try {
       const data = {
         Descr: goalDesc,
@@ -106,6 +126,9 @@ const GoalForm = ({ onAddGoal }) => {
         Reward: goalReward,
         Due: goalTime,
         userID: "tshepo@gmail.com",
+        assistantID: assistant.id,
+        runID: run.id,
+        threadID: thread.id,
       };
       const docRef = await addDoc(collection(db, "goals"), data);
       console.log("Document written with ID: ", docRef.id);

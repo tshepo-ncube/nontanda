@@ -29,6 +29,49 @@ import LinearProgress, {
 } from "@mui/material/LinearProgress";
 import OpenAI from "openai";
 import GoalForm from "../GoalForm";
+import { initializeApp } from "firebase/app";
+import {
+  getAuth,
+  signInWithPopup,
+  GoogleAuthProvider,
+  onAuthStateChanged,
+  signOut,
+  createUserWithEmailAndPassword,
+} from "firebase/auth";
+
+import {
+  getFirestore,
+  collection,
+  addDoc,
+  doc,
+  getDoc,
+  query,
+  where,
+  setDoc,
+  updateDoc,
+  getDocs,
+  runTransaction,
+} from "firebase/firestore";
+import { useNavigate } from "react-router-dom";
+
+//import { firebase } from "firebase";
+// import { firebaseui } from "firebaseui";
+//var firebase = require("firebase");
+//var firebaseui = require("firebaseui");
+// TODO: Replace the following with your app's Firebase project configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyC-TWCp-jNGYuzdjZbmD4tn5KsOCjgRCWM",
+  authDomain: "mindfulmanifesters-bb23e.firebaseapp.com",
+  projectId: "mindfulmanifesters-bb23e",
+  storageBucket: "mindfulmanifesters-bb23e.appspot.com",
+  messagingSenderId: "816933119912",
+  appId: "1:816933119912:web:a009d7a035bf3c491c1f9d",
+  measurementId: "G-1G8NESR5QL",
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
 const openai = new OpenAI({
   apiKey: "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",
   dangerouslyAllowBrowser: true,
@@ -48,7 +91,28 @@ const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
 }));
 
 const ColorModeContext = React.createContext({ toggleColorMode: () => {} });
+function formatDateToWords(dateString) {
+  const months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
 
+  const [year, month, day] = dateString.split("-").map(Number);
+
+  const monthName = months[month - 1];
+
+  return `${monthName} ${day}, ${year}`;
+}
 function ReflectionAssistant() {
   const theme = useTheme();
   const colorMode = React.useContext(ColorModeContext);
@@ -58,6 +122,9 @@ function ReflectionAssistant() {
   const [placeholderText, setPlaceholderText] = useState(
     "Lately, I feel like I'm drifting apart from the people I care about most, and it's leaving me feeling lonely and disconnected..."
   );
+  const [threadID, setThreadID] = useState(null);
+  const [runID, setRunID] = useState(null);
+  const [assistantID, setAssistantID] = useState(null);
   const placeholderOptions = [
     "I'm feeling overwhelmed by the constant pressure to perform at work, and it's draining me both mentally and emotionally...",
     "The thought of my upcoming exam is like a dark cloud looming over me, causing my stomach to churn with anxiety every time I think about it...",
@@ -87,8 +154,46 @@ function ReflectionAssistant() {
   const [messages, setMessages] = useState([]);
   const [newGoal, setNewGoal] = useState(false);
   const [msgsLoading, setMsgsLoading] = useState(true);
+  const [goals, setGoals] = useState([
+    {
+      Descr: "In 6 months, eating right, sleeping right and training right",
+      Due: "2024-04-30",
+      Image: "",
+      Reward: "I will buy fitness clothes",
+      Title: "I want to lose 300 pounds",
+      assistantID: "asst_L1rmvjtYlVbgGWk89a53CmP3",
+
+      runID: "run_gbSGAWlXgKHi2l80yWASBuKe",
+      threadID: "thread_crJHTa7QROz47WVmcj94DiUf",
+      userID: "tshepo@gmail.com",
+    },
+    {
+      Descr: "I want to win",
+      Due: "2024-05-31",
+      Image: "",
+      Reward: null,
+      Title: "I want to win a sprint race",
+      assistantID: "asst_V5hJOxL2VdRlSjcjB1vwdhkE",
+      dateCreated: "March 25, 2024 at 5:28:52 PM UTC+2",
+      runID: "run_qjQ2OKAdQ0RVBaY35YQ637Q8",
+      threadID: "thread_rE5NuiYYyYcAxo1SsYSvB1rA",
+      userID: "tshepo@gmail.com",
+    },
+  ]);
   const divRef = useRef(null);
   const sendBtnRef = useRef(null);
+  const [currentGoal, setCurrentGoal] = useState({
+    Descr: "In 6 months, eating right, sleeping right and training right",
+    Due: "2024-04-30",
+    Image: "",
+    Reward: "I will buy fitness clothes",
+    Title: "I want to lose 300 pounds",
+    assistantID: "asst_L1rmvjtYlVbgGWk89a53CmP3",
+
+    runID: "run_gbSGAWlXgKHi2l80yWASBuKe",
+    threadID: "thread_crJHTa7QROz47WVmcj94DiUf",
+    userID: "tshepo@gmail.com",
+  });
 
   const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
@@ -117,21 +222,18 @@ function ReflectionAssistant() {
         msg.content[0] && msg.content[0].text
           ? msg.content[0].text.value
           : "Content missing";
-      console.log(
-        `${role.charAt(0).toUpperCase() + role.slice(1)}: ${content}`
-      );
-      console.log("\n");
+      // console.log(
+      //   `${role.charAt(0).toUpperCase() + role.slice(1)}: ${content}`
+      // );
+      // console.log("\n");
     });
     let length = msgList.length;
-    if (msgList[length - 1].role !== "user") {
-      console.log("loading........");
-      checkStatusAndPrintMessages(
-        "thread_NWXJ1BmVcioMrytGGihRBAvf",
-        "run_oaWP3GLQzV1lEtLpGtnAYUiE"
-      );
-    } else {
-      setLoading(false);
-    }
+    // if (msgList[length - 1].role !== "user") {
+    //   console.log("loading........");
+    //   checkStatusAndPrintMessages(threadId, runId);
+    // } else {
+    //   setLoading(false);
+    // }
     setMsgsLoading(false);
   };
 
@@ -151,6 +253,35 @@ function ReflectionAssistant() {
     return rows;
   };
 
+  const getGoalsFirebase = async () => {
+    const candidatesCollectionRef = collection(db, "goals");
+    const q = query(
+      candidatesCollectionRef,
+      where("userID", "==", "tshepo@gmail.com")
+    );
+
+    try {
+      const snapshot = await getDocs(q);
+      if (snapshot.empty) {
+        console.log("No matching documents.");
+        return;
+      }
+      const goalList = [];
+      snapshot.forEach((doc) => {
+        goalList.push(doc.data());
+        console.log(doc.id, "=>", doc.data());
+      });
+      console.log(goalList);
+      setGoals(goalList);
+      //setCurrentGoal(goalList[0]);
+      console.log(goalList[0]);
+      console.log(goals);
+    } catch (error) {
+      console.error("Error getting documents: ", error);
+      alert(error);
+    }
+  };
+
   useEffect(() => {
     const interval = setInterval(() => {
       setPlaceholderText(
@@ -163,39 +294,78 @@ function ReflectionAssistant() {
     return () => clearInterval(interval);
   }, []);
 
+  // useEffect(() => {
+  //   //scrollToBottom();
+  //   // Example usage
+  //   // checkStatusAndPrintMessages(
+  //   //   "thread_NWXJ1BmVcioMrytGGihRBAvf",
+  //   //   "run_oaWP3GLQzV1lEtLpGtnAYUiE"
+  //   // );
+  //   getGoalsFirebase();
+  //   // checkStatusAndPrintMessages(
+  //   //   "thread_crJHTa7QROz47WVmcj94DiUf",
+  //   //   "run_gbSGAWlXgKHi2l80yWASBuKe"
+  //   // );
+  //   checkStatusAndPrintMessages(currentGoal.threadID, currentGoal.runID);
+  // }, [messages]);
+
+  // useEffect(() => {
+  //   //scrollToBottom();
+  //   // Example usage
+  //   // checkStatusAndPrintMessages(
+  //   //   "thread_NWXJ1BmVcioMrytGGihRBAvf",
+  //   //   "run_oaWP3GLQzV1lEtLpGtnAYUiE"
+  //   // );
+  //   //getGoalsFirebase();
+  //   // checkStatusAndPrintMessages(
+  //   //   "thread_crJHTa7QROz47WVmcj94DiUf",
+  //   //   "run_gbSGAWlXgKHi2l80yWASBuKe"
+  //   // );
+  //   console.log("Current Goal Changed");
+  //   checkStatusAndPrintMessages(currentGoal.threadID, currentGoal.runID);
+  // }, [currentGoal]);
+
   useEffect(() => {
-    //scrollToBottom();
-    // Example usage
-    checkStatusAndPrintMessages(
-      "thread_NWXJ1BmVcioMrytGGihRBAvf",
-      "run_oaWP3GLQzV1lEtLpGtnAYUiE"
-    );
-  }, [messages]);
+    console.log("Current Goal Changed");
+    checkStatusAndPrintMessages(currentGoal.threadID, currentGoal.runID);
+  }, [currentGoal]);
 
   useEffect(() => {
     scrollToBottom();
     // Example usage
-    checkStatusAndPrintMessages(
-      "thread_NWXJ1BmVcioMrytGGihRBAvf",
-      "run_oaWP3GLQzV1lEtLpGtnAYUiE"
-    );
+    // checkStatusAndPrintMessages(
+    //   "thread_NWXJ1BmVcioMrytGGihRBAvf",
+    //   "run_oaWP3GLQzV1lEtLpGtnAYUiE"
+    // );
+    getGoalsFirebase();
+    // Wait for 10 seconds
+    checkStatusAndPrintMessages(currentGoal.threadID, currentGoal.runID);
+    // checkStatusAndPrintMessages(
+    //   "thread_crJHTa7QROz47WVmcj94DiUf",
+    //   "run_gbSGAWlXgKHi2l80yWASBuKe"
+    // );
   }, []);
 
-  useEffect(() => {
-    const cachedData = sessionStorage.getItem("messages");
-    if (false) {
-      setMessages(JSON.parse(cachedData));
-    } else {
-      // fetchData().then((apiData) => {
-      //   sessionStorage.setItem("myData", JSON.stringify(apiData));
-      //   setData(apiData);
-      // });
-      checkStatusAndPrintMessages(
-        "thread_NWXJ1BmVcioMrytGGihRBAvf",
-        "run_oaWP3GLQzV1lEtLpGtnAYUiE"
-      );
-    }
-  }, []);
+  // useEffect(() => {
+  //   const cachedData = sessionStorage.getItem("messages");
+  //   if (false) {
+  //     setMessages(JSON.parse(cachedData));
+  //   } else {
+  //     // fetchData().then((apiData) => {
+  //     //   sessionStorage.setItem("myData", JSON.stringify(apiData));
+  //     //   setData(apiData);
+  //     // });
+  //     // checkStatusAndPrintMessages(
+  //     //   "thread_NWXJ1BmVcioMrytGGihRBAvf",
+  //     //   "run_oaWP3GLQzV1lEtLpGtnAYUiE"
+  //     // );
+  //     // checkStatusAndPrintMessages(
+  //     //   "thread_crJHTa7QROz47WVmcj94DiUf",
+  //     //   "run_gbSGAWlXgKHi2l80yWASBuKe"
+  //     // );
+  //     checkStatusAndPrintMessages(currentGoal.threadID, currentGoal.runID);
+  //   }
+  // }, []);
 
   const handleInputChange = (event) => {
     setEntry(event.target.value);
@@ -217,28 +387,37 @@ function ReflectionAssistant() {
   };
   const sendMsgOpenAi = async () => {
     const message = await openai.beta.threads.messages.create(
-      "thread_NWXJ1BmVcioMrytGGihRBAvf",
+      currentGoal.threadID,
       {
         role: "user",
         content: newMessage,
       }
     );
 
-    const run = await openai.beta.threads.runs.create(
-      "thread_NWXJ1BmVcioMrytGGihRBAvf",
-      {
-        assistant_id: "asst_TuuWO4MxdsPJPgmdgLkXyeUN",
-        instructions:
-          "Please address the user as Tshepo, his goal is to lose 20 pounds of weight, Please have a conversation with the user and answer in a paragraph less than 300 characters",
-      }
-    );
+    const run = await openai.beta.threads.runs.create(currentGoal.threadID, {
+      // assistant_id: "asst_TuuWO4MxdsPJPgmdgLkXyeUN",asst_L1rmvjtYlVbgGWk89a53CmP3
+      assistant_id: currentGoal.assistantID,
+      instructions: `You are an assistant designed to help Tshepo with his goal, his goal is : "${
+        currentGoal.Title
+      }, his goal descripion is ${
+        currentGoal.Descr
+      }, he wants to achieve it by ${formatDateToWords(
+        currentGoal.Due
+      )}, and will reward himself with ${currentGoal.Reward}"`,
+    });
     console.log(`run id : ${run.id}`);
     console.log(run);
 
-    checkStatusAndPrintMessages(
-      "thread_NWXJ1BmVcioMrytGGihRBAvf",
-      "run_oaWP3GLQzV1lEtLpGtnAYUiE"
-    );
+    // checkStatusAndPrintMessages(
+    //   "thread_NWXJ1BmVcioMrytGGihRBAvf",
+    //   "run_oaWP3GLQzV1lEtLpGtnAYUiE"
+    // );
+
+    // checkStatusAndPrintMessages(
+    //   "thread_crJHTa7QROz47WVmcj94DiUf",
+    //   "run_gbSGAWlXgKHi2l80yWASBuKe"
+    // );
+    checkStatusAndPrintMessages(currentGoal.threadID, currentGoal.runID);
 
     setNewMessage("");
   };
@@ -254,6 +433,20 @@ function ReflectionAssistant() {
 
   const handleNewGoal = () => {
     setNewGoal(!newGoal);
+  };
+
+  const changeChat = (goalData) => {
+    const title = goalData.Title;
+
+    const foundObject = goals.find((obj) => obj.Title === title);
+
+    if (foundObject) {
+      console.log("Found object:", foundObject);
+      setCurrentGoal(foundObject);
+      console.log("Current object:", currentGoal);
+    } else {
+      console.log("Object with Title 'hey' not found.");
+    }
   };
   return (
     <div style={{ marginLeft: 0, marginRight: 0 }}>
@@ -283,7 +476,7 @@ function ReflectionAssistant() {
 
           {/* Title */}
           <div style={{ textAlign: "center", flex: 1 }}>
-            <h2 className="text-xl font-bold mt-2">Goal Assistant</h2>
+            <h2 className="text-xl font-bold mt-2">{currentGoal.Title}</h2>
           </div>
 
           {/* Placeholder for alignment */}
@@ -383,28 +576,53 @@ function ReflectionAssistant() {
                         </ButtonGroup>
                       </Box>
                     </center>
-
                     <button className="w-full text-left py-2 focus:outline-none focus-visible:bg-indigo-50 bg-white border rounded mb-2 p-10">
                       <div className="flex items-center">
                         <img
                           className="rounded-full items-start flex-shrink-0 mr-3"
-                          src="https://res.cloudinary.com/dc6deairt/image/upload/v1638102932/user-32-01_pfck4u.jpg"
+                          src="https://tecscience.tec.mx/en/wp-content/uploads/sites/9/2023/04/chat-gpt-in-schools.png"
                           width="32"
                           height="32"
                           alt="Marie Zulfikar"
                         ></img>
                         <div>
                           <h4 className="text-sm font-semibold text-gray-900">
-                            Keto diet
+                            Free Chat
                           </h4>
-                          <div className="text-[13px] text-red-700">
-                            2 hours left
+                          <div className="text-[13px] text-black">
+                            chat about anything
                           </div>
                         </div>
                       </div>
                     </button>
+                    {goals.map((goalData) => (
+                      <button
+                        onClick={() => {
+                          changeChat(goalData);
+                        }}
+                        className="w-full text-left py-2 focus:outline-none focus-visible:bg-indigo-50 bg-white border rounded mb-2 p-10"
+                      >
+                        <div className="flex items-center">
+                          <img
+                            className="rounded-full items-start flex-shrink-0 mr-3"
+                            src="https://startupsmagazine.co.uk/sites/default/files/2022-02/AdobeStock_309443011ed.png"
+                            width="32"
+                            height="32"
+                            alt="Marie Zulfikar"
+                          ></img>
+                          <div>
+                            <h4 className="text-sm font-semibold text-gray-900">
+                              {goalData.Title}
+                            </h4>
+                            <div className="text-[13px] text-red-700">
+                              2 hours left
+                            </div>
+                          </div>
+                        </div>
+                      </button>
+                    ))}
 
-                    <button className="w-full text-left py-2 focus:outline-none focus-visible:bg-indigo-50 bg-white border rounded mb-2 p-10">
+                    {/* <button className="w-full text-left py-2 focus:outline-none focus-visible:bg-indigo-50 bg-white border rounded mb-2 p-10">
                       <div className="flex items-center">
                         <img
                           className="rounded-full items-start flex-shrink-0 mr-3"
@@ -422,7 +640,7 @@ function ReflectionAssistant() {
                           </div>
                         </div>
                       </div>
-                    </button>
+                    </button> */}
                   </>
                 )}
               </Stack>

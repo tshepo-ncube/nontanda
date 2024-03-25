@@ -143,7 +143,9 @@ const Navbar = () => {
           </li>
 
           <li className="p-4">
-            <Link href="/chat">Chat</Link>
+            <Link href="/chat" target={"_blank"}>
+              Chat
+            </Link>
           </li>
 
           {user ? (
@@ -221,7 +223,9 @@ const Navbar = () => {
             <hr style={{ marginTop: 8 }} />
 
             <li className="p-4 text-4xl hover:text-gray-500">
-              <Link href="/chat">Goal Assistant</Link>
+              <Link href="/chat" target={"_blank"}>
+                Chat
+              </Link>
             </li>
             <hr style={{ marginTop: 8 }} />
 
