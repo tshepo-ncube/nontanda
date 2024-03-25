@@ -58,7 +58,7 @@ const Home = () => {
             <Link href="/chat" target={"_blank"}>
               <button
                 onClick={handleChatBtnClick}
-                className="bg-white text-black px-4 py-2 mt-4 rounded-full border hover:text-white hover:bg-blue-500 hover:border-blue-800 focus:outline-none focus:border-gray-900 transition duration-300"
+                className="opacity-50 text-white px-4 py-2 mt-4 rounded-full border border-white hover:text-black hover:bg-white hover:border-white-800 focus:outline-none focus:border-gray-900 transition duration-300"
               >
                 Start Chat
               </button>
