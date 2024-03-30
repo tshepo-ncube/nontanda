@@ -64,7 +64,7 @@ In a world where mental health issues and substance abuse are prevalent, embraci
 
 <strong><i>So, let's commit to being kind to our minds, supporting each other, and creating a culture of mental wellness and sobriety. Together, we can make a positive difference in our lives and communities.</i> </strong>
 <br/>
-<br/>
-<button href="http://localhost:3000/#reflectSection" class="bg-blue-500 text-white p-2 rounded-md hover:bg-blue-700 focus:outline-none">
+<!-- <br/> -->
+<!-- <button href="http://localhost:3000/#reflectSection" class="bg-blue-500 text-white p-2 rounded-md hover:bg-blue-700 focus:outline-none">
 reflect on your journey
-</button>
+</button> -->
