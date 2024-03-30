@@ -2,12 +2,13 @@
 title: "Power of Mindful Thinking"
 subtitle: "The power of mindfulness lies in its ability to bring us back to the present moment"
 date: "2023-12-07"
+cr: ["https://www.mindfulmanifesters.com/ourblog"]
+coverImg: "https://plus.unsplash.com/premium_photo-1682308186684-9f3adccac43f?q=80&w=1812&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
 ---
 
 Mindfulness is a practice focused on cultivating present-moment awareness, encouraging individuals to fully engage with their thoughts, feelings, and surroundings without judgment. It involves purposeful attention to the present, fostering a deep connection with one's experiences.
 
 Through techniques such as meditation and conscious breathing, mindfulness empowers individuals to develop a heightened sense of clarity, resilience, and emotional well-being.
-
 
 # The Power of Mindfulness
 

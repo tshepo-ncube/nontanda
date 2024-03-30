@@ -3,6 +3,7 @@ title: "Be Kind To Your Mind & Live Drug Free"
 subtitle: "Be kind to your mind & live drug free"
 date: "2024-02-14"
 cr: ["https://www.mindfulmanifesters.com/ourblog"]
+coverImg: "https://images.unsplash.com/photo-1558010089-ff6fd29ea39a?q=80&w=1925&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
 ---
 
 In a world that often feels chaotic and fast-paced, taking care of our mental health is paramount. With increasing awareness about the <a href="https://healthlibrary.telus.com/en/individuals-families/10-reasons-why-mental-health-is-important" style="text-decoration: none;" target="_blank" rel="noreferrer">importance of mental wellness</a>, the phrase "be kind to your mind" has gained significant traction.
@@ -62,3 +63,8 @@ By choosing to live drug-free, you're committing to a lifestyle that prioritizes
 In a world where mental health issues and substance abuse are prevalent, embracing the mantra of "be kind to your mind, live drug-free" is more important than ever. By taking proactive steps to prioritize your mental wellness and make informed choices about substance use, you're empowering yourself to lead a healthier, happier life.
 
 <strong><i>So, let's commit to being kind to our minds, supporting each other, and creating a culture of mental wellness and sobriety. Together, we can make a positive difference in our lives and communities.</i> </strong>
+<br/>
+<!-- <br/> -->
+<!-- <button href="http://localhost:3000/#reflectSection" class="bg-blue-500 text-white p-2 rounded-md hover:bg-blue-700 focus:outline-none">
+reflect on your journey
+</button> -->

@@ -2,7 +2,10 @@ import fs from "fs";
 import Markdown from "markdown-to-jsx";
 import matter from "gray-matter";
 import getPostMetadata from "../../../components/getPostMetadata";
-import About from "../../../components/About";
+import Foot from "../../../components/Foot";
+import Button from "@mui/material/Button";
+import HeaderComponent from "../../../components/HeaderComponent";
+//import Foot from "../../components/Foot";
 
 const getPostContent = (slug: string) => {
   const folder = "posts/";
@@ -23,6 +26,36 @@ const PostPage = (props: any) => {
   const slug = props.params.slug;
   const post = getPostContent(slug);
   return (
+<<<<<<< HEAD
+    <>
+      <HeaderComponent title={post.data.title} />
+      <div className="p-4">
+        <div className="my-12 text-center ">
+          <h1 className="text-2xl text-slate-600 ">{post.data.title}</h1>
+          <p className="text-slate-400 mt-2">{post.data.date}</p>
+        </div>
+
+        <div
+          className="my-12 text-center"
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <article
+            className="prose text-center"
+            style={{ textAlign: "center" }}
+          >
+            <Markdown>{post.content}</Markdown>
+          </article>
+        </div>
+      </div>
+      <div style={{ marginTop: -80 }}>
+        <Foot />
+      </div>
+    </>
+=======
     <div className="px-8">
       <div className="my-12 text-center">
         <h1 className="text-2xl text-slate-600 ">{post.data.title}</h1>
@@ -42,6 +75,7 @@ const PostPage = (props: any) => {
         </article>
       </div>
     </div>
+>>>>>>> a7878db7166df5d9b4c3b7efb7a92e6a92a25cef
   );
 };
 
