@@ -3,6 +3,7 @@ title: "Be Kind To Your Mind & Live Drug Free"
 subtitle: "Be kind to your mind & live drug free"
 date: "2024-02-14"
 cr: ["https://www.mindfulmanifesters.com/ourblog"]
+coverImg: "https://images.unsplash.com/photo-1558010089-ff6fd29ea39a?q=80&w=1925&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
 ---
 
 In a world that often feels chaotic and fast-paced, taking care of our mental health is paramount. With increasing awareness about the <a href="https://healthlibrary.telus.com/en/individuals-families/10-reasons-why-mental-health-is-important" style="text-decoration: none;" target="_blank" rel="noreferrer">importance of mental wellness</a>, the phrase "be kind to your mind" has gained significant traction.

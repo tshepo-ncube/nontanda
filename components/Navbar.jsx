@@ -29,7 +29,7 @@ const firebaseConfig = {
 };
 const app = initializeApp(firebaseConfig);
 // Initialize the FirebaseUI Widget using Firebase.
-const Navbar = () => {
+const Navbar = ({ isHome }) => {
   const [nav, setNav] = useState(false);
   const [color, setColor] = useState("#0096FF");
   const [textColor, setTextColor] = useState("white");
@@ -142,9 +142,9 @@ const Navbar = () => {
         borderBottomColor: "black",
         borderColor: "black",
       }}
-      className={`${
-        scrolling ? "opacity-50" : ""
-      }  fixed left-0 top-0 w-full z-10 ease-in duration-300 `}
+      className={` ${
+        isHome ? `${scrolling ? "bg-blue-500" : "opacity-50"}` : `bg-blue-500`
+      }   fixed left-0 top-0 w-full z-10 ease-in duration-300 `}
     >
       <div
         className="max-w-[1240px] m-auto flex justify-between items-center p-4 text-white"
@@ -162,20 +162,20 @@ const Navbar = () => {
             </Link>
           </li>
 
-          <li className="p-4">
+          {/* <li className="p-4">
             <Link href="/chat" target={"_blank"}>
               Chat
             </Link>
-          </li>
+          </li> */}
 
           {user ? (
             <>
               {/* <li className="p-4">
                 <Link href="/goals">My Goals</Link>
               </li> */}
-              <li className="p-4">
+              {/* <li className="p-4">
                 <Link href="/profile">Profile</Link>
-              </li>
+              </li> */}
             </>
           ) : (
             <>
@@ -195,7 +195,7 @@ const Navbar = () => {
           <li className="p-4">
             <Link href="/pricing">Pricing</Link>
           </li>
-          <li className="p-4">
+          {/* <li className="p-4">
             {signedIn ? (
               <>
                 <Link href="/sign-in" onClick={handleLogout}>
@@ -207,7 +207,7 @@ const Navbar = () => {
                 <Link href="/sign-in">Sign In</Link>
               </>
             )}
-          </li>
+          </li> */}
 
           {/* <li className='p-4'>
             <Link href='/work'>Work</Link>
@@ -242,11 +242,11 @@ const Navbar = () => {
             </li>
             <hr style={{ marginTop: 8 }} />
 
-            <li className="p-4 text-4xl hover:text-gray-500">
+            {/* <li className="p-4 text-4xl hover:text-gray-500">
               <Link href="/chat" target={"_blank"}>
                 Chat
               </Link>
-            </li>
+            </li> */}
             <hr style={{ marginTop: 8 }} />
 
             {user ? (
@@ -255,9 +255,9 @@ const Navbar = () => {
                   <Link href="/goals">My Goals</Link>
                 </li>
                 <hr style={{ marginTop: 8 }} /> */}
-                <li className="p-4 text-4xl hover:text-gray-500">
+                {/* <li className="p-4 text-4xl hover:text-gray-500">
                   <Link href="/profile">Profile</Link>
-                </li>
+                </li> */}
               </>
             ) : (
               <>
@@ -287,7 +287,7 @@ const Navbar = () => {
               <Link href="/pricing">Pricing</Link>
             </li>
             <hr style={{ marginTop: 8 }} />
-            <li className="p-4 text-4xl hover:text-gray-500">
+            {/* <li className="p-4 text-4xl hover:text-gray-500">
               {signedIn ? (
                 <>
                   <Link href="/sign-in" onClick={handleLogout}>
@@ -299,7 +299,7 @@ const Navbar = () => {
                   <Link href="/sign-in">Sign In</Link>
                 </>
               )}
-            </li>
+            </li> */}
             <hr style={{ marginTop: 8 }} />
 
             {/* <li className='p-4'>

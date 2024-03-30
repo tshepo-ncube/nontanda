@@ -32,7 +32,7 @@ const PostPreview = (props: PostMetadata) => {
       >
         <img
           className="object-cover w-full rounded-t-lg h-120 md:h-full md:w-48 md:rounded-none md:rounded-s-lg"
-          src="https://flowbite.com/docs/images/blog/image-1.jpg"
+          src={props.coverImg}
           alt=""
         ></img>
         <div className="flex flex-col justify-between p-4 leading-normal">

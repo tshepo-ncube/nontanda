@@ -16,7 +16,7 @@ function ourblog() {
         <div className="mx-auto  max-w px-8">
           {/* {header} */}
           {/* {children} */}
-          <Navbar />
+          <Navbar isHome={false} />
           <br />
           <br />
 

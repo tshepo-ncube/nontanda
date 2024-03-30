@@ -55,14 +55,14 @@ const Home = () => {
               </i>
             </p>
 
-            <Link href="/chat" target={"_blank"}>
+            {/* <Link href="/chat" target={"_blank"}>
               <button
                 onClick={handleChatBtnClick}
                 className="opacity-50 text-white px-4 py-2 mt-4 rounded-full border border-white hover:text-black hover:bg-white hover:border-white-800 focus:outline-none focus:border-gray-900 transition duration-300"
               >
                 Start Chat
               </button>
-            </Link>
+            </Link> */}
           </div>
         </div>
       </div>

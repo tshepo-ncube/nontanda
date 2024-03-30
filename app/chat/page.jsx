@@ -22,9 +22,7 @@ function ourblog() {
 
           {/* {children} */}
           {/* <Home /> */}
-          <div>
-            <ReflectionAssistant />
-          </div>
+          <div>{/* <ReflectionAssistant /> */}</div>
 
           <br />
           <br />

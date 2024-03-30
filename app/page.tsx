@@ -35,7 +35,7 @@ const HomePage = () => {
         <div className="mx-auto  max-w">
           {/* {header} */}
           {/* {children} */}
-          <Navbar />
+          <Navbar isHome={true} />
           <br />
           <br />
 
