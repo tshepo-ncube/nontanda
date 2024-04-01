@@ -14,26 +14,26 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const header = (
-    <header>
-      <div className="text-center bg-slate-800 p-8 my-6 rounded-md">
-        <Image
-          src="/logo.png"
-          width={40}
-          height={40}
-          className="mx-auto"
-          alt={"logo"}
-        />
+  // const header = (
+  //   <header>
+  //     <div className="text-center bg-slate-800 p-8 my-6 rounded-md">
+  //       <Image
+  //         src="/logo.png"
+  //         width={40}
+  //         height={40}
+  //         className="mx-auto"
+  //         alt={"logo"}
+  //       />
 
-        <Link href="/">
-          <h1 className="text-2xl text-white font-bold mt-4">Jack's Blog</h1>
-        </Link>
-        <p className="text-slate-300">
-          🤟 Welcome to the MindfulManifesters blog. 💻
-        </p>
-      </div>
-    </header>
-  );
+  //       <Link href="/">
+  //         <h1 className="text-2xl text-white font-bold mt-4">Jack's Blog</h1>
+  //       </Link>
+  //       <p className="text-slate-300">
+  //         🤟 Welcome to the MindfulManifesters blog. 💻
+  //       </p>
+  //     </div>
+  //   </header>
+  // );
 
   const footer = (
     <footer>
@@ -46,12 +46,12 @@ export default function RootLayout({
 
   return (
     <html lang="en">
-      <head>
-        {/* Add Google Analytics script to the head */}
+      {/* <head>
+      
         <title>Mindfulness Manifester </title>
         <meta content="width=device-width, initial-scale=1" name="viewport" />
-        <link rel="icon" href="/favicon.ico" />
 
+        <link rel="icon" href="/mind16.png" />
         <meta
           name="description"
           content="Explore the world of mindfulness with Mindfulness Manifester. Discover tips, practices, and resources for cultivating mindfulness in your daily life."
@@ -61,9 +61,7 @@ export default function RootLayout({
           property="og:description"
           content="Explore the world of mindfulness with Mindfulness Manifester. Discover tips, practices, and resources for cultivating mindfulness in your daily life."
         />
-        {/* <meta property="og:image" content="/path/to/your/og-image.jpg" /> */}
-        {/* <meta content="width=device-width, initial-scale=1" name="viewport" /> */}
-        {/* <link rel="icon" href="/favicon.ico" /> */}
+ 
 
         <Script src="https://www.googletagmanager.com/gtag/js?id=G-YE94Z3VF7X" />
         <Script id="google-analytics">
@@ -78,8 +76,7 @@ export default function RootLayout({
       </head>
       <body>
         <div className="mx-auto  max-w px-8">
-          {/* {header} */}
-          {/* {children} */}
+        
           <Navbar />
           <br />
           <br />
@@ -87,10 +84,14 @@ export default function RootLayout({
           <br />
           <br />
           {children}
-          {/* {footer} */}
+    
           <Foot />
         </div>
-      </body>
+
+
+      </body> */}
+
+      {children}
     </html>
   );
 }

@@ -4,7 +4,8 @@ export default function Head() {
     <>
       <title>Mindfulness Manifester</title>
       <meta content="width=device-width, initial-scale=1" name="viewport" />
-      <link rel="icon" href="/favicon.ico" />
+      {/* <link rel="icon" href="/favicon.ico" /> */}
+      <link rel="icon" href="/mind16.png" />
 
       <Script src="https://www.googletagmanager.com/gtag/js?id=G-YE94Z3VF7X" />
       <Script id="google-analytics">

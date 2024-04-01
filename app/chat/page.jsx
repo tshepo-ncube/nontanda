@@ -1,9 +1,37 @@
-import React from 'react'
+import React from "react";
 
-function page() {
+import fs from "fs";
+import HomePage from "../page";
+import BlogComponent from "../../components/BlogComponent";
+import Foot from "../../components/Foot";
+import Script from "next/script";
+import Navbar from "../../components/Navbar";
+import HeaderComponent from "../../components/HeaderComponent";
+import ReflectionAssistant from "../../components/home-components/ReflectionAssistant";
+import Testimonials from "../../components/testimonials";
+function ourblog() {
   return (
-    <div>Chatbot coming very soon, Its still in development  ;)</div>
-  )
+    <>
+      <HeaderComponent title={"Chat | Mindful"} />
+
+      <body>
+        <div className="mx-auto  max-w ">
+          {/* {header} */}
+          {/* {children} */}
+          {/* <Navbar /> */}
+
+          {/* {children} */}
+          {/* <Home /> */}
+          <div>{/* <ReflectionAssistant /> */}</div>
+
+          <br />
+          <br />
+          {/* {footer} */}
+          {/* <Testimonials /> */}
+        </div>
+      </body>
+    </>
+  );
 }
 
-export default page
+export default ourblog;

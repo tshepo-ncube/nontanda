@@ -1,6 +1,7 @@
 // components/Footer.js
 import React from "react";
 import { FaInstagram, FaPinterest, FaTiktok, FaYoutube } from "react-icons/fa";
+import { MdOutlineMailOutline } from "react-icons/md";
 import {
   FiGithub,
   FiTwitter,
@@ -30,16 +31,21 @@ const socialLinks = [
     icon: <FaYoutube />,
     url: "https://www.youtube.com/channel/UCm57A4zeMQqhA_LQYjFEG9A",
   },
+  {
+    id: 4,
+    icon: <MdOutlineMailOutline />,
+    url: "https://mailto:lyd.research@gmail.com",
+  },
 ];
 
 const Footer = () => {
   return (
-    <div className="container mx-auto">
-      <div className="pt-20 sm:pt-30 pb-8 mt-20 border-t-2 border-primary-light dark:border-secondary-dark">
+    <div className="container mx-auto" style={{ marginTop: -90 }}>
+      <div className="pt-10 sm:pt-10 pb-2 mt-20 border-t-2 border-primary-light dark:border-secondary-dark">
         {/* Footer social links */}
         <div className="font-general-regular flex flex-col justify-center items-center mb-12 sm:mb-28">
           <p className="text-xl sm:text-xl font-semibold text-primary-dark dark:text-primary-light mb-5">
-            © 2023 Mindful
+            © 2024 Mindful
           </p>
           <ul className="flex gap-4 sm:gap-8">
             {socialLinks.map((link) => (
