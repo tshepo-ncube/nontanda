@@ -31,13 +31,10 @@
     "react-google-button": "^0.7.2",
     "react-helmet": "^6.1.0",
     "react-icons": "^4.12.0",
-<<<<<<< HEAD
     "react-loader-spinner": "^6.1.6",
     "react-router-dom": "^6.22.2",
     "react-vertical-timeline-component": "^3.6.0",
-=======
     "sitemap": "^7.1.1",
->>>>>>> a7878db7166df5d9b4c3b7efb7a92e6a92a25cef
     "typescript": "4.9.3"
   },
   "devDependencies": {
