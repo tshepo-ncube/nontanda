@@ -440,6 +440,7 @@ function ReflectionAssistant() {
     <div style={{ marginLeft: 0, marginRight: 0 }}>
       <div className="w-full mx-auto mt-2 p-2 ">
         <div
+          className="fixed left-0 top-0 w-full p-4 bg-white"
           style={{
             display: "flex",
             alignItems: "center",
@@ -478,7 +479,7 @@ function ReflectionAssistant() {
           <>
             <div
               className={
-                "overflow-y-auto z-10 absolute top-0 left-0 bottom-0 flex justify-center lg:w-[40%] sm:w-full md:w-[60%] h-screen bg-gray-100 text-center ease-in duration-300 p-4"
+                "z-10 absolute top-0 left-0 bottom-0 flex justify-center lg:w-[40%] sm:w-full md:w-[60%] h-screen bg-gray-100 text-center ease-in duration-300 p-4"
               }
             >
               {/* <div className="bg-green-700 hover:bg-green-500  rounded-full shadow-md absolute bottom-6 right-7">
@@ -650,8 +651,9 @@ function ReflectionAssistant() {
         </div> */}
         <hr style={{ marginTop: 8 }} />
         <div
-          className="flex flex-col   h-screen overflow-y-auto mt-2"
+          className="flex flex-col top-40  h-full overflow-y-auto mt-2"
           ref={divRef}
+          style={{ marginBottom: 40, marginTop: 40 }}
         >
           {msgsLoading ? (
             <>
@@ -783,7 +785,7 @@ function ReflectionAssistant() {
           </div> */}
 
           <center>
-            <div className="bg-white px-4 py-2 fixed w-full bottom-5">
+            <div className="bg-white px-4 py-2 fixed w-full bottom-0">
               <div className="flex items-center">
                 <input
                   className="w-full border rounded-full py-2 px-4 mr-2 resize-none"
