@@ -370,11 +370,7 @@ function ReflectionAssistant() {
   };
 
   const handleReflect = () => {
-<<<<<<< HEAD
     console.log("Journal Entry: ", entry);
-=======
-    console.log("Journal Entry:", entry);
->>>>>>> 9de3929454b79b06d6441c930553bd1a8078bb49
     setInsights(true);
   };
   const sendMsgOpenAi = async () => {
@@ -391,11 +387,7 @@ function ReflectionAssistant() {
       assistant_id: currentGoal.assistantID,
       instructions: `You are an assistant designed to help Tshepo with his goal, his goal is : "${
         currentGoal.Title
-<<<<<<< HEAD
       }, his goal descripion is = ${
-=======
-      }, his goal descripion is ${
->>>>>>> 9de3929454b79b06d6441c930553bd1a8078bb49
         currentGoal.Descr
       }, he wants to achieve it by ${formatDateToWords(
         currentGoal.Due

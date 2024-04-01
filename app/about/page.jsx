@@ -1,5 +1,4 @@
 import React from "react";
-<<<<<<< HEAD
 import HeaderComponent from "../../components/HeaderComponent";
 import Home from "../../components/Home";
 import Navbar from "../../components/Navbar";
@@ -23,16 +22,12 @@ function page() {
           {/* {children} */}
           <Home />
           {/* {footer} */}
+          {/* {footer} */}
           <Foot />
         </div>
       </body>
     </>
   );
-=======
-
-function page() {
-  return <div>About coming very soon, Its still in development ;</div>;
->>>>>>> a7878db7166df5d9b4c3b7efb7a92e6a92a25cef
 }
 
 export default page;
