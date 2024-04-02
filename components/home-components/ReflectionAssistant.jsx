@@ -122,9 +122,7 @@ function ReflectionAssistant() {
   const [placeholderText, setPlaceholderText] = useState(
     "Lately, I feel like I'm drifting apart from the people I care about most, and it's leaving me feeling lonely and disconnected..."
   );
-  const [threadID, setThreadID] = useState(null);
-  const [runID, setRunID] = useState(null);
-  const [assistantID, setAssistantID] = useState(null);
+
   const placeholderOptions = [
     "I'm feeling overwhelmed by the constant pressure to perform at work, and it's draining me both mentally and emotionally...",
     "The thought of my upcoming exam is like a dark cloud looming over me, causing my stomach to churn with anxiety every time I think about it...",
@@ -155,32 +153,33 @@ function ReflectionAssistant() {
   const [newGoal, setNewGoal] = useState(false);
   const [msgsLoading, setMsgsLoading] = useState(true);
   const [goals, setGoals] = useState([
-    {
-      Descr: "I want to win",
-      Due: "2024-05-31",
-      Image: "",
-      Reward: null,
-      Title: "I want to win a sprint race",
-      assistantID: "asst_V5hJOxL2VdRlSjcjB1vwdhkE",
-      dateCreated: "March 25, 2024 at 5:28:52 PM UTC+2",
-      runID: "run_qjQ2OKAdQ0RVBaY35YQ637Q8",
-      threadID: "thread_rE5NuiYYyYcAxo1SsYSvB1rA",
-      userID: "tshepo@gmail.com",
-    },
+    // {
+    //   Descr: "I want to win",
+    //   Due: "2024-05-31",
+    //   Image: "",
+    //   Reward: null,
+    //   Title: "I want to win a sprint race",
+    //   assistantID: "asst_V5hJOxL2VdRlSjcjB1vwdhkE",
+    //   dateCreated: "March 25, 2024 at 5:28:52 PM UTC+2",
+    //   runID: "run_qjQ2OKAdQ0RVBaY35YQ637Q8",
+    //   threadID: "thread_rE5NuiYYyYcAxo1SsYSvB1rA",
+    //   userID: "tshepo@gmail.com",
+    // },
   ]);
   const divRef = useRef(null);
   const sendBtnRef = useRef(null);
+  const modRef = useRef(null);
   const [currentGoal, setCurrentGoal] = useState({
-    Descr: "I want to win",
-    Due: "2024-05-31",
-    Image: "",
-    Reward: null,
-    Title: "I want to win a sprint race",
-    assistantID: "asst_V5hJOxL2VdRlSjcjB1vwdhkE",
-    dateCreated: "March 25, 2024 at 5:28:52 PM UTC+2",
-    runID: "run_qjQ2OKAdQ0RVBaY35YQ637Q8",
-    threadID: "thread_rE5NuiYYyYcAxo1SsYSvB1rA",
-    userID: "tshepo@gmail.com",
+    // Descr: "I want to win",
+    // Due: "2024-05-31",
+    // Image: "",
+    // Reward: null,
+    // Title: "I want to win a sprint race",
+    // assistantID: "asst_V5hJOxL2VdRlSjcjB1vwdhkE",
+    // dateCreated: "March 25, 2024 at 5:28:52 PM UTC+2",
+    // runID: "run_qjQ2OKAdQ0RVBaY35YQ637Q8",
+    // threadID: "thread_rE5NuiYYyYcAxo1SsYSvB1rA",
+    // userID: "tshepo@gmail.com",
   });
 
   const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
@@ -203,31 +202,35 @@ function ReflectionAssistant() {
     msgList.sort((a, b) => a.created_at - b.created_at);
     sessionStorage.setItem("messages", JSON.stringify(msgList));
     setMessages(msgList);
-    msgList.forEach((msg) => {
-      const role = msg.role;
-      // Ensure that msg.content[0] and msg.content[0].text exist before trying to access .value
-      const content =
-        msg.content[0] && msg.content[0].text
-          ? msg.content[0].text.value
-          : "Content missing";
-      // console.log(
-      //   `${role.charAt(0).toUpperCase() + role.slice(1)}: ${content}`
-      // );
-      // console.log("\n");
-    });
+    // msgList.forEach((msg) => {
+    //   const role = msg.role;
+    //   // Ensure that msg.content[0] and msg.content[0].text exist before trying to access .value
+    //   const content =
+    //     msg.content[0] && msg.content[0].text
+    //       ? msg.content[0].text.value
+    //       : "Content missing";
+    //   // console.log(
+    //   //   `${role.charAt(0).toUpperCase() + role.slice(1)}: ${content}`
+    //   // );
+    //   // console.log("\n");
+    // });
     let length = msgList.length;
-    // if (msgList[length - 1].role !== "user") {
-    //   console.log("loading........");
-    //   checkStatusAndPrintMessages(threadId, runId);
-    // } else {
-    //   setLoading(false);
-    // }
+    if (msgList[length - 1].role !== "user") {
+      console.log("loading........");
+      checkStatusAndPrintMessages(threadId, runId);
+    } else {
+      setLoading(false);
+    }
     setMsgsLoading(false);
   };
 
   // Step 2: Scroll function
   const scrollToBottom = () => {
     divRef.current.scrollTop = divRef.current.scrollHeight;
+  };
+
+  const scrollToMod = () => {
+    modRef.current.scrollTop = modRef.current.scrollHeight;
   };
 
   // const scrollToButton = () => {
@@ -261,7 +264,7 @@ function ReflectionAssistant() {
       });
       console.log(goalList);
       setGoals(goalList);
-      //setCurrentGoal(goalList[0]);
+      setCurrentGoal(goalList[0]);
       console.log(goalList[0]);
       console.log(goals);
     } catch (error) {
@@ -271,31 +274,19 @@ function ReflectionAssistant() {
   };
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setPlaceholderText(
-        placeholderOptions[
-          Math.floor(Math.random() * placeholderOptions.length)
-        ]
-      );
-    }, 3500);
-
-    return () => clearInterval(interval);
-  }, []);
-
-  // useEffect(() => {
-  //   //scrollToBottom();
-  //   // Example usage
-  //   // checkStatusAndPrintMessages(
-  //   //   "thread_NWXJ1BmVcioMrytGGihRBAvf",
-  //   //   "run_oaWP3GLQzV1lEtLpGtnAYUiE"
-  //   // );
-  //   getGoalsFirebase();
-  //   // checkStatusAndPrintMessages(
-  //   //   "thread_crJHTa7QROz47WVmcj94DiUf",
-  //   //   "run_gbSGAWlXgKHi2l80yWASBuKe"
-  //   // );
-  //   checkStatusAndPrintMessages(currentGoal.threadID, currentGoal.runID);
-  // }, [messages]);
+    //scrollToBottom();
+    // Example usage
+    // checkStatusAndPrintMessages(
+    //   "thread_NWXJ1BmVcioMrytGGihRBAvf",
+    //   "run_oaWP3GLQzV1lEtLpGtnAYUiE"
+    // );
+    //getGoalsFirebase();
+    // checkStatusAndPrintMessages(
+    //   "thread_crJHTa7QROz47WVmcj94DiUf",
+    //   "run_gbSGAWlXgKHi2l80yWASBuKe"
+    // );
+    checkStatusAndPrintMessages(currentGoal.threadID, currentGoal.runID);
+  }, [messages]);
 
   // useEffect(() => {
   //   //scrollToBottom();
@@ -327,12 +318,21 @@ function ReflectionAssistant() {
     // );
     getGoalsFirebase();
     // Wait for 10 seconds
-    checkStatusAndPrintMessages(currentGoal.threadID, currentGoal.runID);
+    setTimeout(function () {
+      // Your code to run after 4 seconds
+      console.log("Code executed after 4 seconds");
+      checkStatusAndPrintMessages(currentGoal.threadID, currentGoal.runID);
+    }, 4000);
+
     // checkStatusAndPrintMessages(
     //   "thread_crJHTa7QROz47WVmcj94DiUf",
     //   "run_gbSGAWlXgKHi2l80yWASBuKe"
     // );
   }, []);
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [msgsLoading]);
 
   // useEffect(() => {
   //   const cachedData = sessionStorage.getItem("messages");
@@ -391,7 +391,9 @@ function ReflectionAssistant() {
         currentGoal.Descr
       }, he wants to achieve it by ${formatDateToWords(
         currentGoal.Due
-      )}, and will reward himself with ${currentGoal.Reward}"`,
+      )}, and will reward himself with ${
+        currentGoal.Reward
+      }", please respond in 280 characters or less`,
     });
     console.log(`run id : ${run.id}`);
     console.log(run);
@@ -417,6 +419,9 @@ function ReflectionAssistant() {
 
   const handleNav = () => {
     setNav(!nav);
+    if (nav) {
+      scrollToMo();
+    }
   };
 
   const handleNewGoal = () => {
@@ -479,8 +484,9 @@ function ReflectionAssistant() {
           <>
             <div
               className={
-                "z-10 absolute top-0 left-0 bottom-0 flex justify-center lg:w-[40%] sm:w-full md:w-[60%] h-screen bg-gray-100 text-center ease-in duration-300 p-4"
+                "z-10 absolute h-full top-0 left-0 bottom-0 flex justify-center lg:w-[40%] sm:w-full md:w-[60%]  bg-gray-100 text-center ease-in duration-300 p-4"
               }
+              ref={modRef}
             >
               {/* <div className="bg-green-700 hover:bg-green-500  rounded-full shadow-md absolute bottom-6 right-7">
                 <Fab color="primary" onClick={() => {}}>
@@ -502,7 +508,7 @@ function ReflectionAssistant() {
                   </>
                 )}
               </div>
-              <Stack className="top-0">
+              <Stack className="top-0 h-full">
                 {newGoal ? (
                   <>
                     <div

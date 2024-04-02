@@ -94,7 +94,6 @@ const Home = () => {
           </Link>
         </div>
       </div> */}
-
       <div className="bg-white-100 p-8 mt-10">
         <div className="container mx-auto text-center">
           {/* <h2 className="text-4xl font-bold text-gray-800 mb-8">Who We Are</h2> */}
@@ -117,7 +116,7 @@ const Home = () => {
             goals aren't just planned; they're achieved.
           </p>
         </div>
-
+        <Testimonials />
         <EmailForm />
       </div>{" "}
     </div>
