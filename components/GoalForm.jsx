@@ -115,7 +115,7 @@ const GoalForm = ({ onAddGoal }) => {
 
     const run = await openai.beta.threads.runs.create(thread.id, {
       assistant_id: assistant.id,
-      instructions: "Please address the user as Tshepo.",
+      instructions: `You are an assistant designed to help Tshepo with his goal, his goal is : "${goalName}, his goal descripion is ${goalDesc}, he wants to achieve it by ${goalTime}, and will reward himself with ${goalReward}" ,Please address the user as Tshepo. Respond in less than 300 characters`,
     });
     try {
       const data = {
