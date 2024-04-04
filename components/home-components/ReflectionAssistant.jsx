@@ -137,6 +137,7 @@ function ReflectionAssistant() {
   const [newMessage, setNewMessage] = useState("");
   const [textColor, setTextColor] = useState("black");
   // const [messages, setMessages] = useState([
+  const [messageCount, setMessageCount] = useState(0);
   //   {
   //     message:
   //       " I feel good about myself, I am fostering a reslient mindset, I am trying to be more reslient",
@@ -168,6 +169,7 @@ function ReflectionAssistant() {
   ]);
   const divRef = useRef(null);
   const sendBtnRef = useRef(null);
+  const [upgrade, setUpgrade] = useState(true);
   const modRef = useRef(null);
   const [currentGoal, setCurrentGoal] = useState({
     // Descr: "I want to win",
@@ -214,13 +216,14 @@ function ReflectionAssistant() {
     //   // );
     //   // console.log("\n");
     // });
-    let length = msgList.length;
-    if (msgList[length - 1].role !== "user") {
-      console.log("loading........");
-      checkStatusAndPrintMessages(threadId, runId);
-    } else {
-      setLoading(false);
-    }
+    // let length = msgList.length;
+    // if (msgList[length - 1].role !== "user") {
+    //   console.log("loading........");
+    //   checkStatusAndPrintMessages(threadId, runId);
+    // } else {
+    //   setLoading(false);
+    // }
+    setLoading(false);
     setMsgsLoading(false);
   };
 
@@ -288,6 +291,12 @@ function ReflectionAssistant() {
     checkStatusAndPrintMessages(currentGoal.threadID, currentGoal.runID);
   }, [messages]);
 
+  useEffect(() => {
+    if (messageCount >= 4) {
+      setUpgrade(true);
+    }
+  }, [messageCount]);
+
   // useEffect(() => {
   //   //scrollToBottom();
   //   // Example usage
@@ -310,6 +319,78 @@ function ReflectionAssistant() {
   }, [currentGoal]);
 
   useEffect(() => {
+    const fetchUserData = async () => {
+      const userRef = db.collection("users").doc(userId);
+      const userData = (await userRef.get()).data();
+
+      if (userData) {
+        const { clickCount, lastReset } = userData;
+
+        // Check if 24 hours have passed since the last reset
+        const currentTime = new Date();
+        const lastResetTime = lastReset.toDate();
+        const hoursPassed = Math.abs(currentTime - lastResetTime) / 36e5;
+
+        if (hoursPassed >= 24) {
+          // Reset click count and update last reset timestamp
+          await userRef.update({
+            clickCount: 0,
+            lastReset: firebase.firestore.FieldValue.serverTimestamp(),
+          });
+          setClickCount(0);
+        } else {
+          setClickCount(clickCount);
+        }
+      }
+
+      const candidatesCollectionRef = collection(db, "users");
+      const q = query(candidatesCollectionRef, where("userID", "==", "tshepo"));
+
+      try {
+        const snapshot = await getDoc(q);
+        if (snapshot.empty) {
+          console.log("No matching user.");
+          return;
+        }
+
+        const userData = snapshot.data();
+
+        const { MessageCount, LastReset } = userData;
+
+        // Check if 24 hours have passed since the last reset
+        const currentTime = new Date();
+        const lastResetTime = lastReset.toDate();
+        const hoursPassed = Math.abs(currentTime - lastResetTime) / 36e5;
+
+        if (hoursPassed >= 24) {
+          // Reset click count and update last reset timestamp
+          await userRef.update({
+            MessageCount: 0,
+            LastReset: firebase.firestore.FieldValue.serverTimestamp(),
+          });
+          setMessageCount(0);
+        } else {
+          setMessageCount(MessageCount);
+        }
+
+        const goalList = [];
+        snapshot.forEach((doc) => {
+          goalList.push(doc.data());
+          console.log(doc.id, "=>", doc.data());
+        });
+        console.log(goalList);
+        setGoals(goalList);
+        setCurrentGoal(goalList[0]);
+        console.log(goalList[0]);
+        console.log(goals);
+      } catch (error) {
+        console.error("Error getting documents: ", error);
+        alert(error);
+      }
+    };
+
+    fetchUserData();
+
     scrollToBottom();
     // Example usage
     // checkStatusAndPrintMessages(
@@ -793,21 +874,34 @@ function ReflectionAssistant() {
           <center>
             <div className="bg-white px-4 py-2 fixed w-full bottom-0">
               <div className="flex items-center">
-                <input
-                  className="w-full border rounded-full py-2 px-4 mr-2 resize-none"
-                  type="text"
-                  placeholder="How's your goal going..."
-                  // placeholder={placeholderText}
-                  value={newMessage}
-                  rows={calculateRows(newMessage)}
-                  onChange={(e) => setNewMessage(e.target.value)}
-                ></input>
-                <button
-                  onClick={sendMessageHandler}
-                  className="bg-green-500 hover:bg-green-700 text-white font-medium py-2 px-4 rounded-full"
-                >
-                  <SendIcon className="ml-2 mr-2 text-white" />
-                </button>
+                {upgrade ? (
+                  <>
+                    <button
+                      onClick={sendMessageHandler}
+                      className="bg-yellow-700 hover:bg-yellow-500 w-full text-white font-medium py-2 px-4 rounded-full"
+                    >
+                      please upgrade to a subscription or wait 24 hours
+                    </button>
+                  </>
+                ) : (
+                  <>
+                    <input
+                      className="w-full border rounded-full py-2 px-4 mr-2 resize-none"
+                      type="text"
+                      placeholder="How's your goal going..."
+                      // placeholder={placeholderText}
+                      value={newMessage}
+                      rows={calculateRows(newMessage)}
+                      onChange={(e) => setNewMessage(e.target.value)}
+                    ></input>
+                    <button
+                      onClick={sendMessageHandler}
+                      className="bg-green-500 hover:bg-green-700 text-white font-medium py-2 px-4 rounded-full"
+                    >
+                      <SendIcon className="ml-2 mr-2 text-white" />
+                    </button>
+                  </>
+                )}
               </div>
             </div>
           </center>
