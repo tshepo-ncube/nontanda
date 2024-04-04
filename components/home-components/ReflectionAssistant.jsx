@@ -247,6 +247,8 @@ function ReflectionAssistant() {
     return rows;
   };
 
+  const handleSubscribe = () => {};
+
   const getGoalsFirebase = async () => {
     const candidatesCollectionRef = collection(db, "goals");
     const q = query(
@@ -877,7 +879,7 @@ function ReflectionAssistant() {
                 {upgrade ? (
                   <>
                     <button
-                      onClick={sendMessageHandler}
+                      onClick={handleSubscribe}
                       className="bg-yellow-700 hover:bg-yellow-500 w-full text-white font-medium py-2 px-4 rounded-full"
                     >
                       please upgrade to a subscription or wait 24 hours
