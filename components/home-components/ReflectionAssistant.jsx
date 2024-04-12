@@ -51,6 +51,7 @@ import {
   updateDoc,
   getDocs,
   runTransaction,
+  increment,
 } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
 
@@ -169,7 +170,7 @@ function ReflectionAssistant() {
   ]);
   const divRef = useRef(null);
   const sendBtnRef = useRef(null);
-  const [upgrade, setUpgrade] = useState(true);
+  const [upgrade, setUpgrade] = useState(false);
   const modRef = useRef(null);
   const [currentGoal, setCurrentGoal] = useState({
     // Descr: "I want to win",
@@ -293,6 +294,37 @@ function ReflectionAssistant() {
     checkStatusAndPrintMessages(currentGoal.threadID, currentGoal.runID);
   }, [messages]);
 
+  const incrementMsgCount = async () => {
+    const usersRef = collection(db, "users");
+    const userRefDoc = doc(db, "users", "tshepo");
+    try {
+      // Fetch the existing document
+      const userDoc = await getDoc(userRefDoc);
+
+      if (userDoc.exists()) {
+        // Document exists, update the "Voted" field
+        await updateDoc(userRefDoc, {
+          LastMessage: new Date(),
+          MessagesCount: Number(userDoc.data().MessagesCount) + 1,
+        });
+        //setMessageCount()
+
+        // await setDoc(
+        //   userRefDoc,
+        //   { CandidateVote: candidateData.id } // Replace 'Voted' with the actual field name in your document
+        //   // { merge: true }
+        // );
+
+        console.log("Document updated successfully");
+        //localStorage.setItem("Voted", true);
+      } else {
+        console.log("Document does not exist");
+      }
+    } catch (error) {
+      console.error("Error updating document:", error);
+    }
+  };
+
   useEffect(() => {
     if (messageCount >= 4) {
       setUpgrade(true);
@@ -325,25 +357,25 @@ function ReflectionAssistant() {
       const userRef = db.collection("users").doc(userId);
       const userData = (await userRef.get()).data();
 
-      if (userData) {
-        const { clickCount, lastReset } = userData;
+      // if (userData) {
+      //   const { clickCount, lastReset } = userData;
 
-        // Check if 24 hours have passed since the last reset
-        const currentTime = new Date();
-        const lastResetTime = lastReset.toDate();
-        const hoursPassed = Math.abs(currentTime - lastResetTime) / 36e5;
+      //   // Check if 24 hours have passed since the last reset
+      //   const currentTime = new Date();
+      //   const lastResetTime = lastReset.toDate();
+      //   const hoursPassed = Math.abs(currentTime - lastResetTime) / 36e5;
 
-        if (hoursPassed >= 24) {
-          // Reset click count and update last reset timestamp
-          await userRef.update({
-            clickCount: 0,
-            lastReset: firebase.firestore.FieldValue.serverTimestamp(),
-          });
-          setClickCount(0);
-        } else {
-          setClickCount(clickCount);
-        }
-      }
+      //   if (hoursPassed >= 24) {
+      //     // Reset click count and update last reset timestamp
+      //     await userRef.update({
+      //       clickCount: 0,
+      //       lastReset: firebase.firestore.FieldValue.serverTimestamp(),
+      //     });
+      //     setClickCount(0);
+      //   } else {
+      //     setClickCount(clickCount);
+      //   }
+      // }
 
       const candidatesCollectionRef = collection(db, "users");
       const q = query(candidatesCollectionRef, where("userID", "==", "tshepo"));
@@ -357,11 +389,12 @@ function ReflectionAssistant() {
 
         const userData = snapshot.data();
 
-        const { MessageCount, LastReset } = userData;
+        const { MessagesCount, LastReset } = userData;
+        //alert(MessagesCount);
 
         // Check if 24 hours have passed since the last reset
         const currentTime = new Date();
-        const lastResetTime = lastReset.toDate();
+        const lastResetTime = LastReset.toDate();
         const hoursPassed = Math.abs(currentTime - lastResetTime) / 36e5;
 
         if (hoursPassed >= 24) {
@@ -497,6 +530,7 @@ function ReflectionAssistant() {
   const sendMessageHandler = async () => {
     setLoading(true);
     sendMsgOpenAi();
+    incrementMsgCount();
     scrollToBottom();
   };
 
@@ -654,25 +688,7 @@ function ReflectionAssistant() {
                         </ButtonGroup>
                       </Box>
                     </center>
-                    <button className="w-full text-left py-2 focus:outline-none focus-visible:bg-indigo-50 bg-white border rounded mb-2 p-10">
-                      <div className="flex items-center">
-                        <img
-                          className="rounded-full items-start flex-shrink-0 mr-3"
-                          src="https://tecscience.tec.mx/en/wp-content/uploads/sites/9/2023/04/chat-gpt-in-schools.png"
-                          width="32"
-                          height="32"
-                          alt="Marie Zulfikar"
-                        ></img>
-                        <div>
-                          <h4 className="text-sm font-semibold text-gray-900">
-                            Free Chat
-                          </h4>
-                          <div className="text-[13px] text-black">
-                            chat about anything
-                          </div>
-                        </div>
-                      </div>
-                    </button>
+
                     {goals.map((goalData) => (
                       <button
                         onClick={() => {
